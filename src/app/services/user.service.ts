@@ -54,4 +54,15 @@ export class UserService {
     return this.http.post(this.URL + 'users/forgetpassword/changepassword', { 'email': email, 'password': password }).pipe(map(res => res));
   }
 
+  // tslint:disable-next-line: max-line-length
+  public createTrip(destination, start_date, start_time, start_venue, end_date, end_time, end_venue, people_count, budget_per_person, age, weather, travel) {
+    return this.http.post(this.URL + 'trips/createTrip',
+      // tslint:disable-next-line:object-literal-key-quotes
+      {
+        'destination': destination, 'start_date': start_date, 'start_time': start_time, 'start_venue': start_venue,
+        'end_date': end_date, 'end_time': end_time, 'end_venue': end_venue, 'people_count': people_count,
+        'budget_per_person': budget_per_person, 'age': age, 'weather': weather, 'travel': travel
+      }).pipe(map(res => res));
+  }
+
 }

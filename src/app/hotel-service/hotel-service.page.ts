@@ -18,6 +18,10 @@ export class HotelServicePage implements OnInit {
     this.router.navigate(['./home']);
   }
 
+  viewRecommendedServices(){
+    this.router.navigate(['./recommendedServices']);
+  }
+
   async confirmRegistration() {
     const alert = await this.alertCtrl.create({
       header: 'Confirm Registration',
@@ -48,7 +52,9 @@ export class HotelServicePage implements OnInit {
         cssClass: 'alertCustomCss',
         text: 'Okay',
         role: 'okay',
-        handler: () => { }
+        handler: () => { 
+          this.viewRecommendedServices();
+        }
       },
       ]
     }

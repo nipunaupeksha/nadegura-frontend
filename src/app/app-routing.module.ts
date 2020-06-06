@@ -81,7 +81,7 @@ const routes: Routes = [
     loadChildren: () => import('./ratings/ratings.module').then( m => m.RatingsPageModule)
   },
   {
-    path: 'recommended-services',
+    path: 'recommendedServices',
     loadChildren: () => import('./recommended-services/recommended-services.module').then( m => m.RecommendedServicesPageModule)
   },
   {

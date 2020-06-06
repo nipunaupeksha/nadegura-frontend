@@ -14,8 +14,12 @@ export class TransportServicePage implements OnInit {
   ngOnInit() {
   }
 
-  goBack(){
+  goBack() {
     this.router.navigate(['./home']);
+  }
+
+  viewRecommendedServices() {
+    this.router.navigate(['./recommendedServices']);
   }
 
   async confirmRegistration() {
@@ -26,7 +30,7 @@ export class TransportServicePage implements OnInit {
         cssClass: 'alertCustomCss',
         text: 'Yes',
         role: 'yes',
-        handler: () => { 
+        handler: () => {
           this.success();
         }
       },
@@ -48,7 +52,9 @@ export class TransportServicePage implements OnInit {
         cssClass: 'alertCustomCss',
         text: 'Okay',
         role: 'okay',
-        handler: () => { }
+        handler: () => {
+          this.viewRecommendedServices();
+        }
       },
       ]
     }
