@@ -1,10 +1,11 @@
 <ion-content class="content fullscreen-bg" force-overscroll="false">
   <div>
-    <ion-row style="background-color:black; opacity: 80%;">
-      <ion-col style="align-content: center;">
-        <img src="assets/icon/arrow-left.svg" style="filter: brightness(0) invert(1);" class="arrow" alt="">
-        <img src="assets/img/logo-2.png" class="logo" style="filter: brightness(0) invert(1);" alt="logo-2.png">
-        <img src="assets/icon/signs.svg" class="signs" alt="" >
+    <ion-row class="header-row">
+      <ion-col class="header-style-arrow">
+        <img src="assets/icon/arrow-left.svg" class="arrow" alt="" (click)="goBack()">
+      </ion-col>
+      <ion-col class="header-style-text">
+        <h5 class="whitefy header-text">Transport Registrations</h5>
       </ion-col>
     </ion-row>
   </div>
@@ -12,9 +13,6 @@
     <ion-row>
       <ion-col class="column-decorator">
         <div class="div-decorator">
-          <h3 style="font-weight: bold;padding-top:15px; padding-bottom:15px; color:white; text-align:center;">Transport Services Registration
-          </h3>
-
           <!--Transport-->
           <ion-row style="margin-bottom:10px;">
             <ion-col style="max-width:35%;">
@@ -29,7 +27,7 @@
           </ion-row>
           <!--End of Transport-->
 
-         
+
 
           <!--Tour guides-->
           <ion-row style="margin-bottom:10px;">
@@ -39,21 +37,24 @@
               </div>
             </ion-col>
             <ion-col style="max-width:50%;">
-              <input type="text" placeholder="Mobile" name="trasnport-mobile" required id="trasnport-mobile" class="recommend-input">
-              <input type="text" placeholder="E-mail" name="trasnport-mail" required id="trasnport-mail" class="recommend-input" style="margin-top:10px;">
+              <input type="text" placeholder="Mobile" name="trasnport-mobile" required id="trasnport-mobile"
+                class="recommend-input">
+              <input type="text" placeholder="E-mail" name="trasnport-mail" required id="trasnport-mail"
+                class="recommend-input" style="margin-top:10px;">
             </ion-col>
           </ion-row>
           <!--End of Tour guides-->
 
-           <!--Password-->
-           <ion-row style="margin-bottom:10px;">
+          <!--Password-->
+          <ion-row style="margin-bottom:10px;">
             <ion-col style="max-width:35%;">
               <div>
                 <p class="recommend-details">Password</p>
               </div>
             </ion-col>
             <ion-col style="max-width:50%;">
-              <input type="password" placeholder="Password" name="password" required id="password" class="recommend-input"/>
+              <input type="password" placeholder="Password" name="password" required id="password"
+                class="recommend-input" />
             </ion-col>
           </ion-row>
           <!--End of password-->
@@ -61,7 +62,7 @@
         </div>
       </ion-col>
     </ion-row>
-    <button class="btn btn-primary ">
+    <button class="btn btn-primary " (click)="confirmRegistration()">
       Register
     </button>
   </div>

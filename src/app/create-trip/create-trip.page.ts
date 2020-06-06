@@ -8,12 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateTripPage implements OnInit {
 
+  iconColor: any = ['white', 'white', 'white', 'white', 'white', 'white'];
+
   constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
-  goBack(){
+  goBack() {
     this.router.navigate(['./joinTrip']);
+  }
+
+  clickTravelIcon(id) {
+    // tslint:disable-next-line: triple-equals
+    if (this.iconColor[id] == 'white') {
+      this.iconColor[id] = 'red';
+    } else {
+      this.iconColor[id] = 'white';
+    }
   }
 }

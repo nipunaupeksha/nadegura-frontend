@@ -16,11 +16,13 @@ export class ServiceSelectPage implements OnInit {
   }
 
   selectHotelServices(){
-
+    this.router.navigate(['./hotelService']);
+    this.modalController.dismiss();
   }
 
   selectTransportServices(){
-
+    this.router.navigate(['./transportService']);
+    this.modalController.dismiss();
   }
 
   async closeMedia(){

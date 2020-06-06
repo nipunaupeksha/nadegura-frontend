@@ -12,6 +12,7 @@ export class TripRecommenderPage implements OnInit {
 
   ngOnInit() {
   }
+  
   goBack() {
     this.router.navigate(['./joinTrip']);
   }

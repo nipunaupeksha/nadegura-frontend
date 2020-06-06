@@ -44,11 +44,11 @@ const routes: Routes = [
     loadChildren: () => import('./transport-service/transport-service.module').then( m => m.TransportServicePageModule)
   },
   {
-    path: 'hotel-service-details',
+    path: 'hotelServiceDetails',
     loadChildren: () => import('./hotel-service-details/hotel-service-details.module').then( m => m.HotelServiceDetailsPageModule)
   },
   {
-    path: 'transport-service-details',
+    path: 'transportServiceDetails',
     // tslint:disable-next-line: max-line-length
     loadChildren: () => import('./transport-service-details/transport-service-details.module').then( m => m.TransportServiceDetailsPageModule)
   },

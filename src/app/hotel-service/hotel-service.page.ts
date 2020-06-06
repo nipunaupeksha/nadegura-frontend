@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 
@@ -8,9 +9,13 @@ import { AlertController } from '@ionic/angular';
 })
 export class HotelServicePage implements OnInit {
 
-  constructor(private alertCtrl: AlertController) { }
+  constructor(private alertCtrl: AlertController, private router: Router) { }
 
   ngOnInit() {
+  }
+
+  goBack(){
+    this.router.navigate(['./home']);
   }
 
   async confirmRegistration() {
