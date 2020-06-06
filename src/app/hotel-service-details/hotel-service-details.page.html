@@ -1,0 +1,105 @@
+<ion-content class="content fullscreen-bg" force-overscroll="false">
+  <div>
+    <ion-row class="header-row">
+      <ion-col class="header-style-arrow">
+        <img src="assets/icon/arrow-left.svg" class="arrow" alt="">
+      </ion-col>
+      <ion-col class="header-style-text">
+        <h5 class="whitefy header-text">Hotel Services Details</h5>
+      </ion-col>
+    </ion-row>
+  </div>
+  <div class="ion-padding margin-top-fixer-1">
+    <ion-row>
+      <ion-col class="column-decorator">
+        <div>
+          <!--Hotel-->
+          <ion-row class="margin-bottom-fixer-1">
+            <ion-col class="max-width-fixer-1">
+              <div>
+                <p class="recommend-details">Hotel Name</p>
+              </div>
+            </ion-col>
+            <ion-col class="max-width-fixer-2">
+              <input type="text" placeholder="Select your Hotel" name="hotel" required id="hotel"
+                class="recommend-input">
+            </ion-col>
+          </ion-row>
+          <!--End of Hotel-->
+
+          <!--Contact-->
+          <ion-row class="margin-bottom-fixer-1">
+            <ion-col class="max-width-fixer-1">
+              <div>
+                <p class="recommend-details">Contact</p>
+              </div>
+            </ion-col>
+            <ion-col class="max-width-fixer-2">
+              <input type="text" placeholder="Address Line 1" name="hotel-address-1" required id="hotel-address-1"
+                class="recommend-input">
+              <input type="text" placeholder="Address Line 2" name="hotel-address-2" required id="hotel-address-2"
+                class="recommend-input margin-top-fixer-2">
+              <input type="text" placeholder="Address Line 3" name="hotel-address-3" required id="hotel-address-3"
+                class="recommend-input margin-top-fixer-2">
+              <input type="text" placeholder="Mobile" name="hotel-mobile" required id="hotel-mobile"
+                class="recommend-input margin-top-fixer-1">
+              <input type="text" placeholder="E-mail" name="hotel-mail" required id="hotel-mail"
+                class="recommend-input margin-top-fixer-1">
+            </ion-col>
+          </ion-row>
+          <!--End of Contact-->
+
+          <!--No. of Rooms-->
+          <ion-row class="margin-bottom-fixer-1">
+            <ion-col class="max-width-fixer-1">
+              <div>
+                <p class="recommend-details">No. of Rooms</p>
+              </div>
+            </ion-col>
+            <ion-col class="max-width-fixer-2">
+              <input type="text" placeholder="No. of Rooms" name="hotel-rooms" required id="hotel-rooms"
+                class="recommend-input">
+            </ion-col>
+          </ion-row>
+          <!--End of No. of Rooms-->
+
+          <!--Availability-->
+          <ion-row class="margin-bottom-fixer-1">
+            <ion-col class="max-width-fixer-4">
+              <div>
+                <p class="recommend-details">Availability</p>
+              </div>
+            </ion-col>
+            <ion-col class="max-width-fixer-5">
+              <input type="checkbox" name="check-ac" required id="check-ac" class="recommend-input">
+              <label for="check-ac" class="checkbox-input">&nbsp;AC Rooms</label><br>
+              <input type="checkbox" name="check-non-ac" required id="check-non-ac" class="recommend-input">
+              <label for="check-non-ac" class="checkbox-input">&nbsp;Non-AC Rooms</label><br>
+            </ion-col>
+          </ion-row>
+          <!--End of Availability-->
+
+          <!--Other Services-->
+          <ion-row class="margin-bottom-fixer-1">
+            <ion-col class="max-width-fixer-4">
+              <div>
+                <p class="recommend-details">Other Services</p>
+              </div>
+            </ion-col>
+            <ion-col class="max-width-fixer-5">
+              <input type="checkbox" name="check-ac" required id="check-ac" class="recommend-input">
+              <label for="check-ac" class="checkbox-input">&nbsp;AC Rooms</label><br>
+            </ion-col>
+          </ion-row>
+          <!--End of Other Services-->
+          <ion-row>
+            <button class="btn btn-primary ">
+              Update
+            </button>
+          </ion-row>
+        </div>
+      </ion-col>
+    </ion-row>
+
+  </div>
+</ion-content>

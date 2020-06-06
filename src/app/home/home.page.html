@@ -1,20 +1,30 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+<ion-content class="content fullscreen-bg" force-overscroll = "false">
+  <div>
+    <ion-row class="row-header">
+      <ion-col class="col-header">
+        <img src="assets/img/logo-2.png" class="logo logo-color-changer" alt="logo-2.png">
+        <img src="assets/icon/signs.svg" class="signs" alt="" (click)="signout()">
+      </ion-col>
+    </ion-row>
+  </div>
+  <div class="ion-padding">
+    <ion-row>
+      <ion-col class="column-decorator">
+        <div class="div-decorator">
+        <!-- create a trip -->
+        <!-- <button  class="btn btn-primary" (click)="createTrip()">
+          <strong>Create a Trip</strong>
+        </button> -->
+        <!-- join a trip -->
+        <button class="btn btn-primary" (click)="joinTrip()">
+          <strong>Join a Trip</strong>
+        </button> 
+        <!-- services -->
+        <button  (click)="openModal()" class="btn btn-primary">
+          <strong>Services</strong>
+        </button>
+      </div>
+      </ion-col>
+    </ion-row>
   </div>
 </ion-content>

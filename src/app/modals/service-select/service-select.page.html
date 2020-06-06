@@ -1,0 +1,60 @@
+<ion-header style="background: white;">
+  <ion-toolbar>
+    <div class="ion-padding">
+      <ion-row>
+        <ion-col style="text-align: end; max-height:20px;">
+          <span class="material-icons" (click)="closeMedia()" style="font-size: 20px; max-height: 20px; ">
+            close
+          </span>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col style="text-align:center; text-transform: uppercase;">
+          <h4 style="letter-spacing: 3px;">Services</h4>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content force-overscroll="false" class="content fullscreen-bg">
+  <div class="ion-padding">
+    <ion-row>
+      <ion-col class="column-decorator">
+        <div class="div-decorator">
+          <!-- start -->
+          <!-- start hotel registration -->
+          <ion-row style="margin-bottom:10px; text-align: center;" >
+            <ion-col style="max-width: 50%;">
+              <div>
+                <p class="recommend-details" (click)="selectHotelServices()">Hotels</p>
+              </div>
+            </ion-col>
+            <ion-col style="max-width:50%;">
+            <button class="btn btn-primary">
+              <strong>Register</strong>
+            </button>
+      </ion-col>
+    </ion-row>
+    <!-- end hotel registration -->
+
+    <!-- start travel registration -->
+    <ion-row style="margin-bottom:10px; text-align:center;">
+      <ion-col style="max-width: 50%; ">
+        <div>
+          <p class="recommend-details" (click)="selectTransportServices()">Transport</p>
+        </div>
+      </ion-col>
+      <ion-col style="max-width:50%;">
+        <button class="btn btn-primary">
+          <strong>Register</strong>
+        </button>
+      </ion-col>
+    </ion-row>
+    <!-- end travel registration -->
+    <!-- end -->
+  </div>
+  </ion-col>
+  </ion-row>
+  </div>
+</ion-content>

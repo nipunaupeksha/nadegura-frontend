@@ -1,0 +1,50 @@
+<ion-content class="content fullscreen-bg" force-overscroll="false">
+  <gl-background-video src="assets/video/2.mp4" poster="assets/img/background-1.png"></gl-background-video>
+  <div class="ion-padding">
+    <ion-row class="logo">
+      <ion-col>
+        <img src="assets/img/logo-1.png"  class="logo" style="filter: brightness(0) invert(1);"/>
+      </ion-col>
+    </ion-row>
+    <form #signinForm="ngForm">
+      <ion-row>
+        <ion-col>
+          <input type="text" placeholder="E-mail" name="email" required id="email" class="form-control credentials"
+            [(ngModel)]="email" [ngClass]="{ 'error' : isErrorInEmail }" />
+
+          <input type="password" placeholder="Password" name="password" required id="password"
+            class="form-control credentials" [(ngModel)]="password" [ngClass]="{ 'error' : isErrorInPassword }" />
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col class="signin-col">
+          <button *ngIf="!isLoading" ion-button class="submit-btn" full type="submit"
+            [disabled]="!signinForm.form.valid" class="btn btn-primary credentials-btn" (click)="signin()"
+            (keyup.enter)="signin()">
+            <strong>Sign In</strong>
+          </button>
+          <button *ngIf="isLoading" ion-button full type="submit" class="btn btn-primary loading-btn" disabled>
+            <ion-spinner name="crescent" color="success"></ion-spinner>
+          </button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col class="register-col">
+          New to Nade Gura?
+          <button ion-button class="register-btn" (click)="signup()">
+            Sign Up
+          </button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="register-col">
+          <button ion-button class="register-btn" (click)="forgetPassword()">
+            forgot your password?
+          </button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </div>
+</ion-content>
