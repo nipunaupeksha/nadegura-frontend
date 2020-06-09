@@ -10,12 +10,12 @@
     </ion-row>
   </div>
   <div class="ion-padding" style="padding-top:0 !important; margin-top:0 !important;">
-    
 
-      <ion-row>
-        <ion-col class="column-decorator">
-          <div>
-            <form #tripForm="ngForm">
+
+    <ion-row>
+      <ion-col>
+        <div>
+          <form #tripForm="ngForm">
             <!--Destination-->
             <ion-row class="ion-row-margin-bottom-1">
               <ion-col class="ion-col-max-width-1">
@@ -25,7 +25,13 @@
               </ion-col>
               <ion-col class="ion-col-max-width-2">
                 <input type="text" placeholder="destination" name="destination" required id="destination"
-                  class="recommend-input" ngModel>
+                  class="ion-input-margin-bottom recommend-input" ngModel>
+                  <input type="text" placeholder="area" name="area" required id="area"
+                  class="ion-input-margin-bottom recommend-input" ngModel>
+                <input type="text" placeholder="district" name="district" required id="district" class="ion-input-margin-bottom recommend-input"
+                  ngModel>
+                <input type="text" placeholder="province" name="province" required id="province" class="recommend-input"
+                  ngModel>
               </ion-col>
             </ion-row>
             <!--End of Destination-->
@@ -48,23 +54,19 @@
             </ion-row>
             <!--End of Start at-->
 
-            <!--Ends at-->
+            <!--Days-->
             <ion-row class="ion-row-margin-bottom-1">
               <ion-col class="ion-col-max-width-1">
                 <div>
-                  <p class="recommend-details">Ends At</p>
+                  <p class="recommend-details">No. of Days</p>
                 </div>
               </ion-col>
               <ion-col class="ion-col-max-width-2">
-                <input type="text" placeholder="date" name="end_date" required id="end_date"
-                  class="recommend-input ion-input-margin-bottom " ngModel>
-                <input type="text" placeholder="time" name="end_time" required id="end_time"
-                  class="recommend-input ion-input-margin-bottom " ngModel>
-                <input type="text" placeholder="venue" name="end_venue" required id="end_venue"
+                <input type="text" placeholder="No. of Days" name="days" required id="days"
                   class="recommend-input " ngModel>
               </ion-col>
             </ion-row>
-            <!--End of Ends at-->
+            <!--End of Days-->
 
             <!--People Count-->
             <ion-row class="ion-row-margin-bottom-1">
@@ -102,67 +104,76 @@
                 </div>
               </ion-col>
               <ion-col class="ion-col-max-width-2">
-                <input type="text" placeholder="" name="age" required id="age" class="recommend-input "
-                  ngModel>
+                <select required id="age" name="age" placeholder="" class="selector-background" [(ngModel)]="ageGroupSelected">
+                  <option *ngFor="let opt of ageGroup" [value]="opt.id">{{opt.name}}</option>
+                </select>
               </ion-col>
             </ion-row>
             <!--End of Age-->
 
-            <!--Weather-->
+            <!--Trip Type-->
             <ion-row class="ion-row-margin-bottom-1">
               <ion-col class="ion-col-max-width-1">
                 <div>
-                  <p class="recommend-details">Weather</p>
+                  <p class="recommend-details">Trip Type</p>
                 </div>
               </ion-col>
               <ion-col class="ion-col-max-width-2">
-                <input type="text" placeholder="" name="weather" required id="weather"
-                  class="recommend-input" ngModel>
+                <select required id="triptype" name="triptype" placeholder="" class="selector-background" [(ngModel)]="tripTypeSelected" style="padding-left:42px; padding-right:50px;">
+                  <option *ngFor="let opt of tripType" [value]="opt.id" >{{opt.name}}</option>
+                </select>
               </ion-col>
             </ion-row>
-            <!--End of Weather-->
-          </form>
-            <!--Travel-->
-            <ion-row class="ion-row-margin-bottom-1">
-              <ion-col class="ion-col-max-width-1">
-                <div>
-                  <p class="recommend-details">Travel</p>
-                </div>
-              </ion-col>
-              <!--Icons-->
-              <ion-col class="ion-col-max-width-3">
-                <span class="material-icons icon-click" [ngStyle]="{'color': iconColor[0]===0 ? 'red' :'white'}" (click)="clickTravelIcon(0)">
-                  directions_run
-                </span>
-                <span class="material-icons icon-click" [ngStyle]="{'color': iconColor[1]===0 ? 'red' :'white'}" (click)="clickTravelIcon(1)">
-                  directions_bike
-                </span>
-                <span class="material-icons icon-click" [ngStyle]="{'color': iconColor[2]===0 ? 'red' :'white'}" (click)="clickTravelIcon(2)">
-                  directions_car
-                </span>
-                <span class="material-icons icon-click" [ngStyle]="{'color': iconColor[3]===0 ? 'red' :'white'}" (click)="clickTravelIcon(3)">
-                  airport_shuttle
-                </span>
-                <span class="material-icons icon-click" [ngStyle]="{'color': iconColor[4]===0 ? 'red' :'white'}" (click)="clickTravelIcon(4)">
-                  directions_bus
-                </span>
-                <span class="material-icons icon-click" [ngStyle]="{'color': iconColor[5]===0 ? 'red' :'white'}" (click)="clickTravelIcon(5)">
-                  directions_railway
-                </span>
-                <!--End of Icons-->
-              </ion-col>
-            </ion-row>
-            <!--Travel-->
-            <ion-row>
-              <button *ngIf="isLoading === 0" ion-button full type="submit"
-                class="btn btn-primary">
-                Create A Trip
-              </button>
-            </ion-row>
-          </div>
-        </ion-col>
-      </ion-row>
+            <!--End of Trip Type-->
 
-    
+            
+          </form>
+          <!--Travel-->
+          <ion-row class="ion-row-margin-bottom-1">
+            <ion-col class="ion-col-max-width-1">
+              <div>
+                <p class="recommend-details">Travel</p>
+              </div>
+            </ion-col>
+            <!--Icons-->
+            <ion-col class="ion-col-max-width-3">
+              <span class="material-icons icon-click" [ngStyle]="{'color': iconColor[0]===0 ? 'red' :'white'}"
+                (click)="clickTravelIcon(0)">
+                directions_run
+              </span>
+              <span class="material-icons icon-click" [ngStyle]="{'color': iconColor[1]===0 ? 'red' :'white'}"
+                (click)="clickTravelIcon(1)">
+                directions_bike
+              </span>
+              <span class="material-icons icon-click" [ngStyle]="{'color': iconColor[2]===0 ? 'red' :'white'}"
+                (click)="clickTravelIcon(2)">
+                directions_car
+              </span>
+              <span class="material-icons icon-click" [ngStyle]="{'color': iconColor[3]===0 ? 'red' :'white'}"
+                (click)="clickTravelIcon(3)">
+                airport_shuttle
+              </span>
+              <span class="material-icons icon-click" [ngStyle]="{'color': iconColor[4]===0 ? 'red' :'white'}"
+                (click)="clickTravelIcon(4)">
+                directions_bus
+              </span>
+              <span class="material-icons icon-click" [ngStyle]="{'color': iconColor[5]===0 ? 'red' :'white'}"
+                (click)="clickTravelIcon(5)">
+                directions_railway
+              </span>
+              <!--End of Icons-->
+            </ion-col>
+          </ion-row>
+          <!--Travel-->
+          <ion-row>
+            <button *ngIf="isLoading === 0" ion-button full type="submit" class="btn btn-primary" (click)="createTrip()">
+              Create A Trip
+            </button>
+          </ion-row>
+        </div>
+      </ion-col>
+    </ion-row>
+
+
   </div>
 </ion-content>

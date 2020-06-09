@@ -40,14 +40,18 @@ export class RegistrationPage implements OnInit {
     this.isErrorInPassword = false;
     this.isErrorInEmail = false;
     const user = form.value;
-    const address = (user.l1) + ',' + (user.l2) + ',' + (user.l3);
+
+    const address = user.l1 + ',' + user.l2 + ',' + user.l3;
+
+    // tslint:disable-next-line: max-line-length
+    const genderTicked = this.genderSelected === 1 ? this.gender[this.genderSelected]['name'] : this.gender[this.genderSelected - 1]['name'];
     if (user.password !== user.repassword) {
       this.isErrorInPassword = true;
       this.presentToast('Password mismatch!', 4000);
       this.isLoading = 0;
     } else {
       // tslint:disable-next-line: max-line-length
-      this.userService.register(user.firstname, user.lastname, user.email, user.mobile, address, user.nic, user.dob, this.gender[this.genderSelected - 1]['name'], user.license, user.occupation, user.password).subscribe(data => {
+      this.userService.register(user.firstname, user.lastname, user.email, user.mobile, address, user.nic, user.dob, genderTicked, user.license, user.occupation, user.password).subscribe(data => {
         this.isLoading = 0;
         this.presentToast('Successfully created an Account', 4000).then(() => {
           this.presentToast('Please sign in to the system with your credentials!', 1000).then(() => {

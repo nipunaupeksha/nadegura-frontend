@@ -12,13 +12,31 @@ export class CreateTripPage implements OnInit {
   isLoading = 0;
   iconColor: any = [1, 1, 1, 1, 1, 1];
 
+  ageGroup: object[];
+  ageGroupSelected: number;
+
+  tripType: object[];
+  tripTypeSelected: number;
+
   constructor(private router: Router,
-              private route: ActivatedRoute,
-              public toastController: ToastController,
-              public loadingController: LoadingController,
-              private userService: UserService) { }
+    public toastController: ToastController,
+    public loadingController: LoadingController,
+    private userService: UserService) { }
 
   ngOnInit() {
+    this.tripType = [{ id: 1, name: 'Public' }, { id: 2, name: 'Private' }];
+    this.ageGroup = [
+      { id: 1, name: 'Age < 15 years' },
+      { id: 2, name: '15 years < Age < 25 years' },
+      { id: 3, name: '25 years < Age < 35 years' },
+      { id: 4, name: '35 years < Age < 45 years' },
+      { id: 5, name: '45 years < Age < 55 years' },
+      { id: 6, name: '55 years < Age < 65 years' },
+      { id: 7, name: '65 years < Age < 75 years' },
+      { id: 7, name: 'Age > 75 years' },];
+
+    this.ageGroupSelected = 1;
+    this.tripTypeSelected = 2;
   }
 
   clickTravelIcon(id) {
