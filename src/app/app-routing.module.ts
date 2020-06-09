@@ -92,6 +92,10 @@ const routes: Routes = [
     path: 'transport-details-view',
     loadChildren: () => import('./modals/transport-details-view/transport-details-view.module').then( m => m.TransportDetailsViewPageModule)
   },
+  {
+    path: 'viewAllTrips',
+    loadChildren: () => import('./view-all-trips/view-all-trips.module').then( m => m.ViewAllTripsPageModule)
+  },
 
 ];
 

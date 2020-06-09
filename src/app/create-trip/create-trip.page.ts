@@ -31,27 +31,6 @@ export class CreateTripPage implements OnInit {
   }
 
 
-  createTrip(form: any) {
-    this.isLoading = 1;
-    const trip = form.value;
-    let travelString = '';
-    // tslint:disable-next-line: only-arrow-functions
-    this.iconColor.forEach((value) => {
-      // tslint:disable-next-line: triple-equals
-      if (value === 1) {
-        travelString += '0';
-      } else {
-        travelString += '1';
-      }
-    });
-    // tslint:disable-next-line: max-line-length
-    this.userService.createTrip(trip.destination, trip.start_date, trip.start_time, trip.start_venue, trip.end_date, trip.end_time, trip.end_venue, trip.people_count,
-      trip.budget_per_person, trip.age, trip.weather, travelString).subscribe(data => {
-        this.isLoading = 0;
-        this.presentToast('Trip successfully added!', 2000);
-      });
-  }
-
   goBack() {
     this.router.navigate(['./joinTrip']);
   }

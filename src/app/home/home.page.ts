@@ -57,4 +57,7 @@ export class HomePage {
     this.router.navigate(['./joinTrip']);
   }
 
+  viewAllTrips(){
+    this.router.navigate(['./viewAllTrips']);
+  }
 }
