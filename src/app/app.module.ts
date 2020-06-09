@@ -1,8 +1,10 @@
+import {MatDatepickerModule} from '@angular/material/datepicker';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 //import { JwtModule } from '@auth0/angular-jwt';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
@@ -12,12 +14,13 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
-  declarations: [AppComponent, ],
+  declarations: [AppComponent,],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule,
-    FormsModule, ReactiveFormsModule],
+    FormsModule, ReactiveFormsModule, BrowserAnimationsModule],
   providers: [
     StatusBar,
     SplashScreen,

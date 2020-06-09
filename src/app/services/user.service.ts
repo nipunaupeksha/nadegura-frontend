@@ -24,10 +24,11 @@ export class UserService {
     return this.http.post(this.URL + 'users/login', { 'email': email, 'password': password }).pipe(map(res => res));
   }
 
-  public register(firstname, lastname, email, password) {
+  public register(firstname, lastname, email, mobile, address, nic, dob, gender, license, occupation, password) {
     return this.http.post(this.URL + 'users/register',
       // tslint:disable-next-line:object-literal-key-quotes
-      { 'firstname': firstname, 'lastname': lastname, 'email': email, 'password': password }).pipe(map(res => res));
+      // tslint:disable-next-line: max-line-length
+      { 'firstname': firstname, 'lastname': lastname, 'email': email, 'mobile': mobile, 'address': address, 'nic': nic, 'dob': dob, 'gender': gender, 'license': license, 'occupation': occupation, 'password': password }).pipe(map(res => res));
   }
 
   public isAuthenticated(): boolean {
