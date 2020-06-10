@@ -14,58 +14,52 @@
       <h4 class="whitefy">Created Trips</h4>
     </ion-row>
     <ion-row>
-      
-      <ion-col *ngFor="let trip of tripList">
-        <!-- Ionic Card -->
-      <ion-card class="card-properties">
-        <ion-card-header>
-          <ion-card-subtitle [ngStyle]="{color: getColor(getDateDifference(trip['startDate']))}">{{dateDifference}}</ion-card-subtitle>
-          <ion-card-title>{{trip['destination']}}</ion-card-title>
-        </ion-card-header>
-      
-        <ion-card-content>
-          {{trip['startDate']}}
-        </ion-card-content>
-      </ion-card>
-      <!-- End of Ionic Card -->
-      </ion-col>
+      <ng-container *ngFor="let trip of tripList">
+        <ion-col *ngIf="trip['created']==1">
+          <!-- Ionic Card -->
+          <ion-card class="card-properties">
+            <ion-card-header>
+              <ion-card-subtitle [ngStyle]="{color: getColor(getDateDifference(trip['startDate']))}">{{dateDifference}}
+              </ion-card-subtitle>
+              <ion-card-title>{{trip['destination']}}</ion-card-title>
+            </ion-card-header>
+
+            <ion-card-content>
+              {{trip['startDate']}}
+            </ion-card-content>
+          </ion-card>
+          <!-- End of Ionic Card -->
+        </ion-col>
+      </ng-container>
+
+
     </ion-row>
+
     <ion-row>
       <h4 class="whitefy">Joined Trips</h4>
     </ion-row>
     <ion-row>
-      
-      <ion-col>
-        <!-- Ionic Card -->
-      <ion-card class="card-properties">
-        <ion-card-header>
-          <ion-card-subtitle>Trip Pending</ion-card-subtitle>
-          <ion-card-title>Trip Name</ion-card-title>
-        </ion-card-header>
-      
-        <ion-card-content>
-          Date
-        </ion-card-content>
-      </ion-card>
-      <!-- End of Ionic Card -->
-      </ion-col>
-      <ion-col>
-        <!-- Ionic Card -->
-      <ion-card class="card-properties">
-        <ion-card-header>
-          <ion-card-subtitle>Trip Pending</ion-card-subtitle>
-          <ion-card-title>Trip Name</ion-card-title>
-        </ion-card-header>
-      
-        <ion-card-content>
-          Date
-        </ion-card-content>
-      </ion-card>
-      <!-- End of Ionic Card -->
-      </ion-col>
-      
+      <ng-container *ngFor="let trip of tripList">
+        <ion-col *ngIf="trip['created']==2">
+          <!-- Ionic Card -->
+          <ion-card class="card-properties">
+            <ion-card-header>
+              <ion-card-subtitle [ngStyle]="{color: getColor(getDateDifference(trip['startDate']))}">{{dateDifference}}
+              </ion-card-subtitle>
+              <ion-card-title>{{trip['destination']}}</ion-card-title>
+            </ion-card-header>
+
+            <ion-card-content>
+              {{trip['startDate']}}
+            </ion-card-content>
+          </ion-card>
+          <!-- End of Ionic Card -->
+        </ion-col>
+      </ng-container>
+
+
     </ion-row>
 
-    
+
   </div>
 </ion-content>

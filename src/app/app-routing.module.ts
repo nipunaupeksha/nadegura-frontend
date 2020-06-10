@@ -85,14 +85,6 @@ const routes: Routes = [
     loadChildren: () => import('./recommended-services/recommended-services.module').then( m => m.RecommendedServicesPageModule)
   },
   {
-    path: 'hotel-details-view',
-    loadChildren: () => import('./modals/hotel-details-view/hotel-details-view.module').then( m => m.HotelDetailsViewPageModule)
-  },
-  {
-    path: 'transport-details-view',
-    loadChildren: () => import('./modals/transport-details-view/transport-details-view.module').then( m => m.TransportDetailsViewPageModule)
-  },
-  {
     path: 'viewAllTrips',
     loadChildren: () => import('./view-all-trips/view-all-trips.module').then( m => m.ViewAllTripsPageModule)
   },

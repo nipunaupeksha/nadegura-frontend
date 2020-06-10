@@ -74,7 +74,7 @@ export class ViewAllTripsPage implements OnInit {
     if(difference > 0) {
       return 'red';
     } else if (difference === 0) {
-      return 'yellow';
+      return '#808000';
     } else {
       return 'green';
     }
