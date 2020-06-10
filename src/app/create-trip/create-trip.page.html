@@ -49,9 +49,9 @@
                 </div>
               </ion-col>
               <ion-col class="ion-col-max-width-2">
-                <input type="text" placeholder="date" name="start_date" required id="start_date"
+                <input onfocus="(this.type='date')" onblur="(this.type='text')" type="text" placeholder="date" name="start_date" required id="start_date"
                   class="recommend-input ion-input-margin-bottom" ngModel>
-                <input type="text" placeholder="time" name="start_time" required id="start_time"
+                <input onfocus="(this.type='time')" onblur="(this.type='text')" type="text" placeholder="time" name="start_time" required id="start_time"
                   class="recommend-input ion-input-margin-bottom" ngModel>
                 <input type="text" placeholder="venue" name="start_venue" required id="start_venue"
                   class="recommend-input" ngModel>

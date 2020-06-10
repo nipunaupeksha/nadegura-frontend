@@ -148,4 +148,6 @@ export class CreateTripPage implements OnInit {
     this.destinationDistrict = this.destinationList[this.destinationSelect]['district'];
     this.destinationProvince = this.destinationList[this.destinationSelect]['province'];
   }
+
+  
 }
