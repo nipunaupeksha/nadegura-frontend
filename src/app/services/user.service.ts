@@ -49,31 +49,19 @@ export class UserService {
     // tslint:disable-next-line:object-literal-key-quotes
     return this.http.post(this.BACKEND_URL + 'users/forgetpassword/token', { 'email': email, 'token': token }).pipe(map(res => res));
   }
+
   public changePassword(email, password) {
     return this.http.post(this.BACKEND_URL + 'users/forgetpassword/changepassword',
       // tslint:disable-next-line:object-literal-key-quotes
       { 'email': email, 'password': password }).pipe(map(res => res));
   }
 
-  ///
-  public getItems() {
-    return this.http.get(this.BACKEND_URL + 'item/', { headers: this.headers }).pipe(map(res => res));
+  // tslint:disable-next-line: max-line-length
+  public createTrip(destination, area, district, province, start_date, start_time, start_venue, days, people_count, budget_per_person, age, triptype, travel, userId, created) {
+    return this.http.post(this.BACKEND_URL + 'trips/createTrip', { 'destination': destination, 'area': area, 'district': district, 'province': province, 'start_date': start_date, 'start_time': start_time, 'start_venue': start_venue, 'days': days, 'people_count': people_count, 'budget_per_person': budget_per_person, 'age': age, 'triptype': triptype, 'travel': travel, 'userId': userId, 'created': created }).pipe(map(res => res));
   }
 
-  public addFavarites(id, fav) {
-     // tslint:disable
-    return this.http.post(this.BACKEND_URL + 'item/favorite', { 'id': id, 'fav': fav }, { headers: this.headers }).pipe(map(res => res));
+  public getDestinations(){
+    return this.http.get(this.BACKEND_URL + 'trips/getDestinationList', { headers: this.headers }).pipe(map(res => res));
   }
-
-  public getRecommendedItems(id){
-    return this.http.post(this.BACKEND_URL + 'item/recommend',{'id':id},{headers:this.headers}).pipe(map(res=>res));
-  }
-  public getReviews(id){
-    return this.http.post(this.BACKEND_URL + 'item/reviews',{'id':id},{headers:this.headers}).pipe(map(res=>res));
-  }
-  public addReview(userid,clothid,stars,review,age){
-    return this.http.post(this.BACKEND_URL + 'item/addReview',{'userID':userid,'clothID':clothid,'stars':stars,'review':review,'age':age},{headers:this.headers}).pipe(map(res=>res));
-  }
-
-  ///
 }

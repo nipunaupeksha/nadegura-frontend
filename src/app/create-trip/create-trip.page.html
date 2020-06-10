@@ -24,14 +24,19 @@
                 </div>
               </ion-col>
               <ion-col class="ion-col-max-width-2">
-                <input type="text" placeholder="destination" name="destination" required id="destination"
-                  class="ion-input-margin-bottom recommend-input" ngModel>
-                  <input type="text" placeholder="area" name="area" required id="area"
-                  class="ion-input-margin-bottom recommend-input" ngModel>
-                <input type="text" placeholder="district" name="district" required id="district" class="ion-input-margin-bottom recommend-input"
-                  ngModel>
-                <input type="text" placeholder="province" name="province" required id="province" class="recommend-input"
-                  ngModel>
+                <!-- <input type="text" placeholder="destination" name="destination" required id="destination"
+                  class="ion-input-margin-bottom recommend-input" ngModel> -->
+                
+                <select name="destination" id="destination" class="ion-input-margin-bottom selector-background" required (click)="setValues()" [(ngModel)]="destinationSelect" >
+                  <option *ngFor = "let destination of destinationList; let i = index;" [value]="i" >{{destination["destination"]}}</option>
+                </select>
+                
+                <input type="text" placeholder="{{destinationArea}}" name="area" required id="area"
+                  class="ion-input-margin-bottom recommend-input" disabled ngModel >
+                <input type="text" placeholder="{{destinationDistrict}}" name="district" required id="district"
+                  class="ion-input-margin-bottom recommend-input" disabled ngModel>
+                <input type="text" placeholder="{{destinationProvince}}" name="province" required id="province" class="recommend-input"
+                  disabled ngModel>
               </ion-col>
             </ion-row>
             <!--End of Destination-->
@@ -62,8 +67,8 @@
                 </div>
               </ion-col>
               <ion-col class="ion-col-max-width-2">
-                <input type="text" placeholder="No. of Days" name="days" required id="days"
-                  class="recommend-input " ngModel>
+                <input type="text" placeholder="No. of Days" name="days" required id="days" class="recommend-input "
+                  ngModel>
               </ion-col>
             </ion-row>
             <!--End of Days-->
@@ -104,7 +109,8 @@
                 </div>
               </ion-col>
               <ion-col class="ion-col-max-width-2">
-                <select required id="age" name="age" placeholder="" class="selector-background" [(ngModel)]="ageGroupSelected">
+                <select required id="age" name="age" placeholder="" class="selector-background"
+                  [(ngModel)]="ageGroupSelected">
                   <option *ngFor="let opt of ageGroup" [value]="opt.id">{{opt.name}}</option>
                 </select>
               </ion-col>
@@ -119,14 +125,15 @@
                 </div>
               </ion-col>
               <ion-col class="ion-col-max-width-2">
-                <select required id="triptype" name="triptype" placeholder="" class="selector-background" [(ngModel)]="tripTypeSelected" style="padding-left:42px; padding-right:50px;">
-                  <option *ngFor="let opt of tripType" [value]="opt.id" >{{opt.name}}</option>
+                <select required id="triptype" name="triptype" placeholder="" class="selector-background"
+                  [(ngModel)]="tripTypeSelected" style="padding-left:42px; padding-right:50px;">
+                  <option *ngFor="let opt of tripType" [value]="opt.id">{{opt.name}}</option>
                 </select>
               </ion-col>
             </ion-row>
             <!--End of Trip Type-->
 
-            
+
           </form>
           <!--Travel-->
           <ion-row class="ion-row-margin-bottom-1">
@@ -166,7 +173,8 @@
           </ion-row>
           <!--Travel-->
           <ion-row>
-            <button *ngIf="isLoading === 0" ion-button full type="submit" class="btn btn-primary" (click)="createTrip()">
+            <button [disabled]="!tripForm.form.valid" ion-button full type="submit" class="btn btn-primary"
+              (click)="createTrip(tripForm)" (keyup.enter)="createTrip(tripForm)">
               Create A Trip
             </button>
           </ion-row>
