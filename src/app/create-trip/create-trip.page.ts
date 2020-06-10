@@ -14,6 +14,7 @@ export class CreateTripPage implements OnInit {
   destinationList = [{ 'destination': 'Select destination', 'area': 'area', 'district': 'district', 'province': 'province' }];
   destinationsAdded = 0;
   destinationSelect: number;
+  destinationDestination: string;
   destinationArea: string;
   destinationDistrict: string;
   destinationProvince: string;
@@ -54,6 +55,7 @@ export class CreateTripPage implements OnInit {
     this.createdTrip = 1;
     this.destinationSelect = 0;
 
+    this.destinationDestination='Select destination';
     this.destinationArea = 'area';
     this.destinationDistrict = 'district';
     this.destinationProvince = 'province';
@@ -89,7 +91,7 @@ export class CreateTripPage implements OnInit {
       }
     });
     // tslint:disable-next-line: max-line-length
-    this.userService.createTrip(trip.destination, this.destinationArea, this.destinationDistrict, this.destinationProvince, trip.start_date, trip.start_time, trip.start_venue, trip.days, trip.people_count, trip.budget_per_person, this.ageGroup[this.ageGroupSelected - 1]['name'], this.tripTypeSelected, travelMode, this.userId, this.createdTrip).subscribe(data => {
+    this.userService.createTrip(this.destinationDestination, this.destinationArea, this.destinationDistrict, this.destinationProvince, trip.start_date, trip.start_time, trip.start_venue, trip.days, trip.people_count, trip.budget_per_person, this.ageGroup[this.ageGroupSelected - 1]['name'], this.tripTypeSelected, travelMode, this.userId, this.createdTrip).subscribe(data => {
       this.presentToast('Successfully created a trip', 4000).then(() => {
         console.log('Created trip successfully');
       });
@@ -141,6 +143,7 @@ export class CreateTripPage implements OnInit {
   }
 
   setValues() {
+    this.destinationDestination = this.destinationList[this.destinationSelect]['destination'];
     this.destinationArea = this.destinationList[this.destinationSelect]['area'];
     this.destinationDistrict = this.destinationList[this.destinationSelect]['district'];
     this.destinationProvince = this.destinationList[this.destinationSelect]['province'];

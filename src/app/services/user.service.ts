@@ -61,6 +61,9 @@ export class UserService {
     return this.http.post(this.BACKEND_URL + 'trips/createTrip', { 'destination': destination, 'area': area, 'district': district, 'province': province, 'start_date': start_date, 'start_time': start_time, 'start_venue': start_venue, 'days': days, 'people_count': people_count, 'budget_per_person': budget_per_person, 'age': age, 'triptype': triptype, 'travel': travel, 'userId': userId, 'created': created }).pipe(map(res => res));
   }
 
+  public getTrips(userId){
+    return this.http.post(this.BACKEND_URL + 'trips/getTrips', { 'userId': userId}, { headers: this.headers }).pipe(map(res => res));
+  }
   public getDestinations(){
     return this.http.get(this.BACKEND_URL + 'trips/getDestinationList', { headers: this.headers }).pipe(map(res => res));
   }

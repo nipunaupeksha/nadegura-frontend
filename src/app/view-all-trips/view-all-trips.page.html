@@ -12,7 +12,31 @@
   <div class="ion-padding" style="padding-top:0 !important; margin-top:0 !important;">
     <ion-row>
       <h4 class="whitefy">Created Trips</h4>
-      <!-- Ionic Card -->
+    </ion-row>
+    <ion-row>
+      
+      <ion-col *ngFor="let trip of tripList">
+        <!-- Ionic Card -->
+      <ion-card class="card-properties">
+        <ion-card-header>
+          <ion-card-subtitle [ngStyle]="{color: getColor(getDateDifference(trip['startDate']))}">{{dateDifference}}</ion-card-subtitle>
+          <ion-card-title>{{trip['destination']}}</ion-card-title>
+        </ion-card-header>
+      
+        <ion-card-content>
+          {{trip['startDate']}}
+        </ion-card-content>
+      </ion-card>
+      <!-- End of Ionic Card -->
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <h4 class="whitefy">Joined Trips</h4>
+    </ion-row>
+    <ion-row>
+      
+      <ion-col>
+        <!-- Ionic Card -->
       <ion-card class="card-properties">
         <ion-card-header>
           <ion-card-subtitle>Trip Pending</ion-card-subtitle>
@@ -20,27 +44,26 @@
         </ion-card-header>
       
         <ion-card-content>
-          Keep close to Nature's heart... and break clear away, once in awhile,
-          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+          Date
         </ion-card-content>
       </ion-card>
       <!-- End of Ionic Card -->
-    </ion-row>
-    <ion-row>
-      <h4 class="whitefy">Joined Trips</h4>
-      <!-- Ionic Card -->
+      </ion-col>
+      <ion-col>
+        <!-- Ionic Card -->
       <ion-card class="card-properties">
         <ion-card-header>
-          <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-          <ion-card-title>Card Title</ion-card-title>
+          <ion-card-subtitle>Trip Pending</ion-card-subtitle>
+          <ion-card-title>Trip Name</ion-card-title>
         </ion-card-header>
       
         <ion-card-content>
-          Keep close to Nature's heart... and break clear away, once in awhile,
-          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+          Date
         </ion-card-content>
       </ion-card>
       <!-- End of Ionic Card -->
+      </ion-col>
+      
     </ion-row>
 
     
