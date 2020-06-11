@@ -87,6 +87,20 @@
             </ion-row>
             <!--End of People Count-->
 
+            <!--People Participating-->
+            <ion-row class="ion-row-margin-bottom-1">
+              <ion-col class="ion-col-max-width-1">
+                <div>
+                  <p class="recommend-details">Participant Count</p>
+                </div>
+              </ion-col>
+              <ion-col class="ion-col-max-width-2">
+                <input type="text" placeholder="Type no. of participants" name="participants" required id="participants"
+                  class="recommend-input " ngModel>
+              </ion-col>
+            </ion-row>
+            <!--End of People Participating-->
+
             <!--Budget per Person-->
             <ion-row class="ion-row-margin-bottom-1">
               <ion-col class="ion-col-max-width-1">
@@ -111,7 +125,7 @@
               <ion-col class="ion-col-max-width-2">
                 <select required id="age" name="age" placeholder="" class="selector-background"
                   [(ngModel)]="ageGroupSelected">
-                  <option *ngFor="let opt of ageGroup" [value]="opt.id">{{opt.name}}</option>
+                  <option *ngFor="let opt of ageGroup;let i = index;" [value]="i+1">{{opt["ageValue"]}}</option>
                 </select>
               </ion-col>
             </ion-row>
@@ -144,29 +158,9 @@
             </ion-col>
             <!--Icons-->
             <ion-col class="ion-col-max-width-3">
-              <span class="material-icons icon-click" [ngStyle]="{'color': iconColor[0]===0 ? 'red' :'white'}"
-                (click)="clickTravelIcon(0)">
-                directions_run
-              </span>
-              <span class="material-icons icon-click" [ngStyle]="{'color': iconColor[1]===0 ? 'red' :'white'}"
-                (click)="clickTravelIcon(1)">
-                directions_bike
-              </span>
-              <span class="material-icons icon-click" [ngStyle]="{'color': iconColor[2]===0 ? 'red' :'white'}"
-                (click)="clickTravelIcon(2)">
-                directions_car
-              </span>
-              <span class="material-icons icon-click" [ngStyle]="{'color': iconColor[3]===0 ? 'red' :'white'}"
-                (click)="clickTravelIcon(3)">
-                airport_shuttle
-              </span>
-              <span class="material-icons icon-click" [ngStyle]="{'color': iconColor[4]===0 ? 'red' :'white'}"
-                (click)="clickTravelIcon(4)">
-                directions_bus
-              </span>
-              <span class="material-icons icon-click" [ngStyle]="{'color': iconColor[5]===0 ? 'red' :'white'}"
-                (click)="clickTravelIcon(5)">
-                directions_railway
+              <span class="material-icons icon-click" *ngFor="let t of travelList; let i=index;" [ngStyle]="{'color': iconColor[i]===0 ? 'red' :'white'}"
+                (click)="clickTravelIcon(i)">
+                {{t["travelValue"]}}
               </span>
               <!--End of Icons-->
             </ion-col>

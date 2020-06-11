@@ -1,18 +1,28 @@
 .content {
     height: 100%;
-    background-image: url("../../assets/img/13.jpg");
+    background-image: url("../../assets/img/14.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
     font-family: "kiona";
 }
 
-
 /*added content*/
 .icon-click {
     color: white;
     margin-right: 5px;
 }
+
+.selector-background {
+    background-color: rgba($color: #000000, $alpha: 0.55);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    margin-left: 5px;
+    max-width:47vw !important;
+    text-align: center;
+    align-items: center;
+  }
 
 .recommend-details {
     color: white;
@@ -22,10 +32,10 @@
 .recommend-input {
     border: none;
     border-radius: 5px;
-    margin-left: 10px;
+    margin-left: 5px;
+    max-width:50vw !important;
     text-align: center;
 }
-
 
 .signs {
     position: absolute;
@@ -40,7 +50,8 @@
     transform: scale(1.2);
 }
 .column-decorator {
-    min-height: 70vh;
+    margin-top:10px;
+    padding-top:10px;
 }
 
 .div-decorator {
@@ -53,8 +64,6 @@
 /*finish added content*/
 
 .logo {
-    //display: block;
-    //max-width:100%;
     align-content: center;
     height: auto;
     padding-right: 20%;
@@ -82,9 +91,10 @@ input[type="password"]:focus {
     outline: none;
 }
 .btn {
-    display: block;
+   // display: block;
+   padding: 1px;
     margin: 0 auto;
-    margin-top: 10px;
+    margin-top: 0;
     border: 1px solid white;
     width: 80%;
 }
@@ -93,7 +103,6 @@ input[type="password"]:focus {
     margin: 7px auto;
 }
 .btn-primary {
-    margin-top: 10%;
     color: #ffffff;
     background-color: rgba(0, 0, 0, 0.034) !important;
     border-color: rgba(255, 255, 255, 0.884);
@@ -160,23 +169,23 @@ input[type="password"]:focus {
     /* Any overlay color that you want, here I use black with 25% opacity */
     background-color: rgba(0, 0, 0, 0.25);
 }
+
 /*Styling*/
 .header-row {
     background-color: black;
     opacity: 90%;
-    min-height: 50px;
+    max-height: 40px;
 }
 
 .header-style-arrow {
     display: flex !important;
-    max-width: 15vw !important;
+    max-width: 20vw !important;
     align-content: center !important;
 }
 
 .header-style-text {
     display: flex !important;
     align-content: center !important;
-    text-transform: uppercase;
 }
 
 .arrow {
@@ -185,55 +194,38 @@ input[type="password"]:focus {
 
 .header-text {
     margin: 0 !important;
-    padding-top: 5px;
-    padding-left: 7vw;
+    padding-top: 0;
+    padding-left:5vw;
 }
 
-.row-margin-fixer {
-    margin-top: 20px;
+.row-margin-fixer{
+    margin-top:20px;
 }
 
-.div-padding-fixer {
-    padding-top: 5vh;
+.div-padding-fixer{
+    padding-top:5vh;
 }
 
 .whitefy {
     color: white;
 }
 
-.margin-top-fixer-1 {
-    margin-top: 10px;
+.ion-row-margin-bottom-1{
+    margin-bottom:10px;
 }
 
-.margin-top-fixer-2 {
-    margin-top: 2px;
+.ion-input-margin-bottom{
+    margin-bottom:5px;
 }
 
-.margin-bottom-fixer-1 {
-    margin-bottom: 10px;
+.ion-col-max-width-1{
+    max-width:40%;
 }
 
-.max-width-fixer-1 {
-    max-width: 120px;
+.ion-col-max-width-2{
+   max-width:20vw !important;;
 }
 
-.max-width-fixer-2 {
-    max-width: 5px;
-}
-
-.max-width-fixer-3 {
-    max-width: 60%;
-}
-
-.max-width-fixer-4 {
-    max-width: 40%;
-}
-
-.max-width-fixer-5 {
-    max-width: 55%;
-}
-
-.col-fixer {
-    min-height: 100px;
-    max-width: 100px;
+.ion-col-max-width-3{
+    max-width:60%;
 }

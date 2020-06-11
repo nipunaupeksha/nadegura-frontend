@@ -9,130 +9,128 @@
       </ion-col>
     </ion-row>
   </div>
-  <div class="ion-padding">
+  <div>
+
     <ion-row>
-      <ion-col class="column-decorator">
-        <div class="div-decorator">
+      <ion-col>
+        <div>
+          <form #recommendForm="ngForm">
+            <!--Destination-->
+            <ion-row class="ion-row-margin-bottom-1">
+              <ion-col class="ion-col-max-width-1">
+                <div>
+                  <p class="recommend-details">Destination</p>
+                </div>
+              </ion-col>
+              <ion-col class="ion-col-max-width-2">
+                <!-- <input type="text" placeholder="destination" name="destination" required id="destination"
+                class="ion-input-margin-bottom recommend-input" ngModel> -->
 
-          <!--Destination-->
-          <ion-row style="margin-bottom:10px;">
-            <ion-col style="max-width:35%;">
-              <div>
-                <p class="recommend-details">Destination</p>
-              </div>
-            </ion-col>
-            <ion-col style="max-width:50%;">
-              <input type="text" placeholder="Select your destination" name="destination" required id="destination"
-                class="recommend-input">
-            </ion-col>
-          </ion-row>
-          <!--End of Destination-->
+                <select name="destination" id="destination" class="ion-input-margin-bottom selector-background" required
+                  (click)="setValues()" [(ngModel)]="destinationSelect">
+                  <option *ngFor="let destination of destinationList; let i = index;" [value]="i">
+                    {{destination["destination"]}}</option>
+                </select>
 
-          <!--Days-->
-          <ion-row style="margin-bottom:10px;">
-            <ion-col style="max-width:35%;">
-              <div>
-                <p class="recommend-details">No. of Days</p>
-              </div>
-            </ion-col>
-            <ion-col style="max-width:50%;">
-              <input type="text" placeholder="Select no. of days" name="days" required id="days"
-                class="recommend-input">
-            </ion-col>
-          </ion-row>
-          <!--End of Days-->
+                <input type="text" placeholder="{{destinationArea}}" name="area" required id="area"
+                  class="ion-input-margin-bottom recommend-input" disabled ngModel>
+                <input type="text" placeholder="{{destinationDistrict}}" name="district" required id="district"
+                  class="ion-input-margin-bottom recommend-input" disabled ngModel>
+                <input type="text" placeholder="{{destinationProvince}}" name="province" required id="province"
+                  class="recommend-input" disabled ngModel>
+              </ion-col>
+            </ion-row>
+            <!--End of Destination-->
 
-          <!--People Count-->
-          <ion-row style="margin-bottom:10px;">
-            <ion-col style="max-width:35%;">
-              <div>
-                <p class="recommend-details">People Count</p>
-              </div>
-            </ion-col>
-            <ion-col style="max-width:50%;">
-              <input type="text" placeholder="Type no. of people" name="people-count" required id="people-count"
-                class="recommend-input">
-            </ion-col>
-          </ion-row>
-          <!--End of People Count-->
+            <!--Days-->
+            <ion-row class="ion-row-margin-bottom-1">
+              <ion-col class="ion-col-max-width-1">
+                <div>
+                  <p class="recommend-details">No. of Days</p>
+                </div>
+              </ion-col>
+              <ion-col class="ion-col-max-width-2">
+                <input type="text" placeholder="No. of Days" name="days" required id="days" class="recommend-input "
+                  ngModel>
+              </ion-col>
+            </ion-row>
+            <!--End of Days-->
 
-          <!--Budget per Person-->
-          <ion-row style="margin-bottom:10px;">
-            <ion-col style="max-width:35%;">
-              <div>
-                <p class="recommend-details">Budget per Person</p>
-              </div>
-            </ion-col>
-            <ion-col style="max-width:50%;">
-              <input type="text" placeholder="Rs." name="budget-per-person" required id="budget-per-person"
-                class="recommend-input">
-            </ion-col>
-          </ion-row>
-          <!--End of Budget per Person-->
+          
+            <!--People Participating-->
+            <ion-row class="ion-row-margin-bottom-1">
+              <ion-col class="ion-col-max-width-1">
+                <div>
+                  <p class="recommend-details">Participant Count</p>
+                </div>
+              </ion-col>
+              <ion-col class="ion-col-max-width-2">
+                <input type="text" placeholder="Type no. of participants" name="participants" required id="participants"
+                  class="recommend-input " ngModel>
+              </ion-col>
+            </ion-row>
+            <!--End of People Participating-->
 
-          <!--Age-->
-          <ion-row style="margin-bottom:10px;">
-            <ion-col style="max-width:35%;">
-              <div>
-                <p class="recommend-details">Age</p>
-              </div>
-            </ion-col>
-            <ion-col style="max-width:50%;">
-              <input type="text" placeholder="" name="age" required id="age" class="recommend-input">
-            </ion-col>
-          </ion-row>
-          <!--End of Age-->
+            <!--Budget per Person-->
+            <ion-row class="ion-row-margin-bottom-1">
+              <ion-col class="ion-col-max-width-1">
+                <div>
+                  <p class="recommend-details">Budget per Person</p>
+                </div>
+              </ion-col>
+              <ion-col class="ion-col-max-width-2">
+                <input type="text" placeholder="Rs." name="budget_per_person" required id="budget_per_person"
+                  class="recommend-input" ngModel>
+              </ion-col>
+            </ion-row>
+            <!--End of Budget per Person-->
 
-          <!--Weather-->
-          <ion-row style="margin-bottom:10px;">
-            <ion-col style="max-width:35%;">
-              <div>
-                <p class="recommend-details">Weather</p>
-              </div>
-            </ion-col>
-            <ion-col style="max-width:50%;">
-              <input type="text" placeholder="" name="weather" required id="weather" class="recommend-input">
-            </ion-col>
-          </ion-row>
-          <!--End of Weather-->
+            <!--Age-->
+            <ion-row class="ion-row-margin-bottom-1">
+              <ion-col class="ion-col-max-width-1">
+                <div>
+                  <p class="recommend-details">Age</p>
+                </div>
+              </ion-col>
+              <ion-col class="ion-col-max-width-2">
+                <select required id="age" name="age" placeholder="" class="selector-background"
+                  [(ngModel)]="ageGroupSelected">
+                  <option *ngFor="let opt of ageGroup;let i = index;" [value]="i+1">{{opt["ageValue"]}}</option>
+                </select>
+              </ion-col>
+            </ion-row>
+            <!--End of Age-->
+
+          </form>
 
           <!--Travel-->
-          <ion-row style="margin-bottom:10px;">
-            <ion-col style="max-width:35%;">
+          <ion-row class="ion-row-margin-bottom-1">
+            <ion-col class="ion-col-max-width-1">
               <div>
                 <p class="recommend-details">Travel</p>
               </div>
             </ion-col>
             <!--Icons-->
-            <ion-col style="max-width:60%;">
-              <span class="material-icons icon-click">
-                directions_run
-              </span>
-              <span class="material-icons icon-click">
-                directions_bike
-              </span>
-              <span class="material-icons icon-click">
-                directions_car
-              </span>
-              <span class="material-icons icon-click">
-                airport_shuttle
-                </span>
-              <span class="material-icons icon-click">
-                directions_bus
-              </span>
-              <span class="material-icons icon-click">
-                directions_railway
+            <ion-col class="ion-col-max-width-3">
+              <span class="material-icons icon-click" *ngFor="let t of travelList; let i=index;"
+                [ngStyle]="{'color': iconColor[i]===0 ? 'red' :'white'}" (click)="clickTravelIcon(i)">
+                {{t["travelValue"]}}
               </span>
               <!--End of Icons-->
             </ion-col>
           </ion-row>
           <!--Travel-->
-
+          <ion-row>
+            <button [disabled]="!recommendForm.form.valid" class="btn btn-primary "
+              (click)="getRecommendedTrips(recommendForm)" (keyup.enter)="getRecommendedTrips(recommendForm)" ion-button
+              full type="submit">
+              Recommend Trip
+            </button>
+          </ion-row>
         </div>
       </ion-col>
     </ion-row>
-    <button class="btn btn-primary ">
-      Recommend Trip
-    </button>
+
+
   </div>
 </ion-content>

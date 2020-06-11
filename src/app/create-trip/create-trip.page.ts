@@ -12,7 +12,7 @@ import * as jwt_decode from 'jwt-decode';
 export class CreateTripPage implements OnInit {
   // tslint:disable-next-line: object-literal-key-quotes
   destinationList = [{ 'destination': 'Select destination', 'area': 'area', 'district': 'district', 'province': 'province' }];
-  destinationsAdded = 0;
+  valuesAdded = 0;
   destinationSelect: number;
   destinationDestination: string;
   destinationArea: string;
@@ -21,14 +21,15 @@ export class CreateTripPage implements OnInit {
 
   iconColor: any = [1, 1, 1, 1, 1, 1];
 
-  ageGroup: object[];
+  ageGroup = [];
+  travelList =[];
   ageGroupSelected: number;
 
   tripType: object[];
   tripTypeSelected: number;
 
   userId: string;
-  createdTrip: number; //createdTrip=1 JoinedTrip=0
+  createdTrip: string; //createdTrip=C JoinedTrip=J
 
   constructor(
     private router: Router,
@@ -40,29 +41,25 @@ export class CreateTripPage implements OnInit {
 
   ngOnInit() {
     this.tripType = [{ id: 1, name: 'Public' }, { id: 2, name: 'Private' }];
-    this.ageGroup = [
-      { id: 1, name: 'Age < 15 years' },
-      { id: 2, name: '15 years < Age < 25 years' },
-      { id: 3, name: '25 years < Age < 35 years' },
-      { id: 4, name: '35 years < Age < 45 years' },
-      { id: 5, name: '45 years < Age < 55 years' },
-      { id: 6, name: '55 years < Age < 65 years' },
-      { id: 7, name: '65 years < Age < 75 years' },
-      { id: 7, name: 'Age > 75 years' },];
 
     this.ageGroupSelected = 1;
     this.tripTypeSelected = 2;
-    this.createdTrip = 1;
+    this.createdTrip = 'C';
     this.destinationSelect = 0;
 
-    this.destinationDestination='Select destination';
+
+    this.destinationDestination = 'Select destination';
     this.destinationArea = 'area';
     this.destinationDistrict = 'district';
     this.destinationProvince = 'province';
 
-    if (this.destinationsAdded === 0) {
+    if (this.valuesAdded === 0) {
       this.getDestinations();
-      this.presentToast('Destinations Updated', 3000);
+      this.presentToast('Destinations Updated', 1000);
+      this.getAgeValues();
+      this.presentToast('Age Values Updated', 1000);
+      this.getTravelValues();
+      this.presentToast('Travel Values Updated', 1000);
     }
   }
 
@@ -91,7 +88,7 @@ export class CreateTripPage implements OnInit {
       }
     });
     // tslint:disable-next-line: max-line-length
-    this.userService.createTrip(this.destinationDestination, this.destinationArea, this.destinationDistrict, this.destinationProvince, trip.start_date, trip.start_time, trip.start_venue, trip.days, trip.people_count, trip.budget_per_person, this.ageGroup[this.ageGroupSelected - 1]['name'], this.tripTypeSelected, travelMode, this.userId, this.createdTrip).subscribe(data => {
+    this.userService.createTrip(this.destinationList[this.destinationSelect]['tripDestinationId'], trip.start_date, trip.start_time, trip.start_venue, trip.days, trip.people_count, trip.participants, trip.budget_per_person, this.ageGroup[this.ageGroupSelected - 1]['ageId'], this.tripTypeSelected, travelMode, this.userId, this.createdTrip).subscribe(data => {
       this.presentToast('Successfully created a trip', 4000).then(() => {
         console.log('Created trip successfully');
       });
@@ -142,6 +139,31 @@ export class CreateTripPage implements OnInit {
     });
   }
 
+  getAgeValues() {
+    this.userService.getAgeValues().subscribe(data => {
+      // tslint:disable-next-line: no-string-literal
+      if (data['data'].length > 0) {
+        // tslint:disable
+        for (let i in data['data']) {
+          // tslint:disable-next-line: no-string-literal
+          this.ageGroup.push(data['data'][i]);
+        }
+      }
+    });
+  }
+
+  getTravelValues(){
+    this.userService.getTravelList().subscribe(data => {
+      // tslint:disable-next-line: no-string-literal
+      if (data['data'].length > 0) {
+        // tslint:disable
+        for (let i in data['data']) {
+          // tslint:disable-next-line: no-string-literal
+          this.travelList.push(data['data'][i]);
+        }
+      }
+    });
+  }
   setValues() {
     this.destinationDestination = this.destinationList[this.destinationSelect]['destination'];
     this.destinationArea = this.destinationList[this.destinationSelect]['area'];
@@ -149,5 +171,5 @@ export class CreateTripPage implements OnInit {
     this.destinationProvince = this.destinationList[this.destinationSelect]['province'];
   }
 
-  
+
 }

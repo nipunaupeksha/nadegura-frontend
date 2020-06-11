@@ -57,13 +57,23 @@ export class UserService {
   }
 
   // tslint:disable-next-line: max-line-length
-  public createTrip(destination, area, district, province, start_date, start_time, start_venue, days, people_count, budget_per_person, age, triptype, travel, userId, created) {
-    return this.http.post(this.BACKEND_URL + 'trips/createTrip', { 'destination': destination, 'area': area, 'district': district, 'province': province, 'start_date': start_date, 'start_time': start_time, 'start_venue': start_venue, 'days': days, 'people_count': people_count, 'budget_per_person': budget_per_person, 'age': age, 'triptype': triptype, 'travel': travel, 'userId': userId, 'created': created }).pipe(map(res => res));
+  public createTrip(tripDestinationId,  start_date, start_time, start_venue, days, people_count, participants,budget_per_person, ageId, triptype, travel, userId, created) {
+    return this.http.post(this.BACKEND_URL + 'trips/createTrip', { 'tripDestinationId': tripDestinationId , 'start_date': start_date, 'start_time': start_time, 'start_venue': start_venue, 'days': days, 'people_count': people_count,'participants':participants, 'budget_per_person': budget_per_person, 'ageId': ageId, 'triptype': triptype, 'travel': travel, 'userId': userId, 'created': created }).pipe(map(res => res));
   }
   public getTrips(userId){
     return this.http.post(this.BACKEND_URL + 'trips/getTrips', { 'userId': userId}, { headers: this.headers }).pipe(map(res => res));
   }
   public getDestinations(){
     return this.http.get(this.BACKEND_URL + 'trips/getDestinationList', { headers: this.headers }).pipe(map(res => res));
+  }
+  public getRecommendedTrips(tripDesinationId, days, participants, budget_per_person, ageId, travel, userId){
+    // tslint:disable-next-line: max-line-length
+    return this.http.post(this.BACKEND_URL + 'trips/getRecommendedTrips', {'tripDesinationId': tripDesinationId,'days': days,'participants': participants, 'budget_per_person':budget_per_person, 'ageId' : ageId, 'travel':travel,'userId' :userId}, { headers: this.headers }).pipe(map(res => res));
+  }
+  public getAgeValues(){
+    return this.http.get(this.BACKEND_URL + 'trips/getAgeList', { headers: this.headers }).pipe(map(res => res));
+  }
+  public getTravelList(){
+    return this.http.get(this.BACKEND_URL + 'trips/getTravelList', { headers: this.headers }).pipe(map(res => res));
   }
 }
