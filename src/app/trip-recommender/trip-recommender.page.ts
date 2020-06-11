@@ -1,7 +1,8 @@
-import { LoadingController, ToastController } from '@ionic/angular';
+import { RecommendationsPage } from './../modals/recommendations/recommendations.page';
+import { LoadingController, ToastController, ModalController } from '@ionic/angular';
 import { UserService } from './../services/user.service';
 import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import * as jwt_decode from 'jwt-decode';
 @Component({
   selector: 'app-trip-recommender',
@@ -14,6 +15,7 @@ export class TripRecommenderPage implements OnInit {
   tripList = [];
   ageGroup = [];
   travelList = [];
+  recommendedTrips = [];
 
   createdTrip: string; //createdTrip=C JoinedTrip=J
   iconColor: any = [1, 1, 1, 1, 1, 1];
@@ -21,15 +23,18 @@ export class TripRecommenderPage implements OnInit {
   ageGroupSelected: number;
   userId: string;
 
+  triptype = 1;//1:public 2:private
   destinationDestination: string;
   destinationArea: string;
   destinationDistrict: string;
   destinationProvince: string;
+
   constructor(
     private router: Router,
     public toastController: ToastController,
     public loadingController: LoadingController,
-    private userService: UserService
+    private userService: UserService,
+    private modalController: ModalController
   ) {
     this.userId = this.getDecodedAccessToken(localStorage.getItem("token"))['user_id'];
   }
@@ -52,6 +57,16 @@ export class TripRecommenderPage implements OnInit {
       this.getTravelValues();
       this.presentToast('Travel Values Updated', 1000);
     }
+  }
+
+  async openModal(){
+    const modal = await this.modalController.create({
+      component: RecommendationsPage,
+      componentProps: {
+        custom_value: this.recommendedTrips
+      }
+    });
+    return await modal.present();
   }
 
   getDestinations() {
@@ -82,19 +97,19 @@ export class TripRecommenderPage implements OnInit {
         travelMode = travelMode + 'w';
       }
     });
-    this.userService.getRecommendedTrips(this.destinationList[this.destinationSelect]['tripDestinationId'], trip.days, trip.participants, trip.budget_per_person, this.ageGroup[this.ageGroupSelected - 1]['ageId'], travelMode, this.userId).subscribe(data => {
-      this.presentToast('Successfully created a trip', 4000).then(() => {
-        console.log('Created trip successfully');
-      });
-    }, error => {
-      // tslint:disable-next-line:no-string-literal
-      if (error['status'] === 401) {
-        this.presentToast('Error', 2000);
-      } else {
-        console.log(error);
-        this.presentToast('Error Connecting to the Server', 2000);
+
+    this.userService.getRecommendedTrips(this.destinationList[this.destinationSelect]['tripDestinationId'], trip.days, trip.participants, trip.budget_per_person, this.ageGroup[this.ageGroupSelected - 1]['ageId'], travelMode, this.triptype).subscribe(data => {
+      // tslint:disable-next-line: no-string-literal
+      if (data['data'].length > 0) {
+        // tslint:disable
+        for (let i in data['data']) {
+          // tslint:disable-next-line: no-string-literal
+          this.recommendedTrips.push(data['data'][i]);
+        }
       }
     });
+    
+    this.openModal();
   }
 
   async presentToast(msg, dur) {

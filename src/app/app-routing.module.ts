@@ -58,7 +58,7 @@ const routes: Routes = [
   },
   {
     path: 'recommendations',
-    loadChildren: () => import('./recommendations/recommendations.module').then( m => m.RecommendationsPageModule)
+    loadChildren: () => import('./modals/recommendations/recommendations.module').then( m => m.RecommendationsPageModule)
   },
   {
     path: 'trip-details',
