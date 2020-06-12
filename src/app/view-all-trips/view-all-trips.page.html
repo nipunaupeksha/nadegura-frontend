@@ -15,7 +15,7 @@
     </ion-row>
     <ion-row>
       <ng-container *ngFor="let trip of tripList">
-        <ion-col *ngIf="trip['created']==1">
+        <ion-col *ngIf="trip['created']=='C'">
           <!-- Ionic Card -->
           <ion-card class="card-properties">
             <ion-card-header>
@@ -40,7 +40,7 @@
     </ion-row>
     <ion-row>
       <ng-container *ngFor="let trip of tripList">
-        <ion-col *ngIf="trip['created']==2">
+        <ion-col *ngIf="trip['created']=='J'">
           <!-- Ionic Card -->
           <ion-card class="card-properties">
             <ion-card-header>

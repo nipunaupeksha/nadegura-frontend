@@ -11,11 +11,12 @@
   </div>
   
   <div class="ion-padding">
-
-    <ion-row class="row-color" *ngFor="let trip of passedArray; let i = index;">
+    
+    <ion-row class="row-color row-gap"  *ngFor="let trip of passedArray; let i = index;" >
+      
       <!-- col - 1 -->
-      <ion-col class=max-width-fixer-1>
-        <img src="assets/img/6.jpg" alt="" class="image-wrapper">
+      <ion-col class="max-width-fixer-1 overflow-fixer" >
+        <img src="assets/img/locations/{{trip['destination']}}/1.jpg" alt="" class="image-wrapper">
       </ion-col>
       <!-- col - 2 -->
       <ion-col style="max-width:5px;">
@@ -23,30 +24,15 @@
       </ion-col>
       <!-- col - 3 -->
       <ion-col>
-        <h5 style="color:white;">Galle, Sri Lanka</h5>
-        <h6 style="color:white;">5km</h6>
-        <span class="material-icons icon-click">
-          directions_run
-        </span>
-        <span class="material-icons icon-click">
-          directions_bike
-        </span>
-        <span class="material-icons icon-click">
-          directions_car
-        </span>
-        <span class="material-icons icon-click">
-          airport_shuttle
-        </span>
-        <span class="material-icons icon-click">
-          directions_bus
-        </span>
-        <span class="material-icons icon-click">
-          directions_railway
-        </span>
+        <h5 style="color:white;">{{trip['area']}}, {{trip['district']}}</h5>
+        <h6 style="color:white;">{{trip['province']}}</h6>
+        <span class="material-icons icon-click" *ngFor="let t of travelList; let j=index;"
+                 [ngStyle]="{'color':trip['travel'].charAt(j) =='r'? 'red':'white'}">
+                {{t["travelValue"]}}
+              </span>
+              
         <button class="btn btn-primary">More Details</button>
       </ion-col>
-      
-        
     </ion-row>
 
   </div>

@@ -59,7 +59,7 @@ export class TripRecommenderPage implements OnInit {
     }
   }
 
-  async openModal(){
+  async openModal() {
     const modal = await this.modalController.create({
       component: RecommendationsPage,
       componentProps: {
@@ -70,6 +70,7 @@ export class TripRecommenderPage implements OnInit {
   }
 
   getDestinations() {
+    this.destinationList = [{ 'destination': 'Select destination', 'area': 'area', 'district': 'district', 'province': 'province' }];
     this.userService.getDestinations().subscribe(data => {
       // tslint:disable-next-line: no-string-literal
       if (data['data'].length > 0) {
@@ -97,7 +98,7 @@ export class TripRecommenderPage implements OnInit {
         travelMode = travelMode + 'w';
       }
     });
-
+    this.recommendedTrips = [];
     this.userService.getRecommendedTrips(this.destinationList[this.destinationSelect]['tripDestinationId'], trip.days, trip.participants, trip.budget_per_person, this.ageGroup[this.ageGroupSelected - 1]['ageId'], travelMode, this.triptype).subscribe(data => {
       // tslint:disable-next-line: no-string-literal
       if (data['data'].length > 0) {
@@ -108,7 +109,7 @@ export class TripRecommenderPage implements OnInit {
         }
       }
     });
-    
+
     this.openModal();
   }
 
@@ -136,6 +137,7 @@ export class TripRecommenderPage implements OnInit {
   }
 
   getAgeValues() {
+    this.ageGroup = [];
     this.userService.getAgeValues().subscribe(data => {
       // tslint:disable-next-line: no-string-literal
       if (data['data'].length > 0) {
@@ -149,6 +151,7 @@ export class TripRecommenderPage implements OnInit {
   }
 
   getTravelValues() {
+    this.travelList =[];
     this.userService.getTravelList().subscribe(data => {
       // tslint:disable-next-line: no-string-literal
       if (data['data'].length > 0) {
