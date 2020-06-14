@@ -103,6 +103,26 @@
               <ion-col class="column-decorator">
                 <div class="div-padding-fixer">
 
+                  <!--Transport Type-->
+                  <ion-row class="margin-bottom-fixer-1">
+                    <ion-col class="max-width-fixer-1">
+                      <div>
+                        <p class="recommend-details">Transport Type</p>
+                      </div>
+                    </ion-col>
+                    <ion-col class="max-width-fixer-3">
+                      <ng-container *ngFor="let t of travelList; let i=index;">
+                        <span class="material-icons icon-click" [ngStyle]="{'color': iconColor[i]===0 ? 'red' :'white'}" 
+                         (click)="clickTravelIcon(i)">
+                         <!-- [ngStyle]="{'color': iconColor[i]===0 ? 'red' :'white'}" -->
+                        {{t["travelValue"]}}
+                      </span>
+                      </ng-container>
+                      
+                    </ion-col>
+                  </ion-row>
+                  <!--End of Transport Type-->
+
                   <!--Transport-->
                   <ion-row class="margin-bottom-fixer-1">
                     <ion-col class="max-width-fixer-1">
@@ -173,5 +193,5 @@
         </div>
       </ion-col>
     </ion-row>
-    </div>
+  </div>
 </ion-content>

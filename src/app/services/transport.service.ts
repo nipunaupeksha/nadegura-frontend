@@ -19,7 +19,7 @@ export class TransportService {
   constructor(private http: HttpClient) { }
 
   public addTransport(transportType, transportName, address, phone, email, userId){
-    return this.http.post(this.BACKEND_URL + 'hotels/addHotel',
+    return this.http.post(this.BACKEND_URL + 'transports/addTransport',
     // tslint:disable-next-line:object-literal-key-quotes
     // tslint:disable-next-line: max-line-length
     { 'transportType': transportType, 'transportName': transportName, 'address': address, 'phone':phone, 'email': email,'userId':userId}).pipe(map(res => res));

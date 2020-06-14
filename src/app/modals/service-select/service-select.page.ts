@@ -1,7 +1,9 @@
+import { TransportService } from './../../services/transport.service';
+import { UserService } from './../../services/user.service';
 import { HotelService } from './../../services/hotel.service';
 import { Router } from '@angular/router';
 import { ModalController, NavParams, ToastController, LoadingController } from '@ionic/angular';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import * as jwt_decode from 'jwt-decode';
 
 
@@ -12,18 +14,25 @@ import * as jwt_decode from 'jwt-decode';
 })
 export class ServiceSelectPage implements OnInit {
   selectService: null;
-  userId='';
+  userId = '';
+  travelList = [];
+  iconColor: any = [1, 1, 1, 1, 1, 1];
+
   constructor(
     private modalController: ModalController,
     private router: Router,
     private navParams: NavParams,
     private hotelService: HotelService,
+    private transportService: TransportService,
     public toastController: ToastController,
-    public loadingController: LoadingController) { }
+    public loadingController: LoadingController,
+    private userService: UserService,
+    private elementRef: ElementRef) { }
 
   ngOnInit() {
     this.selectService = this.navParams.get('custom_value');
     this.userId = this.getDecodedAccessToken(localStorage.getItem("token"))['user_id'];
+    this.getTravelValues();
   }
 
   selectHotelServices() {
@@ -34,6 +43,30 @@ export class ServiceSelectPage implements OnInit {
   selectTransportServices() {
     this.router.navigate(['./transportService']);
     this.modalController.dismiss();
+  }
+
+  getTravelValues() {
+    this.userService.getTravelList().subscribe(data => {
+      // tslint:disable-next-line: no-string-literal
+      if (data['data'].length > 0) {
+        // tslint:disable
+        for (let i in data['data']) {
+          // tslint:disable-next-line: no-string-literal
+          this.travelList.push(data['data'][i]);
+        }
+      }
+    });
+  }
+
+  clickTravelIcon(id) {
+    //tslint:disable-next-line: triple-equals
+    if (this.iconColor[id] === 1) {
+      this.iconColor[id] = 0;
+    }
+    else {
+      this.iconColor[id] = 1;
+    }
+
   }
 
   getDecodedAccessToken(token: string): any {
@@ -51,7 +84,7 @@ export class ServiceSelectPage implements OnInit {
   registerHotel(form: any) {
     const hotel = form.value;
     const address = hotel.l1 + ',' + hotel.l2 + ',' + hotel.l3;
-    this.hotelService.addHotel(hotel.name, address, hotel.phone, hotel.email,this.userId).subscribe(data => {
+    this.hotelService.addHotel(hotel.name, address, hotel.phone, hotel.email, this.userId).subscribe(data => {
       this.presentToast('Successfully registered a hotel', 4000);
     }, error => {
       // tslint:disable-next-line:no-string-literal
@@ -64,10 +97,18 @@ export class ServiceSelectPage implements OnInit {
     });
   }
 
-  registerTrip(form:any){
+  registerTransport(form: any) {
     const transport = form.value;
+    let travelMode = '';
+    this.iconColor.forEach((value) => {
+      if (value === 0) {
+        travelMode = travelMode + 'r';
+      } else {
+        travelMode = travelMode + 'w';
+      }
+    });
     const address = transport.l1 + ',' + transport.l2 + ',' + transport.l3;
-    this.hotelService.addHotel(transport.name, address, transport.phone, transport.email,this.userId).subscribe(data => {
+    this.transportService.addTransport(travelMode, transport.name, address, transport.phone, transport.email, this.userId).subscribe(data => {
       this.presentToast('Successfully registered a transport', 4000);
     }, error => {
       // tslint:disable-next-line:no-string-literal
