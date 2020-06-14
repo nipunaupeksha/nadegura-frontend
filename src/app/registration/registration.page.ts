@@ -51,7 +51,7 @@ export class RegistrationPage implements OnInit {
       this.isLoading = 0;
     } else {
       // tslint:disable-next-line: max-line-length
-      this.userService.register(user.firstname, user.lastname, user.email, user.mobile, address, user.nic, user.dob, genderTicked, user.license, user.occupation, user.password).subscribe(data => {
+      this.userService.register(user.firstname, user.lastname, user.email, user.mobile, address, user.nic, user.dob, genderTicked, user.license, user.occupation, user.password,"customer").subscribe(data => {
         this.isLoading = 0;
         this.presentToast('Successfully created an Account', 4000).then(() => {
           this.presentToast('Please sign in to the system with your credentials!', 1000).then(() => {

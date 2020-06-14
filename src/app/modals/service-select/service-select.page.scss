@@ -16,18 +16,14 @@
 .recommend-details {
     color: white;
     margin-bottom: 0px;
-    padding-top:7px;
+    text-align: left;
 }
 
 .recommend-input {
     border: none;
     border-radius: 5px;
-    //margin-left: 10px;
+    margin-left: 10px;
     text-align: center;
-}
-
-.arrow {
-    max-width: 20%;
 }
 
 .signs {
@@ -44,6 +40,7 @@
 }
 .column-decorator {
     min-height: 70vh;
+    
 }
 
 .div-decorator {
@@ -56,8 +53,6 @@
 /*finish added content*/
 
 .logo {
-    //display: block;
-    //max-width:100%;
     align-content: center;
     height: auto;
     padding-right: 20%;
@@ -85,9 +80,9 @@ input[type="password"]:focus {
     outline: none;
 }
 .btn {
-    //display: block;
-    margin: 0;
-    // margin-top: 10px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 10px;
     border: 1px solid white;
     width: 80%;
 }
@@ -96,7 +91,7 @@ input[type="password"]:focus {
     margin: 7px auto;
 }
 .btn-primary {
-    // margin-top: 10%;
+    margin-top: 10%;
     color: #ffffff;
     background-color: rgba(0, 0, 0, 0.034) !important;
     border-color: rgba(255, 255, 255, 0.884);
@@ -152,6 +147,7 @@ input[type="password"]:focus {
     --background: transparent;
 }
 
+
 .fullscreen-bg::before {
     position: absolute;
     top: 0;
@@ -162,4 +158,67 @@ input[type="password"]:focus {
 
     /* Any overlay color that you want, here I use black with 25% opacity */
     background-color: rgba(0, 0, 0, 0.25);
+}
+
+/*Styling*/
+.header-row {
+    background-color: black;
+    opacity: 90%;
+    min-height: 50px;
+}
+
+.header-style-arrow {
+    display: flex !important;
+    max-width: 15vw !important;
+    align-content: center !important;
+}
+
+.header-style-text {
+    display: flex !important;
+    align-content: center !important;
+}
+
+.arrow {
+    filter: brightness(0) invert(1);
+}
+
+.header-text {
+    margin: 0 !important;
+    padding-top: 3px;
+}
+
+.row-margin-fixer{
+    margin-top:20px;
+}
+
+.div-padding-fixer{
+    padding-top:5vh;
+}
+
+.whitefy {
+    color: white;
+}
+
+.margin-top-fixer-1{
+    margin-top:10px;
+}
+
+.margin-top-fixer-2{
+    margin-top:5px;
+}
+
+.margin-bottom-fixer-1{
+    margin-bottom:10px;
+}
+
+.max-width-fixer-1{
+    max-width:35%;
+}
+
+.max-width-fixer-2{
+    max-width:50%;
+}
+
+.max-width-fixer-3{
+    max-width:60%;
 }

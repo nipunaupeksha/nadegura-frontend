@@ -12,16 +12,22 @@
       <ion-col class="column-decorator">
         <div class="div-decorator">
         <!-- view all trips -->
-        <button  class="btn btn-primary" (click)="viewAllTrips()">
+        <button  class="btn btn-primary" (click)="viewAllTrips()" *ngIf="roleType=='customer'">
           <strong>View All Trips</strong>
         </button> 
         <!-- view all  trips -->
-        <button class="btn btn-primary" (click)="joinTrip()">
+        <button class="btn btn-primary" (click)="joinTrip()" *ngIf="roleType=='customer'">
           <strong>Join a Trip</strong>
         </button> 
         <!-- services -->
-        <button  (click)="openModal()" class="btn btn-primary">
+        <button  (click)="openModal(roleType)" class="btn btn-primary" *ngIf="roleType!='customer'">
           <strong>Services</strong>
+        </button>
+        <button  class="btn btn-primary" *ngIf="roleType=='serviceH'">
+          <strong>View Hotels</strong>
+        </button>
+        <button  class="btn btn-primary" *ngIf="roleType=='serviceT'" >
+          <strong>View Transport</strong>
         </button>
       </div>
       </ion-col>

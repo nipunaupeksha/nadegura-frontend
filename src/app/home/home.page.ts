@@ -2,6 +2,7 @@ import { ServiceSelectPage } from './../modals/service-select/service-select.pag
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { ModalController, AlertController } from '@ionic/angular';
+import * as jwt_decode from 'jwt-decode';
 
 
 @Component({
@@ -9,16 +10,28 @@ import { ModalController, AlertController } from '@ionic/angular';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit {
+  roleType = 'hotels';
 
-  constructor(private router: Router, private modalController: ModalController, private alertCtrl: AlertController) { }
+  constructor(
+    private router: Router, 
+    private modalController: ModalController,
+    private alertCtrl: AlertController,
+    ) { }
 
   // tslint:disable-next-line: use-lifecycle-interface
   ngOnInit() {
+    this.roleType = this.getDecodedAccessToken(localStorage.getItem('token'))['role'];
+    
   }
-  async openModal() {
+
+
+  async openModal(paramToSent) {
     const modal = await this.modalController.create({
-      component: ServiceSelectPage
+      component: ServiceSelectPage,
+      componentProps: {
+        custom_value: paramToSent
+      }
     });
     return await modal.present();
   }
@@ -53,11 +66,19 @@ export class HomePage {
     await alert.present();
   }
 
-  joinTrip(){
+  joinTrip() {
     this.router.navigate(['./joinTrip']);
   }
 
-  viewAllTrips(){
+  viewAllTrips() {
     this.router.navigate(['./viewAllTrips']);
+  }
+
+  getDecodedAccessToken(token: string): any {
+    try {
+      return jwt_decode(token);
+    } catch (Error) {
+      return null;
+    }
   }
 }

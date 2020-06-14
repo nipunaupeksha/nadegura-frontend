@@ -36,23 +36,6 @@ const routes: Routes = [
     loadChildren: () => import('./modals/service-select/service-select.module').then( m => m.ServiceSelectPageModule)
   },
   {
-    path: 'hotelService',
-    loadChildren: () => import('./hotel-service/hotel-service.module').then( m => m.HotelServicePageModule)
-  },
-  {
-    path: 'transportService',
-    loadChildren: () => import('./transport-service/transport-service.module').then( m => m.TransportServicePageModule)
-  },
-  {
-    path: 'hotelServiceDetails',
-    loadChildren: () => import('./hotel-service-details/hotel-service-details.module').then( m => m.HotelServiceDetailsPageModule)
-  },
-  {
-    path: 'transportServiceDetails',
-    // tslint:disable-next-line: max-line-length
-    loadChildren: () => import('./transport-service-details/transport-service-details.module').then( m => m.TransportServiceDetailsPageModule)
-  },
-  {
     path: 'createTrip',
     loadChildren: () => import('./create-trip/create-trip.module').then( m => m.CreateTripPageModule)
   },
@@ -61,8 +44,8 @@ const routes: Routes = [
     loadChildren: () => import('./modals/recommendations/recommendations.module').then( m => m.RecommendationsPageModule)
   },
   {
-    path: 'trip-details',
-    loadChildren: () => import('./trip-details/trip-details.module').then( m => m.TripDetailsPageModule)
+    path: 'tripDetails',
+    loadChildren: () => import('./modals/trip-details/trip-details.module').then( m => m.TripDetailsPageModule)
   },
   {
     path: 'image-modal',

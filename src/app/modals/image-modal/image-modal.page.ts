@@ -23,11 +23,11 @@ export class ImageModalPage implements OnInit {
   }
 
   zoom(zoomIn: boolean) {
-    let zoom = this.slider.nativeElement.swiper.zoom;
+    const z = this.slider.nativeElement.swiper.zoom;
     if (zoomIn){
-      zoom.in();
+      z.in();
     }else{
-      zoom.out();
+      z.out();
     }
   }
 

@@ -1,5 +1,6 @@
+import { TransportService } from './services/transport.service';
+import { HotelService } from './services/hotel.service';
 import { UserService } from './services/user.service';
-import {MatDatepickerModule} from '@angular/material/datepicker';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -26,7 +27,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-     UserService
+     UserService, HotelService, TransportService
   ],
   bootstrap: [AppComponent]
 })

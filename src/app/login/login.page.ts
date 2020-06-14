@@ -17,9 +17,9 @@ export class LoginPage implements OnInit {
   isErrorInEmail = false;
 
   constructor(private router: Router,
-              private route: ActivatedRoute,
-              public toastController: ToastController,
-              public userService: UserService) {
+    private route: ActivatedRoute,
+    public toastController: ToastController,
+    public userService: UserService) {
     route.queryParams.subscribe((data: any) => {
       if (data) {
         this.email = data.email;
@@ -48,7 +48,12 @@ export class LoginPage implements OnInit {
       this.isLoading = false;
       while (true) {
         if (localStorage.getItem('token') === data['token']) {
-          this.router.navigate(['./home']);
+          let roleUser = this.getDecodedAccessToken(localStorage.getItem('token'))['role'];
+          if (roleUser === 'customer' || roleUser == 'serviceH' || roleUser == 'serviceT') {
+            this.router.navigate(['./home']);
+          } else if (roleUser === 'admin') {
+
+          }
           break;
         }
       }

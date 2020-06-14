@@ -24,37 +24,154 @@
         <div class="div-decorator">
           <!-- start -->
           <!-- start hotel registration -->
-          <ion-row style="margin-bottom:10px; text-align: center;" >
-            <ion-col style="max-width: 50%;">
-              <div>
-                <p class="recommend-details" >Hotels</p>
-              </div>
-            </ion-col>
-            <ion-col style="max-width:50%;">
-            <button class="btn btn-primary" (click)="selectHotelServices()">
-              <strong>Register</strong>
-            </button>
-      </ion-col>
-    </ion-row>
-    <!-- end hotel registration -->
+          <form #hotelForm="ngForm">
+            <ion-row style="margin-bottom:10px; text-align: center;" *ngIf="selectService=='serviceH'">
+              <ion-col class="column-decorator">
+                <div class="div-padding-fixer">
 
-    <!-- start travel registration -->
-    <ion-row style="margin-bottom:10px; text-align:center;">
-      <ion-col style="max-width: 50%; ">
-        <div>
-          <p class="recommend-details">Transport</p>
+                  <!--Hotel-->
+                  <ion-row class="margin-bottom-fixer-1">
+                    <ion-col class="max-width-fixer-1">
+                      <div>
+                        <p class="recommend-details">Hotel Name</p>
+                      </div>
+                    </ion-col>
+                    <ion-col class="max-width-fixer-2">
+                      <input type="text" placeholder="Hotel Name" name="name" required id="name" class="recommend-input"
+                        ngModel>
+                    </ion-col>
+                  </ion-row>
+                  <!--End of Hotel-->
+
+                  <!--Contact-->
+                  <ion-row class="margin-bottom-fixer-1">
+                    <ion-col class="max-width-fixer-1">
+                      <div>
+                        <p class="recommend-details">Contact</p>
+                      </div>
+                    </ion-col>
+                    <ion-col class="max-width-fixer-2">
+                      <input type="text" placeholder="Address Line 1" name="l1" required id="l1" class="recommend-input"
+                        ngModel>
+                      <input type="text" placeholder="Address Line 2" name="l1" id="l2"
+                        class="recommend-input margin-top-fixer-2" ngModel>
+                      <input type="text" placeholder="Address Line 3" name="l3" id="l3"
+                        class="recommend-input margin-top-fixer-2" ngModel>
+                    </ion-col>
+                  </ion-row>
+
+                  <ion-row class="margin-bottom-fixer-1">
+                    <ion-col class="max-width-fixer-1">
+                      <div>
+                        <p class="recommend-details" style="margin-top:10px">Telephone</p>
+                      </div>
+                    </ion-col>
+                    <ion-col class="max-width-fixer-2">
+                      <input type="text" placeholder="telephone" name="phone" required id="phone"
+                        class="recommend-input margin-top-fixer-1" ngModel>
+                    </ion-col>
+                  </ion-row>
+
+                  <ion-row class="margin-bottom-fixer-1">
+                    <ion-col class="max-width-fixer-1">
+                      <div>
+                        <p class="recommend-details" style="margin-top:10px">E mail</p>
+                      </div>
+                    </ion-col>
+                    <ion-col class="max-width-fixer-2">
+                      <input type="text" placeholder="E-mail" name="email" required id="email"
+                        class="recommend-input margin-top-fixer-1" ngModel>
+                    </ion-col>
+                  </ion-row>
+                  <!--End of Contact-->
+                  <ion-row>
+                    <button class="btn btn-primary" (click)="registerHotel(hotelForm)"
+                      [disabled]="!hotelForm.form.valid" (keyup.enter)="registerHotel(hotelForm)">
+                      Register
+                    </button>
+                  </ion-row>
+                </div>
+              </ion-col>
+
+            </ion-row>
+          </form>
+          <!-- end hotel registration -->
+
+          <!-- start travel registration -->
+          <form #transportForm="ngForm">
+            <ion-row style="margin-bottom:10px; text-align: center;" *ngIf="selectService=='serviceT'">
+              <ion-col class="column-decorator">
+                <div class="div-padding-fixer">
+
+                  <!--Transport-->
+                  <ion-row class="margin-bottom-fixer-1">
+                    <ion-col class="max-width-fixer-1">
+                      <div>
+                        <p class="recommend-details">Transport Name</p>
+                      </div>
+                    </ion-col>
+                    <ion-col class="max-width-fixer-2">
+                      <input type="text" placeholder="Transport Name" name="name" required id="name"
+                        class="recommend-input" ngModel>
+                    </ion-col>
+                  </ion-row>
+                  <!--End of Transport-->
+
+                  <!--Contact-->
+                  <ion-row class="margin-bottom-fixer-1">
+                    <ion-col class="max-width-fixer-1">
+                      <div>
+                        <p class="recommend-details">Contact</p>
+                      </div>
+                    </ion-col>
+                    <ion-col class="max-width-fixer-2">
+                      <input type="text" placeholder="Address Line 1" name="l1" required id="l1" class="recommend-input"
+                        ngModel>
+                      <input type="text" placeholder="Address Line 2" name="l1" id="l2"
+                        class="recommend-input margin-top-fixer-2" ngModel>
+                      <input type="text" placeholder="Address Line 3" name="l3" id="l3"
+                        class="recommend-input margin-top-fixer-2" ngModel>
+                    </ion-col>
+                  </ion-row>
+
+                  <ion-row class="margin-bottom-fixer-1">
+                    <ion-col class="max-width-fixer-1">
+                      <div>
+                        <p class="recommend-details" style="margin-top:10px">Telephone</p>
+                      </div>
+                    </ion-col>
+                    <ion-col class="max-width-fixer-2">
+                      <input type="text" placeholder="telephone" name="phone" required id="phone"
+                        class="recommend-input margin-top-fixer-1" ngModel>
+                    </ion-col>
+                  </ion-row>
+
+                  <ion-row class="margin-bottom-fixer-1">
+                    <ion-col class="max-width-fixer-1">
+                      <div>
+                        <p class="recommend-details" style="margin-top:10px">E mail</p>
+                      </div>
+                    </ion-col>
+                    <ion-col class="max-width-fixer-2">
+                      <input type="text" placeholder="E-mail" name="email" required id="email"
+                        class="recommend-input margin-top-fixer-1" ngModel>
+                    </ion-col>
+                  </ion-row>
+                  <!--End of Contact-->
+                  <ion-row>
+                    <button class="btn btn-primary" (click)="registerTransport(transportForm)"
+                      [disabled]="!transportForm.form.valid" (keyup.enter)="registerTransport(transportForm)">
+                      Register
+                    </button>
+                  </ion-row>
+                </div>
+              </ion-col>
+            </ion-row>
+          </form>
+
+
         </div>
       </ion-col>
-      <ion-col style="max-width:50%;">
-        <button class="btn btn-primary"  (click)="selectTransportServices()">
-          <strong>Register</strong>
-        </button>
-      </ion-col>
     </ion-row>
-    <!-- end travel registration -->
-    <!-- end -->
-  </div>
-  </ion-col>
-  </ion-row>
-  </div>
+    </div>
 </ion-content>

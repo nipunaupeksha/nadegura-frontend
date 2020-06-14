@@ -24,11 +24,11 @@ export class UserService {
     return this.http.post(this.BACKEND_URL + 'users/login', { 'email': email, 'password': password }).pipe(map(res => res));
   }
 
-  public register(firstname, lastname, email, mobile, address, nic, dob, gender, license, occupation, password) {
+  public register(firstname, lastname, email, mobile, address, nic, dob, gender, license, occupation, password, role) {
     return this.http.post(this.BACKEND_URL + 'users/register',
       // tslint:disable-next-line:object-literal-key-quotes
       // tslint:disable-next-line: max-line-length
-      { 'firstname': firstname, 'lastname': lastname, 'email': email, 'mobile': mobile, 'address': address, 'nic': nic, 'dob': dob, 'gender': gender, 'license': license, 'occupation': occupation, 'password': password }).pipe(map(res => res));
+      { 'firstname': firstname, 'lastname': lastname, 'email': email, 'mobile': mobile, 'address': address, 'nic': nic, 'dob': dob, 'gender': gender, 'license': license, 'occupation': occupation, 'password': password, 'role': role }).pipe(map(res => res));
   }
 
   public isAuthenticated(): boolean {
@@ -56,24 +56,25 @@ export class UserService {
       { 'email': email, 'password': password }).pipe(map(res => res));
   }
 
+  //Trips
   // tslint:disable-next-line: max-line-length
-  public createTrip(tripDestinationId,  start_date, start_time, start_venue, days, people_count, participants,budget_per_person, ageId, triptype, travel, userId, created) {
-    return this.http.post(this.BACKEND_URL + 'trips/createTrip', { 'tripDestinationId': tripDestinationId , 'start_date': start_date, 'start_time': start_time, 'start_venue': start_venue, 'days': days, 'people_count': people_count,'participants':participants, 'budget_per_person': budget_per_person, 'ageId': ageId, 'triptype': triptype, 'travel': travel, 'userId': userId, 'created': created }).pipe(map(res => res));
+  public createTrip(tripDestinationId, start_date, start_time, start_venue, days, people_count, participants, budget_per_person, ageId, triptype, travel, userId, created) {
+    return this.http.post(this.BACKEND_URL + 'trips/createTrip', { 'tripDestinationId': tripDestinationId, 'start_date': start_date, 'start_time': start_time, 'start_venue': start_venue, 'days': days, 'people_count': people_count, 'participants': participants, 'budget_per_person': budget_per_person, 'ageId': ageId, 'triptype': triptype, 'travel': travel, 'userId': userId, 'created': created }).pipe(map(res => res));
   }
-  public getTrips(userId){
-    return this.http.post(this.BACKEND_URL + 'trips/getTrips', { 'userId': userId}, { headers: this.headers }).pipe(map(res => res));
+  public getTrips(userId) {
+    return this.http.post(this.BACKEND_URL + 'trips/getTrips', { 'userId': userId }, { headers: this.headers }).pipe(map(res => res));
   }
-  public getDestinations(){
+  public getDestinations() {
     return this.http.get(this.BACKEND_URL + 'trips/getDestinationList', { headers: this.headers }).pipe(map(res => res));
   }
-  public getRecommendedTrips(tripDesinationId, days, participants, budget_per_person, ageId, travel, triptype){
+  public getRecommendedTrips(tripDesinationId, days, participants, budget_per_person, ageId, travel, triptype) {
     // tslint:disable-next-line: max-line-length
-    return this.http.post(this.BACKEND_URL + 'trips/getRecommendedTrips', {'tripDesinationId': tripDesinationId,'days': days,'participants': participants, 'budget_per_person':budget_per_person, 'ageId' : ageId, 'travel':travel,'triptype' :triptype}, { headers: this.headers }).pipe(map(res => res));
+    return this.http.post(this.BACKEND_URL + 'trips/getRecommendedTrips', { 'tripDesinationId': tripDesinationId, 'days': days, 'participants': participants, 'budget_per_person': budget_per_person, 'ageId': ageId, 'travel': travel, 'triptype': triptype }, { headers: this.headers }).pipe(map(res => res));
   }
-  public getAgeValues(){
+  public getAgeValues() {
     return this.http.get(this.BACKEND_URL + 'trips/getAgeList', { headers: this.headers }).pipe(map(res => res));
   }
-  public getTravelList(){
+  public getTravelList() {
     return this.http.get(this.BACKEND_URL + 'trips/getTravelList', { headers: this.headers }).pipe(map(res => res));
   }
 }
