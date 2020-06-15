@@ -24,4 +24,9 @@ export class TransportService {
     // tslint:disable-next-line: max-line-length
     { 'transportType': transportType, 'transportName': transportName, 'address': address, 'phone':phone, 'email': email,'userId':userId}).pipe(map(res => res));
   }
+
+  public getTransportList(userId){
+    // tslint:disable-next-line: max-line-length
+    return this.http.post(this.BACKEND_URL + 'transports/getTransportList',{'userId': userId}, { headers: this.headers }).pipe(map(res => res));
+  }
 }

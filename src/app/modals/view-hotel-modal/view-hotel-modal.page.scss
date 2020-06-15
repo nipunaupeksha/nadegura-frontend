@@ -1,6 +1,6 @@
 .content {
     height: 100%;
-    background-image: url("../../../assets/img/11.jpg");
+    background-image: url("../../../assets/img/18.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -8,6 +8,10 @@
 }
 
 /*added content*/
+.label-fixer{
+    font-size: 0.5em;
+    vertical-align:top;
+}
 ion-card{
     margin:0 !important;
 }

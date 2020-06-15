@@ -35,11 +35,86 @@
           </div>
         </ion-col>
         <ion-col class="ion-col-max-width-2">
-          <p>xxx</p>
+          <input type="text" placeholder="No. of rooms" name="{{room['roomType']}}" required class="recommend-input "
+            ngModel>
         </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="ion-col-max-width-1"></ion-col>
+        <ion-col class="ion-col-max-width-2">
+          <select name="" id="">
+            <option value="1">Non-AC</option>
+            <option value="2">AC</option>
+            <option value="3">Both</option>
+          </select>
+        </ion-col>
+        
       </ion-row>
     </ng-container>
     <!--End of Room Types-->
+
+    <!--Adults-->
+    <ion-row class="ion-row-margin-bottom-1" style="margin-top:10px;">
+      <ion-col>
+        <h4 class="recommend-details">Visiting Count</h4>
+      </ion-col>
+    </ion-row>
+    <ng-container>
+      <ion-row class="ion-row-margin-bottom-1">
+        <ion-col class="ion-col-max-width-1">
+          <div>
+            <p class="recommend-details">Number of Adults</p>
+          </div>
+        </ion-col>
+        <ion-col class="ion-col-max-width-2">
+          <input type="text" placeholder="No. of adults" name="adults" required class="recommend-input "
+            ngModel>
+        </ion-col>
+      </ion-row>
+    </ng-container>
+    <!--End of Adults-->
+
+    <!--Kids-->
+    <ng-container>
+      <ion-row class="ion-row-margin-bottom-1">
+        <ion-col class="ion-col-max-width-1">
+          <div>
+            <p class="recommend-details">Number of Kids</p>
+          </div>
+        </ion-col>
+        <ion-col class="ion-col-max-width-2">
+          <input type="text" placeholder="No. of kids" name="kids" required class="recommend-input "
+            ngModel>
+        </ion-col>
+      </ion-row>
+    </ng-container>
+    <!--End of Kids-->
+
+    <!--Adults-->
+    <ion-row class="ion-row-margin-bottom-1" style="margin-top:10px;">
+      <ion-col>
+        <h4 class="recommend-details">Prices</h4>
+      </ion-col>
+    </ion-row>
+    <ng-container>
+      <ion-row class="ion-row-margin-bottom-1">
+        <ion-col class="ion-col-max-width-1">
+          <div>
+            <p class="recommend-details">Per Night Price</p>
+          </div>
+        </ion-col>
+        <ion-col class="ion-col-max-width-2">
+          <input type="text" placeholder="Per Night Price" name="price" required class="recommend-input "
+            ngModel>
+        </ion-col>
+      </ion-row>
+    </ng-container>
+    <!--End of Adults-->
+    <ion-row>
+      <button  ion-button full type="submit" class="btn btn-primary">
+        Update
+      </button>
+    </ion-row>
   </div>
 
 </ion-content>
