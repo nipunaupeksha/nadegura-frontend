@@ -1,3 +1,5 @@
+import { TransportModalPage } from './../modals/transport-modal/transport-modal.page';
+import { HotelModalPage } from './../modals/hotel-modal/hotel-modal.page';
 import { ServiceSelectPage } from './../modals/service-select/service-select.page';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -22,7 +24,6 @@ export class HomePage implements OnInit {
   // tslint:disable-next-line: use-lifecycle-interface
   ngOnInit() {
     this.roleType = this.getDecodedAccessToken(localStorage.getItem('token'))['role'];
-    
   }
 
 
@@ -32,6 +33,20 @@ export class HomePage implements OnInit {
       componentProps: {
         custom_value: paramToSent
       }
+    });
+    return await modal.present();
+  }
+
+  async viewHotelsModal(){
+    const modal = await this.modalController.create({
+      component: HotelModalPage,
+    });
+    return await modal.present();
+  }
+
+  async viewTransportModal(){
+    const modal = await this.modalController.create({
+      component: TransportModalPage,
     });
     return await modal.present();
   }

@@ -1,0 +1,45 @@
+<ion-header style="background: white;">
+  <ion-toolbar>
+    <div class="ion-padding">
+      <ion-row>
+        <ion-col style="text-align: end; max-height:20px;">
+          <span class="material-icons" (click)="closeMedia()" style="font-size: 20px; max-height: 20px; ">
+            close
+          </span>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col style="text-align:center; text-transform: uppercase;">
+          <h4 style="letter-spacing: 3px;">{{hotelName}}</h4>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content force-overscroll="false" class="content fullscreen-bg">
+
+  <div class="ion-padding">
+    <!--Room Types-->
+    <ion-row class="ion-row-margin-bottom-1">
+      <ion-col>
+        <h4 class="recommend-details">Rooms</h4>
+      </ion-col>
+    </ion-row>
+
+    <ng-container *ngFor="let room of roomList">
+      <ion-row class="ion-row-margin-bottom-1">
+        <ion-col class="ion-col-max-width-1">
+          <div>
+            <p class="recommend-details">{{room['roomType']}}</p>
+          </div>
+        </ion-col>
+        <ion-col class="ion-col-max-width-2">
+          <p>xxx</p>
+        </ion-col>
+      </ion-row>
+    </ng-container>
+    <!--End of Room Types-->
+  </div>
+
+</ion-content>

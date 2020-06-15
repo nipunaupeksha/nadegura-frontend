@@ -108,6 +108,7 @@ export class TripRecommenderPage implements OnInit {
           this.recommendedTrips.push(data['data'][i]);
         }
       }
+      
     });
 
     this.openModal();

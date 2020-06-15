@@ -17,10 +17,23 @@ export class HotelService {
   private BACKEND_URL = 'http://127.0.0.1:8080/';
   constructor(private http: HttpClient) { }
 
-  public addHotel(hotelName, email, phone, address,userId) {
+  public addHotel(hotelName, address, phone, email,userId) {
     return this.http.post(this.BACKEND_URL + 'hotels/addHotel',
       // tslint:disable-next-line:object-literal-key-quotes
       // tslint:disable-next-line: max-line-length
       { 'hotelName': hotelName , 'address': address, 'phone':phone, 'email': email,'userId':userId}).pipe(map(res => res));
+  }
+
+  public getHotelList(userId){
+    return this.http.post(this.BACKEND_URL + 'hotels/getHotelList',{'userId': userId}, { headers: this.headers }).pipe(map(res => res));
+  }
+
+  public getHotelDetails(hotelId){
+    // tslint:disable-next-line: max-line-length
+    return this.http.post(this.BACKEND_URL + 'hotels/getHotelDetails',{'hotelId': hotelId}, { headers: this.headers }).pipe(map(res => res));
+  }
+
+  public getRoomList(){
+    return this.http.get(this.BACKEND_URL + 'hotels/getRoomList', { headers: this.headers }).pipe(map(res => res));
   }
 }

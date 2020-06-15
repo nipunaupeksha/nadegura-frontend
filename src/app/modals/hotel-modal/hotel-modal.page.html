@@ -1,0 +1,46 @@
+<ion-header style="background: white;">
+  <ion-toolbar>
+    <div class="ion-padding">
+      <ion-row>
+        <ion-col style="text-align: end; max-height:20px;">
+          <span class="material-icons" (click)="closeMedia()" style="font-size: 20px; max-height: 20px; ">
+            close
+          </span>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col style="text-align:center; text-transform: uppercase;">
+          <h4 style="letter-spacing: 3px;">Hotels</h4>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content force-overscroll="false" class="content fullscreen-bg">
+  <div class="ion-padding">
+    <ion-row>
+      <ng-container *ngFor="let hotel of hotelList">
+        <ion-col>
+          <!-- Ionic Card -->
+          <ion-card class="card-properties" (click)="viewHotelService(hotel['hotelId'], hotel['hotelName'])">
+            <ion-card-header>
+
+              <ion-card-title>{{hotel['hotelName']}}
+              </ion-card-title>{{hotel['email']}} <br>
+              {{hotel['phone']}}
+              <ion-card-subtitle>
+              </ion-card-subtitle>
+            </ion-card-header>
+
+            <ion-card-content>
+
+            </ion-card-content>
+          </ion-card>
+          <!-- End of Ionic Card -->
+        </ion-col>
+      </ng-container>
+    </ion-row>
+  </div>
+
+</ion-content>

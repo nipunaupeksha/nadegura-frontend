@@ -20,13 +20,13 @@
           <strong>Join a Trip</strong>
         </button> 
         <!-- services -->
-        <button  (click)="openModal(roleType)" class="btn btn-primary" *ngIf="roleType!='customer'">
+        <button  (click)="openModal(roleType)" class="btn btn-primary" *ngIf="roleType =='serviceH' ||roleType=='serviceT'">
           <strong>Services</strong>
         </button>
-        <button  class="btn btn-primary" *ngIf="roleType=='serviceH'">
+        <button  class="btn btn-primary" *ngIf="roleType=='serviceH'" (click)="viewHotelsModal()">
           <strong>View Hotels</strong>
         </button>
-        <button  class="btn btn-primary" *ngIf="roleType=='serviceT'" >
+        <button  class="btn btn-primary" *ngIf="roleType=='serviceT'" (click)="viewTransportModal()">
           <strong>View Transport</strong>
         </button>
       </div>

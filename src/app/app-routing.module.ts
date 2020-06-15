@@ -71,6 +71,22 @@ const routes: Routes = [
     path: 'viewAllTrips',
     loadChildren: () => import('./view-all-trips/view-all-trips.module').then( m => m.ViewAllTripsPageModule)
   },
+  {
+    path: 'transport-modal',
+    loadChildren: () => import('./modals/transport-modal/transport-modal.module').then( m => m.TransportModalPageModule)
+  },
+  {
+    path: 'hotel-modal',
+    loadChildren: () => import('./modals/hotel-modal/hotel-modal.module').then( m => m.HotelModalPageModule)
+  },
+  {
+    path: 'view-hotel-modal',
+    loadChildren: () => import('./modals/view-hotel-modal/view-hotel-modal.module').then( m => m.ViewHotelModalPageModule)
+  },
+  {
+    path: 'view-transport-modal',
+    loadChildren: () => import('./modals/view-transport-modal/view-transport-modal.module').then( m => m.ViewTransportModalPageModule)
+  },
 
 ];
 
