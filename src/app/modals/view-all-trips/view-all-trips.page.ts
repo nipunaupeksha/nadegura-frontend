@@ -1,7 +1,8 @@
+import { ViewAllTripsSelectedPage } from './../view-all-trips-selected/view-all-trips-selected.page';
 import { UserService } from './../../services/user.service';
 import { ToastController, LoadingController, ModalController } from '@ionic/angular';
 import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import * as jwt_decode from 'jwt-decode';
 
 @Component({
@@ -9,6 +10,8 @@ import * as jwt_decode from 'jwt-decode';
   templateUrl: './view-all-trips.page.html',
   styleUrls: ['./view-all-trips.page.scss'],
 })
+
+
 export class ViewAllTripsPage implements OnInit {
   userId: string;
   tripList = [];
@@ -27,6 +30,16 @@ export class ViewAllTripsPage implements OnInit {
       this.getTrips();
   }
 
+  async viewTripDetails(param1,param2){
+    const modal = await this.modalController.create({
+      component: ViewAllTripsSelectedPage ,
+      componentProps: {
+        trip_id: param1,
+        image_id: param2
+      }
+    });
+    return await modal.present();
+  }
   getDecodedAccessToken(token: string): any {
     try {
       return jwt_decode(token);
@@ -76,3 +89,4 @@ export class ViewAllTripsPage implements OnInit {
     await this.modalController.dismiss();
   }
 }
+

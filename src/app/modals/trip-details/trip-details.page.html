@@ -14,7 +14,7 @@
       <ion-row>
         <!-- col - 1 -->
         <ion-col class="max-width-fixer-1">
-          <img src="assets/img/locations/{{selectedTrip['destination']}}/1.jpg" alt="" class="image-wrapper">
+          <img src="assets/img/locations/{{selectedTrip['tripDestinationId']}}/1.jpg" alt="" class="image-wrapper">
         </ion-col>
         <!-- col - 2 -->
         <ion-col class="max-width-fixer-2">
@@ -51,7 +51,7 @@
       <ion-row>
         <ion-slides [options]="sliderOpts">
           <ion-slide *ngFor="let img of [1,2,3,4,5]">
-            <img src="assets/img/locations/{{selectedTrip['destination']}}/{{img}}.jpg" tappable
+            <img src="assets/img/locations/{{selectedTrip['tripDestinationId']}}/{{img}}.jpg" tappable
               (click)="openPreview(img)" alt="">
           </ion-slide>
         </ion-slides>

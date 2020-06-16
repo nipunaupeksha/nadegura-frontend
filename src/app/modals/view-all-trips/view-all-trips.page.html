@@ -24,10 +24,10 @@
       <h4 class="title">Created Trips</h4>
     </ion-row>
     <ion-row>
-      <ng-container *ngFor="let trip of tripList;let i=index">
+      <ng-container *ngFor="let trip of tripList;let i=index;">
         <ion-col size=12 *ngIf="trip['created']=='C'">
           <!-- Ionic Card -->
-          <ion-card class="card-properties" [ngStyle]="{'background-image': 'url('+'../../../assets/img/locations/'+trip['destination'].trim()+'/1.jpg)'}">
+          <ion-card class="card-properties" [ngStyle]="{'background-image': 'url('+'../../../assets/img/locations/'+trip['tripDestinationId']+'/1.jpg)'}" (click)="viewTripDetails(trip['tripId'],trip['tripDestinationId'])">
             <ion-card-header>
               <div class="tripPhoto"></div>
               <ion-card-subtitle [ngStyle]="{color: getColor(getDateDifference(trip['startDate']))}">{{dateDifference}}
@@ -50,14 +50,15 @@
       <h4 class="title">Joined Trips</h4>
     </ion-row>
     <ion-row>
-      <ng-container *ngFor="let trip of tripList">
+      <ng-container *ngFor="let trip of tripList; let i=index;">
         <ion-col size=12 *ngIf="trip['created']=='J'">
           <!-- Ionic Card -->
-          <ion-card class="card-properties" [ngStyle]="{'background-image': 'url('+'../../../assets/img/locations/'+trip['destination'].trim()+'/1.jpg)'}">
+          <ion-card class="card-properties" [ngStyle]="{'background-image': 'url('+'../../../assets/img/locations/'+trip['tripDestinationId']+'/1.jpg)'}" (click)="viewTripDetails(trip['tripId'],trip['tripDestinationId'])">
             <ion-card-header>
+              <div class="tripPhoto"></div>
               <ion-card-subtitle [ngStyle]="{color: getColor(getDateDifference(trip['startDate']))}">{{dateDifference}}
               </ion-card-subtitle>
-              <ion-card-title>{{trip['destination']}}</ion-card-title>
+              <ion-card-title>{{trip['destination']}} </ion-card-title>
             </ion-card-header>
 
             <ion-card-content>

@@ -15,7 +15,7 @@
       <ion-row name="details" class="row-color row-gap" *ngFor="let trip of passedArray; let i = index;" (click)="getSelectedTrip(i)">
         <!-- col - 1 -->
         <ion-col class="max-width-fixer-1 overflow-fixer">
-          <img src="assets/img/locations/{{trip['destination']}}/1.jpg" alt="" class="image-wrapper">
+          <img src="assets/img/locations/{{trip['tripDestinationId']}}/1.jpg" alt="" class="image-wrapper">
         </ion-col>
         <!-- col - 2 -->
         <ion-col style="max-width:5px;">

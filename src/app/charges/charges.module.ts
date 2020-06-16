@@ -13,6 +13,7 @@ import { ChargesPage } from './charges.page';
     CommonModule,
     FormsModule,
     IonicModule,
+    CommonModule,
     ChargesPageRoutingModule
   ],
   declarations: [ChargesPage]

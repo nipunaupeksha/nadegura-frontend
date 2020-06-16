@@ -10,11 +10,11 @@ import { ForgotPasswordPage } from './forgot-password.page';
 
 @NgModule({
   imports: [
-    CommonModule,
     FormsModule,
     IonicModule,
-    ForgotPasswordPageRoutingModule
+    ForgotPasswordPageRoutingModule,
+    CommonModule
   ],
   declarations: [ForgotPasswordPage]
 })
-export class ForgotPasswordPageModule {}
+export class ForgotPasswordPageModule { }

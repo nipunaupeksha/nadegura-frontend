@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
@@ -66,12 +67,48 @@ const routes: Routes = [
   {
     path: 'recommendedServices',
     loadChildren: () => import('./recommended-services/recommended-services.module').then( m => m.RecommendedServicesPageModule)
+  },
+  {
+    path: 'hotel-modal',
+    loadChildren: () => import('./modals/hotel-modal/hotel-modal.module').then( m => m.HotelModalPageModule)
+  },
+  {
+    path: 'recommendations',
+    loadChildren: () => import('./modals/recommendations/recommendations.module').then( m => m.RecommendationsPageModule)
+  },
+  {
+    path: 'service-selece',
+    loadChildren: () => import('./modals/service-select/service-select.module').then( m => m.ServiceSelectPageModule)
+  },
+  {
+    path: 'transport-modal',
+    loadChildren: () => import('./modals/transport-modal/transport-modal.module').then( m => m.TransportModalPageModule)
+  },
+  {
+    path: 'trip-details',
+    loadChildren: () => import('./modals/trip-details/trip-details.module').then( m => m.TripDetailsPageModule)
+  },
+  {
+    path: 'view-all-trips',
+    loadChildren: () => import('./modals/view-all-trips/view-all-trips.module').then( m => m.ViewAllTripsPageModule)
+  },
+  {
+    path: 'view-hotel-modal',
+    loadChildren: () => import('./modals/view-hotel-modal/view-hotel-modal.module').then( m => m.ViewHotelModalPageModule)
+  },
+  {
+    path: 'view-transport-modal',
+    loadChildren: () => import('./modals/view-transport-modal/view-transport-modal.module').then( m => m.ViewTransportModalPageModule)
+  },
+  {
+    path: 'view-all-trips-selected',
+    loadChildren: () => import('./modals/view-all-trips-selected/view-all-trips-selected.module').then( m => m.ViewAllTripsSelectedPageModule)
   }
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }), CommonModule
   ],
   exports: [RouterModule]
 })

@@ -33,7 +33,7 @@ export class ViewHotelModalPage implements OnInit {
   ngOnInit() {
     this.hotelId = this.navParams.get('hotel_id');
     this.hotelName = this.navParams.get('hotel_name');
-    this.imageId = this.navParams.get('image_id')
+    this.imageId = this.navParams.get('image_id');
     this.getHotelDetails();
     this.getRoomTypes();
   }
