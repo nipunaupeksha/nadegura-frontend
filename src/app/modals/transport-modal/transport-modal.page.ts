@@ -1,3 +1,4 @@
+import { ViewTransportModalPage } from './../view-transport-modal/view-transport-modal.page';
 import { TransportService } from './../../services/transport.service';
 import { UserService } from './../../services/user.service';
 import { Router } from '@angular/router';
@@ -12,7 +13,8 @@ import * as jwt_decode from 'jwt-decode';
 })
 export class TransportModalPage implements OnInit {
   userId = '';
-  transportList =[];
+  transportList = [];
+  transportImgList = [];
   constructor(
     private modalController: ModalController,
     private router: Router,
@@ -22,16 +24,16 @@ export class TransportModalPage implements OnInit {
     public loadingController: LoadingController,
     private userService: UserService,
     private elementRef: ElementRef
-  ) { 
+  ) {
     this.userId = this.getDecodedAccessToken(localStorage.getItem("token"))['user_id'];
   }
 
   ngOnInit() {
     this.getTransportList();
-    this.presentToast('Hotels Updated', 1000);
+    this.presentToast('Transport Updated', 1000);
   }
 
-  getTransportList(){
+  getTransportList() {
     this.transportList = [];
     this.transportService.getTransportList(this.userId).subscribe(data => {
       // tslint:disable-next-line: no-string-literal
@@ -40,11 +42,24 @@ export class TransportModalPage implements OnInit {
         for (let i in data['data']) {
           // tslint:disable-next-line: no-string-literal
           this.transportList.push(data['data'][i]);
+          this.transportImgList.push(Math.floor(Math.random() * 10) + 1);
         }
       }
     });
   }
 
+  async viewTransportService(param1, param2, param3, param4) {
+    const modal = await this.modalController.create({
+      component: ViewTransportModalPage,
+      componentProps: {
+        transport_id: param1,
+        transport_type: param2,
+        transport_name: param3,
+        image_id: param4
+      }
+    });
+    return await modal.present();
+  }
   async closeMedia() {
     await this.modalController.dismiss();
   }

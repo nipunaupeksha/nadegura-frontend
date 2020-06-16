@@ -17,7 +17,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content force-overscroll="false" class="content fullscreen-bg">
+<ion-content force-overscroll="false" class="content fullscreen-bg" [ngStyle]="{'background-image': 'url('+'../../../assets/img/hotels/photos/'+imageId+'.jpg)'}">
 
   <div class="ion-padding">
     <!--Room Types-->
@@ -35,14 +35,15 @@
           </div>
         </ion-col>
         <ion-col class="ion-col-max-width-2">
-          <input type="text" placeholder="No. of rooms" name="{{room['roomType']}}" required class="recommend-input "
+          <input type="text" placeholder="No. of rooms" name="{{room['roomType']}}" required class="ion-input-margin-bottom recommend-input"
             ngModel>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col class="ion-col-max-width-1"></ion-col>
         <ion-col class="ion-col-max-width-2">
-          <select name="" id="">
+          <select name="" id="" class="selector-background"
+           style="padding-left:42px; padding-right:50px;">
             <option value="1">Non-AC</option>
             <option value="2">AC</option>
             <option value="3">Both</option>
@@ -67,7 +68,7 @@
           </div>
         </ion-col>
         <ion-col class="ion-col-max-width-2">
-          <input type="text" placeholder="No. of adults" name="adults" required class="recommend-input "
+          <input type="text" placeholder="No. of adults" name="adults" required class="ion-input-margin-bottom recommend-input"
             ngModel>
         </ion-col>
       </ion-row>
@@ -83,7 +84,7 @@
           </div>
         </ion-col>
         <ion-col class="ion-col-max-width-2">
-          <input type="text" placeholder="No. of kids" name="kids" required class="recommend-input "
+          <input type="text" placeholder="No. of kids" name="kids" required class="ion-input-margin-bottom recommend-input"
             ngModel>
         </ion-col>
       </ion-row>
@@ -104,7 +105,7 @@
           </div>
         </ion-col>
         <ion-col class="ion-col-max-width-2">
-          <input type="text" placeholder="Per Night Price" name="price" required class="recommend-input "
+          <input type="text" placeholder="Per Night Price" name="price" required class="ion-input-margin-bottom recommend-input"
             ngModel>
         </ion-col>
       </ion-row>

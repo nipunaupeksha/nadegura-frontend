@@ -20,15 +20,18 @@
 <ion-content force-overscroll="false" class="content fullscreen-bg">
   <div class="ion-padding">
     <ion-row>
-      <ng-container *ngFor="let hotel of hotelList">
-        <ion-col>
+      <ng-container *ngFor="let hotel of hotelList;let i=index">
+        <ion-col size=12>
           <!-- Ionic Card -->
-          <ion-card class="card-properties" (click)="viewHotelService(hotel['hotelId'], hotel['hotelName'])">
+          <ion-card class="card-properties"
+            [ngStyle]="{'background-image': 'url('+'../../../assets/img/hotels/photos/'+hotelImgList[i]+'.jpg)'}"
+            (click)="viewHotelService(hotel['hotelId'], hotel['hotelName'],hotelImgList[i])">
             <ion-card-header>
 
               <ion-card-title>{{hotel['hotelName']}}
-              </ion-card-title>{{hotel['email']}} <br>
-              {{hotel['phone']}}
+              </ion-card-title>
+              <span class="contactDetails">{{hotel['email']}} <br>
+                {{hotel['phone']}}</span>
               <ion-card-subtitle>
               </ion-card-subtitle>
             </ion-card-header>

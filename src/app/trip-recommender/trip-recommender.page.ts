@@ -1,5 +1,5 @@
 import { RecommendationsPage } from './../modals/recommendations/recommendations.page';
-import { LoadingController, ToastController, ModalController } from '@ionic/angular';
+import { LoadingController, ToastController, ModalController, AlertController } from '@ionic/angular';
 import { UserService } from './../services/user.service';
 import { Router } from '@angular/router';
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
@@ -34,7 +34,8 @@ export class TripRecommenderPage implements OnInit {
     public toastController: ToastController,
     public loadingController: LoadingController,
     private userService: UserService,
-    private modalController: ModalController
+    private modalController: ModalController,
+    private alertCtrl: AlertController
   ) {
     this.userId = this.getDecodedAccessToken(localStorage.getItem("token"))['user_id'];
   }
@@ -179,5 +180,30 @@ export class TripRecommenderPage implements OnInit {
     this.destinationArea = this.destinationList[this.destinationSelect]['area'];
     this.destinationDistrict = this.destinationList[this.destinationSelect]['district'];
     this.destinationProvince = this.destinationList[this.destinationSelect]['province'];
+  }
+
+  async signout() {
+    const alert = await this.alertCtrl.create({
+      header: 'Alert!',
+      message: 'Are you sure you want to Sign Out from "Nade Gura"?',
+      buttons: [{
+        cssClass: 'alertCustomCss',
+        text: 'Yes',
+        role: 'Yes',
+        handler: () => {
+          
+        }
+      },
+      {
+        cssClass: 'alertCustomCss',
+        text: 'No',
+        role: 'no',
+        handler: () => {
+        }
+      }
+      ]
+    }
+    );
+    await alert.present();
   }
 }

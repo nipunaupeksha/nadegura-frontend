@@ -13,11 +13,11 @@ import * as jwt_decode from 'jwt-decode';
 })
 export class HotelModalPage implements OnInit {
   hotelList = [];
+  hotelImgList = [];
   userId = '';
   constructor(
     private modalController: ModalController,
     private router: Router,
-    private navParams: NavParams,
     private hotelService: HotelService,
     public toastController: ToastController,
     public loadingController: LoadingController,
@@ -29,14 +29,13 @@ export class HotelModalPage implements OnInit {
 
   ngOnInit() {
     this.getHotelList();
-    this.presentToast('Hotels Updated', 1000);
   }
 
   async closeMedia() {
     await this.modalController.dismiss();
   }
 
-  getHotelList(){
+  getHotelList() {
     this.hotelList = [];
     this.hotelService.getHotelList(this.userId).subscribe(data => {
       // tslint:disable-next-line: no-string-literal
@@ -45,35 +44,22 @@ export class HotelModalPage implements OnInit {
         for (let i in data['data']) {
           // tslint:disable-next-line: no-string-literal
           this.hotelList.push(data['data'][i]);
+          this.hotelImgList.push(Math.floor(Math.random() * 10)+1);
         }
       }
     });
   }
 
-  async viewHotelService(paramValue1, paramValue2){
+  async viewHotelService(paramValue1, paramValue2,paramValue3) {
     const modal = await this.modalController.create({
-      component:ViewHotelModalPage,
+      component: ViewHotelModalPage,
       componentProps: {
         hotel_id: paramValue1,
-        hotel_name: paramValue2
+        hotel_name: paramValue2,
+        image_id : paramValue3
       }
     });
     return await modal.present();
-  }
-
-  async presentToast(msg, dur) {
-    const toast = await this.toastController.create({
-      message: msg,
-      duration: dur,
-      buttons: [
-        {
-          text: 'Close',
-          role: 'cancel'
-        }
-      ]
-    });
-    toast.present();
-    return toast.onDidDismiss();
   }
 
   getDecodedAccessToken(token: string): any {

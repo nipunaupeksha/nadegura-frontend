@@ -1,3 +1,4 @@
+import { ViewAllTripsPage } from './../modals/view-all-trips/view-all-trips.page';
 import { TransportModalPage } from './../modals/transport-modal/transport-modal.page';
 import { HotelModalPage } from './../modals/hotel-modal/hotel-modal.page';
 import { ServiceSelectPage } from './../modals/service-select/service-select.page';
@@ -16,14 +17,16 @@ export class HomePage implements OnInit {
   roleType = 'hotels';
 
   constructor(
-    private router: Router, 
+    private router: Router,
     private modalController: ModalController,
     private alertCtrl: AlertController,
-    ) { }
+  ) {
+    this.roleType = this.getDecodedAccessToken(localStorage.getItem('token'))['role'];
+  }
 
   // tslint:disable-next-line: use-lifecycle-interface
   ngOnInit() {
-    this.roleType = this.getDecodedAccessToken(localStorage.getItem('token'))['role'];
+
   }
 
 
@@ -37,14 +40,14 @@ export class HomePage implements OnInit {
     return await modal.present();
   }
 
-  async viewHotelsModal(){
+  async viewHotelsModal() {
     const modal = await this.modalController.create({
       component: HotelModalPage,
     });
     return await modal.present();
   }
 
-  async viewTransportModal(){
+  async viewTransportModal() {
     const modal = await this.modalController.create({
       component: TransportModalPage,
     });
@@ -85,8 +88,11 @@ export class HomePage implements OnInit {
     this.router.navigate(['./joinTrip']);
   }
 
-  viewAllTrips() {
-    this.router.navigate(['./viewAllTrips']);
+  async  viewAllTrips() {
+    const modal = await this.modalController.create({
+      component: ViewAllTripsPage,
+    });
+    return await modal.present();
   }
 
   getDecodedAccessToken(token: string): any {

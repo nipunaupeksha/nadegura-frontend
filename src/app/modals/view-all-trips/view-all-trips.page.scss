@@ -1,0 +1,99 @@
+.content {
+    height: 100%;
+    background-image: url("../../../assets/img/15.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    font-family: "kiona";
+}
+
+ion-card {
+    margin: 0 !important;
+}
+
+/*added content*/
+.div-margin {
+    margin: 2px 2px 2px 5px;
+}
+.icon-click {
+    color: white;
+    margin-right: 5px;
+}
+.card-properties {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    border: 1px solid rgba(0, 0, 0, 0);
+    transition: transform 0.5s;
+    filter: grayscale(50%);
+}
+.card-properties:hover {
+    border: 1px solid rgba(0, 0, 0, 0.01);
+    transform: translateY(2px);
+}
+
+.recommend-details {
+    color: white;
+    margin-bottom: 0px;
+}
+
+.recommend-input {
+    border: none;
+    border-radius: 5px;
+    margin-left: 10px;
+    text-align: center;
+}
+
+.signs {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    max-width: 25px;
+    height: auto;
+    filter: brightness(0) invert(1);
+}
+
+.signs:hover {
+    transform: scale(1.2);
+}
+.column-decorator {
+    min-height: 50vh;
+}
+
+.div-decorator {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+/*finish added content*/
+
+ion-card-title {
+    font-family: "kiona";
+    color: #fff;
+}
+.contactDetails{
+    color:#FFF
+}
+.title{
+    margin-top:5px;
+    font-size: 1.2rem;
+    color:#FFF;
+}
+ion-card-subtitle,ion-card-content{
+    font-family: 'kiona';
+    font-weight: bold;
+}
+ion-card-title{
+    color:#000;
+}
+.tripPhoto{
+    min-width: 50vh;
+    min-height: 50vh;
+    background-color: rgba(255,255,255,0.8);
+    position: absolute;
+    top: -175px;
+    left: -150px;
+    transform: rotate(45deg);
+}

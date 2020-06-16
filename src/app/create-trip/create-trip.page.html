@@ -26,17 +26,19 @@
               <ion-col class="ion-col-max-width-2">
                 <!-- <input type="text" placeholder="destination" name="destination" required id="destination"
                   class="ion-input-margin-bottom recommend-input" ngModel> -->
-                
-                <select name="destination" id="destination" class="ion-input-margin-bottom selector-background" required (click)="setValues()" [(ngModel)]="destinationSelect" >
-                  <option *ngFor = "let destination of destinationList; let i = index;" [value]="i" >{{destination["destination"]}}</option>
+
+                <select name="destination" id="destination" class="ion-input-margin-bottom selector-background" required
+                  (click)="setValues()" [(ngModel)]="destinationSelect">
+                  <option *ngFor="let destination of destinationList; let i = index;" [value]="i">
+                    {{destination["destination"]}}</option>
                 </select>
-                
+
                 <input type="text" placeholder="{{destinationArea}}" name="area" required id="area"
-                  class="ion-input-margin-bottom recommend-input" disabled ngModel >
+                  class="ion-input-margin-bottom recommend-input" disabled ngModel>
                 <input type="text" placeholder="{{destinationDistrict}}" name="district" required id="district"
                   class="ion-input-margin-bottom recommend-input" disabled ngModel>
-                <input type="text" placeholder="{{destinationProvince}}" name="province" required id="province" class="recommend-input"
-                  disabled ngModel>
+                <input type="text" placeholder="{{destinationProvince}}" name="province" required id="province"
+                  class="ion-input-margin-bottom recommend-input" disabled ngModel>
               </ion-col>
             </ion-row>
             <!--End of Destination-->
@@ -49,12 +51,12 @@
                 </div>
               </ion-col>
               <ion-col class="ion-col-max-width-2">
-                <input onfocus="(this.type='date')" onblur="(this.type='text')" type="text" placeholder="date" name="start_date" required id="start_date"
-                  class="recommend-input ion-input-margin-bottom" ngModel>
-                <input onfocus="(this.type='time')" onblur="(this.type='text')" type="text" placeholder="time" name="start_time" required id="start_time"
-                  class="recommend-input ion-input-margin-bottom" ngModel>
+                <input onfocus="(this.type='date')" onblur="(this.type='text')" type="text" placeholder="date"
+                  name="start_date" required id="start_date" class="recommend-input ion-input-margin-bottom" ngModel>
+                <input onfocus="(this.type='time')" onblur="(this.type='text')" type="text" placeholder="time"
+                  name="start_time" required id="start_time" class="recommend-input ion-input-margin-bottom" ngModel>
                 <input type="text" placeholder="venue" name="start_venue" required id="start_venue"
-                  class="recommend-input" ngModel>
+                  class="ion-input-margin-bottom recommend-input" ngModel>
               </ion-col>
             </ion-row>
             <!--End of Start at-->
@@ -67,8 +69,8 @@
                 </div>
               </ion-col>
               <ion-col class="ion-col-max-width-2">
-                <input type="text" placeholder="No. of Days" name="days" required id="days" class="recommend-input "
-                  ngModel>
+                <input type="text" placeholder="No. of Days" name="days" required id="days"
+                  class="ion-input-margin-bottom recommend-input" ngModel>
               </ion-col>
             </ion-row>
             <!--End of Days-->
@@ -81,8 +83,8 @@
                 </div>
               </ion-col>
               <ion-col class="ion-col-max-width-2">
-                <input type="text" placeholder="Type no. of people" name="people_count" required id="people_count"
-                  class="recommend-input " ngModel>
+                <input type="text" placeholder="No. of people" name="people_count" required id="people_count"
+                  class="ion-input-margin-bottom recommend-input" ngModel>
               </ion-col>
             </ion-row>
             <!--End of People Count-->
@@ -95,8 +97,8 @@
                 </div>
               </ion-col>
               <ion-col class="ion-col-max-width-2">
-                <input type="text" placeholder="Type no. of participants" name="participants" required id="participants"
-                  class="recommend-input " ngModel>
+                <input type="text" placeholder="No. of participants" name="participants" required id="participants"
+                  class="ion-input-margin-bottom recommend-input" ngModel>
               </ion-col>
             </ion-row>
             <!--End of People Participating-->
@@ -110,7 +112,7 @@
               </ion-col>
               <ion-col class="ion-col-max-width-2">
                 <input type="text" placeholder="Rs." name="budget_per_person" required id="budget_per_person"
-                  class="recommend-input" ngModel>
+                  class="ion-input-margin-bottom recommend-input" ngModel>
               </ion-col>
             </ion-row>
             <!--End of Budget per Person-->
@@ -158,8 +160,8 @@
             </ion-col>
             <!--Icons-->
             <ion-col class="ion-col-max-width-3">
-              <span class="material-icons icon-click" *ngFor="let t of travelList; let i=index;" [ngStyle]="{'color': iconColor[i]===0 ? 'red' :'white'}"
-                (click)="clickTravelIcon(i)">
+              <span class="material-icons icon-click" *ngFor="let t of travelList; let i=index;"
+                [ngStyle]="{'color': iconColor[i]===0 ? 'red' :'white'}" (click)="clickTravelIcon(i)">
                 {{t["travelValue"]}}
               </span>
               <!--End of Icons-->

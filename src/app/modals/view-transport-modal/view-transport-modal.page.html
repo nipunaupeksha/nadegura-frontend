@@ -1,9 +1,109 @@
-<ion-header>
+<ion-header style="background: white;">
   <ion-toolbar>
-    <ion-title>view-transport-modal</ion-title>
+    <div class="ion-padding">
+      <ion-row>
+        <ion-col style="text-align: end; max-height:20px;">
+          <span class="material-icons" (click)="closeMedia()" style="font-size: 20px; max-height: 20px; ">
+            close
+          </span>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col style="text-align:center; text-transform: uppercase;">
+          <h4 style="letter-spacing: 3px;">{{transportName}}</h4>
+        </ion-col>
+      </ion-row>
+    </div>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content force-overscroll="false" class="content fullscreen-bg" [ngStyle]="{'background-image': 'url('+'../../../assets/img/hotels/photos/'+imageId+'.jpg)'}">
+
+  <div class="ion-padding">
+    <!--License Plate-->
+    <ion-row class="ion-row-margin-bottom-1">
+      <ion-col>
+        <h4 class="recommend-details">License Plate</h4>
+      </ion-col>
+    </ion-row>
+
+    <ng-container>
+      <ion-row class="ion-row-margin-bottom-1">
+        <ion-col class="ion-col-max-width-1">
+          <div>
+            <p class="recommend-details">License Plate</p>
+          </div>
+        </ion-col>
+        <ion-col class="ion-col-max-width-2">
+          <input type="text" placeholder="No. of rooms" name="license" required class="recommend-input "
+            ngModel>
+        </ion-col>
+      </ion-row>
+    </ng-container>
+    <!--End of Room Types-->
+
+    <!--Adults-->
+    <ion-row class="ion-row-margin-bottom-1" style="margin-top:10px;">
+      <ion-col>
+        <h4 class="recommend-details">Visiting Count</h4>
+      </ion-col>
+    </ion-row>
+    <ng-container>
+      <ion-row class="ion-row-margin-bottom-1">
+        <ion-col class="ion-col-max-width-1">
+          <div>
+            <p class="recommend-details">Number of Adults</p>
+          </div>
+        </ion-col>
+        <ion-col class="ion-col-max-width-2">
+          <input type="text" placeholder="No. of adults" name="adults" required class="recommend-input "
+            ngModel>
+        </ion-col>
+      </ion-row>
+    </ng-container>
+    <!--End of Adults-->
+
+    <!--Kids-->
+    <ng-container>
+      <ion-row class="ion-row-margin-bottom-1">
+        <ion-col class="ion-col-max-width-1">
+          <div>
+            <p class="recommend-details">Number of Kids</p>
+          </div>
+        </ion-col>
+        <ion-col class="ion-col-max-width-2">
+          <input type="text" placeholder="No. of kids" name="kids" required class="recommend-input "
+            ngModel>
+        </ion-col>
+      </ion-row>
+    </ng-container>
+    <!--End of Kids-->
+
+    <!--Adults-->
+    <ion-row class="ion-row-margin-bottom-1" style="margin-top:10px;">
+      <ion-col>
+        <h4 class="recommend-details">Prices</h4>
+      </ion-col>
+    </ion-row>
+    <ng-container>
+      <ion-row class="ion-row-margin-bottom-1">
+        <ion-col class="ion-col-max-width-1">
+          <div>
+            <p class="recommend-details">Per Night Price</p>
+          </div>
+        </ion-col>
+        <ion-col class="ion-col-max-width-2">
+          <input type="text" placeholder="Per Night Price" name="price" required class="recommend-input "
+            ngModel>
+        </ion-col>
+      </ion-row>
+    </ng-container>
+    <!--End of Adults-->
+    <ion-row>
+      <button  ion-button full type="submit" class="btn btn-primary">
+        Update
+      </button>
+    </ion-row>
+  </div>
 
 </ion-content>

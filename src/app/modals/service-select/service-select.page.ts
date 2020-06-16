@@ -61,6 +61,9 @@ export class ServiceSelectPage implements OnInit {
   clickTravelIcon(id) {
     //tslint:disable-next-line: triple-equals
     if (this.iconColor[id] === 1) {
+      for(let i=0;i<this.iconColor.length;i++){
+        this.iconColor[i] = 1;
+      }
       this.iconColor[id] = 0;
     }
     else {
@@ -83,7 +86,7 @@ export class ServiceSelectPage implements OnInit {
 
   registerHotel(form: any) {
     const hotel = form.value;
-    const address = hotel.l1 + ',' + hotel.l2 + ',' + hotel.l3;
+    const address = hotel.line1 + ',' + hotel.line2 + ',' + hotel.line3;
     this.hotelService.addHotel(hotel.name, address, hotel.phone, hotel.email, this.userId).subscribe(data => {
       this.presentToast('Successfully registered a hotel', 4000);
     }, error => {
@@ -99,6 +102,8 @@ export class ServiceSelectPage implements OnInit {
 
   registerTransport(form: any) {
     const transport = form.value;
+    let address = transport.line1 + ',' + transport.line2 + ',' + transport.line3;
+    console.log(address);
     let travelMode = '';
     this.iconColor.forEach((value) => {
       if (value === 0) {
@@ -107,7 +112,7 @@ export class ServiceSelectPage implements OnInit {
         travelMode = travelMode + 'w';
       }
     });
-    const address = transport.l1 + ',' + transport.l2 + ',' + transport.l3;
+    
     this.transportService.addTransport(travelMode, transport.name, address, transport.phone, transport.email, this.userId).subscribe(data => {
       this.presentToast('Successfully registered a transport', 4000);
     }, error => {

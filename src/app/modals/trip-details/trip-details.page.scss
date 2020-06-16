@@ -82,7 +82,7 @@ ion-slides {
     border-radius: 5px;
     margin: 0;
     margin-left: 5px;
-    max-width: 10vw;
+    max-width: 25vw;
     text-align: center;
 }
 
@@ -145,8 +145,14 @@ input[type="password"]:focus {
     margin: 0 auto;
     //margin-top: 10px;
     border: 1px solid white;
-    font-size: 10px;
+    font-size: 1rem;
+    padding:5px;
     //width: 80%;
+}
+.btn:hover{
+    background-color: #FFF;
+    color:#000;
+    transition: ease-in-out;
 }
 .credentials {
     width: 80%;

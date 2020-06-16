@@ -1,9 +1,49 @@
-<ion-header>
+<ion-header style="background: white;">
   <ion-toolbar>
-    <ion-title>transport-modal</ion-title>
+    <div class="ion-padding">
+      <ion-row>
+        <ion-col style="text-align: end; max-height:20px;">
+          <span class="material-icons" (click)="closeMedia()" style="font-size: 20px; max-height: 20px; ">
+            close
+          </span>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col style="text-align:center; text-transform: uppercase;">
+          <h4 style="letter-spacing: 3px;">Transports</h4>
+        </ion-col>
+      </ion-row>
+    </div>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content force-overscroll="false" class="content fullscreen-bg">
+  <div class="ion-padding">
+    <ion-row>
+      <ng-container *ngFor="let transport of transportList;let i=index">
+        <ion-col size=12>
+          <!-- Ionic Card -->
+          <ion-card class="card-properties"
+            (click)="viewTransportService(transport['transportId'], transport['transportType'],transport['transportName'],transportImgList[i])"
+            [ngStyle]="{'background-image': 'url('+'../../../assets/img/transport/photos/'+transportImgList[i]+'.jpg)'}">
+            <ion-card-header>
+
+              <ion-card-title>{{transport['transportName']}}
+              </ion-card-title>
+              <span class="contactDetails">{{transport['email']}} <br>
+                {{transport['phone']}}</span>
+              <ion-card-subtitle>
+              </ion-card-subtitle>
+            </ion-card-header>
+
+            <ion-card-content>
+
+            </ion-card-content>
+          </ion-card>
+          <!-- End of Ionic Card -->
+        </ion-col>
+      </ng-container>
+    </ion-row>
+  </div>
 
 </ion-content>

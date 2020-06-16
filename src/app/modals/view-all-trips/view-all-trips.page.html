@@ -1,0 +1,76 @@
+<ion-header style="background: white;">
+  <ion-toolbar>
+    <div class="ion-padding">
+      <ion-row>
+        <ion-col style="text-align: end; max-height:20px;">
+          <span class="material-icons" (click)="closeMedia()" style="font-size: 20px; max-height: 20px; ">
+            close
+          </span>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col style="text-align:center; text-transform: uppercase;">
+          <h4 style="letter-spacing: 3px;">All Trips</h4>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="content fullscreen-bg" force-overscroll="false">
+  
+  <div class="ion-padding" style="padding-top:0 !important; margin-top:0 !important;">
+    <ion-row>
+      <h4 class="title">Created Trips</h4>
+    </ion-row>
+    <ion-row>
+      <ng-container *ngFor="let trip of tripList;let i=index">
+        <ion-col size=12 *ngIf="trip['created']=='C'">
+          <!-- Ionic Card -->
+          <ion-card class="card-properties" [ngStyle]="{'background-image': 'url('+'../../../assets/img/locations/'+trip['destination'].trim()+'/1.jpg)'}">
+            <ion-card-header>
+              <div class="tripPhoto"></div>
+              <ion-card-subtitle [ngStyle]="{color: getColor(getDateDifference(trip['startDate']))}">{{dateDifference}}
+              </ion-card-subtitle>
+              <ion-card-title>{{trip['destination']}}</ion-card-title>
+            </ion-card-header>
+
+            <ion-card-content>
+              {{trip['startDate']}}
+            </ion-card-content>
+          </ion-card>
+          <!-- End of Ionic Card -->
+        </ion-col>
+      </ng-container>
+
+
+    </ion-row>
+
+    <ion-row>
+      <h4 class="title">Joined Trips</h4>
+    </ion-row>
+    <ion-row>
+      <ng-container *ngFor="let trip of tripList">
+        <ion-col size=12 *ngIf="trip['created']=='J'">
+          <!-- Ionic Card -->
+          <ion-card class="card-properties" [ngStyle]="{'background-image': 'url('+'../../../assets/img/locations/'+trip['destination'].trim()+'/1.jpg)'}">
+            <ion-card-header>
+              <ion-card-subtitle [ngStyle]="{color: getColor(getDateDifference(trip['startDate']))}">{{dateDifference}}
+              </ion-card-subtitle>
+              <ion-card-title>{{trip['destination']}}</ion-card-title>
+            </ion-card-header>
+
+            <ion-card-content>
+              {{trip['startDate']}}
+            </ion-card-content>
+          </ion-card>
+          <!-- End of Ionic Card -->
+        </ion-col>
+      </ng-container>
+
+
+    </ion-row>
+
+
+  </div>
+</ion-content>

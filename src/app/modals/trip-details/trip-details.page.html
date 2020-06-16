@@ -2,7 +2,7 @@
   <div>
     <ion-row class="header-row">
       <ion-col class="header-style-arrow">
-        <img src="assets/icon/arrow-left.svg" class="arrow" alt="" (click)="closeMedia()" >
+        <img src="assets/icon/arrow-left.svg" class="arrow" alt="" (click)="closeMedia()">
       </ion-col>
       <ion-col class="header-style-text">
         <h5 class="whitefy header-text">Trip Details</h5>
@@ -10,7 +10,7 @@
     </ion-row>
   </div>
   <div class="ion-padding">
-    <div style="background-color: #1a1a1a;">
+    <div>
       <ion-row>
         <!-- col - 1 -->
         <ion-col class="max-width-fixer-1">
@@ -25,15 +25,15 @@
           <h5 style="color:white;">{{selectedTrip['area']}}, {{selectedTrip['district']}}</h5>
           <h6 style="color:white;">{{selectedTrip['province']}}</h6>
           <span class="material-icons icon-click" *ngFor="let t of travelList; let j=index;"
-          [ngStyle]="{'color':selectedTrip['travel'].charAt(j) =='r'? 'red':'white'}">
-          {{t["travelValue"]}}
-        </span>
+            [ngStyle]="{'color':selectedTrip['travel'].charAt(j) =='r'? 'red':'white'}">
+            {{t["travelValue"]}}
+          </span>
           <!-- <button class="btn btn-primary">More Details</button> -->
         </ion-col>
       </ion-row>
       <ion-row>
-        <ion-col  class="col-fixer">
-          <img src="assets/img/hotels/1.jpg" alt="" class="image-wrapper-circle">
+        <ion-col class="col-fixer">
+          <img src="assets/img/hotels/photos/1.jpg" alt="" class="image-wrapper-circle">
         </ion-col>
         <ion-col style="min-height: 100px;">
           <div style="border:1px solid white; border-radius:5px;">
@@ -51,7 +51,8 @@
       <ion-row>
         <ion-slides [options]="sliderOpts">
           <ion-slide *ngFor="let img of [1,2,3,4,5]">
-            <img src="assets/img/locations/{{selectedTrip['destination']}}/{{img}}.jpg" tappable (click)="openPreview(img)" alt="">
+            <img src="assets/img/locations/{{selectedTrip['destination']}}/{{img}}.jpg" tappable
+              (click)="openPreview(img)" alt="">
           </ion-slide>
         </ion-slides>
       </ion-row>
@@ -59,25 +60,48 @@
 
     <div>
       <ion-row>
-        <p class="whitefy font-wrapper">Trip Starts At</p>
+        <ion-col size=6>
+          <p class="whitefy font-wrapper">Trip Starts At</p>
+        </ion-col>
       </ion-row>
       <ion-row>
-        <input type="text" placeholder="{{selectedTrip['startDate']}}" name="start-date" required id="start-date" class="recommend-input">
-        <input type="text" placeholder="{{selectedTrip['startTime']}}" name="start-time" required id="start-time" class="recommend-input">
-        <input type="text" placeholder="{{selectedTrip['startVenue']}}" name="start-venue" required id="start-venue" class="recommend-input">
+        <ion-col size=4>
+          <input type="text" placeholder="{{selectedTrip['startDate']}}" name="start-date" required id="start-date"
+            class="recommend-input">
+        </ion-col>
+        <ion-col size=4>
+          <input type="text" placeholder="{{selectedTrip['startTime']}}" name="start-time" required id="start-time"
+            class="recommend-input">
+        </ion-col>
+        <ion-col size=4>
+          <input type="text" placeholder="{{selectedTrip['startVenue']}}" name="start-venue" required id="start-venue"
+            class="recommend-input">
+        </ion-col>
       </ion-row>
       <ion-row>
-        <p class="whitefy font-wrapper">No. of Days</p>
-      </ion-row>
-      <ion-row>
-        <input type="text" placeholder="{{selectedTrip['days']}}" name="days" required id="days" class="recommend-input">
-        
+        <ion-col size=4>
+          <p class="whitefy font-wrapper">No. of Days</p>
+          <input type="text" placeholder="{{selectedTrip['days']}}" name="days" required id="days"
+            class="recommend-input">
+        </ion-col>
       </ion-row>
       <ion-row style="margin-top:5px;">
-        <p class="whitefy font-wrapper">Number of Participants</p>
-        <input type="text" placeholder="{{selectedTrip['participants']}}" name="participants" required id="participants" class="recommend-input-modified">
-        <p class="whitefy font-wrapper">&nbsp;/&nbsp;</p>
-        <input type="text" placeholder="{{selectedTrip['peopleCount']}}" name="people_count" required id="people_count" class="recommend-input-modified">
+        <ion-col size=8>
+          <p class="whitefy font-wrapper">Number of Participants</p>
+        </ion-col>
+        <ion-col size=4>
+          <input type="text" placeholder="{{selectedTrip['participants']}}" name="participants" required
+            id="participants" class="recommend-input-modified">
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size=8>
+          <p class="whitefy font-wrapper">Number of Expected Participatns</p>
+        </ion-col>
+        <ion-col size=4>
+          <input type="text" placeholder="{{selectedTrip['peopleCount']}}" name="people_count" required
+            id="people_count" class="recommend-input-modified">
+        </ion-col>
       </ion-row>
       <ion-row style="margin-top:10px;">
         <button class="btn btn-primary">Confirm</button>

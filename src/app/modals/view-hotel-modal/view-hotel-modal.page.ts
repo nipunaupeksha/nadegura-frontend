@@ -14,6 +14,7 @@ export class ViewHotelModalPage implements OnInit {
   userId = '';
   hotelId = '';
   hotelName = '';
+  imageId = '';
   hotelDetailsList = [];
   roomList = [];
   constructor(
@@ -32,26 +33,11 @@ export class ViewHotelModalPage implements OnInit {
   ngOnInit() {
     this.hotelId = this.navParams.get('hotel_id');
     this.hotelName = this.navParams.get('hotel_name');
+    this.imageId = this.navParams.get('image_id')
     this.getHotelDetails();
-    this.presentToast('Hotel Details Updated', 1000);
     this.getRoomTypes();
-    this.presentToast('Rooms Updated', 1000);
   }
 
-  async presentToast(msg, dur) {
-    const toast = await this.toastController.create({
-      message: msg,
-      duration: dur,
-      buttons: [
-        {
-          text: 'Close',
-          role: 'cancel'
-        }
-      ]
-    });
-    toast.present();
-    return toast.onDidDismiss();
-  }
 
   getDecodedAccessToken(token: string): any {
     try {

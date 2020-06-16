@@ -19,10 +19,10 @@
     border: none;
     border-radius: 5px;
     margin-left: 5px;
-    max-width:47vw !important;
+    max-width: 47vw !important;
     text-align: center;
     align-items: center;
-  }
+}
 
 .recommend-details {
     color: white;
@@ -33,7 +33,7 @@
     border: none;
     border-radius: 5px;
     margin-left: 5px;
-    max-width:50vw !important;
+    max-width: 50vw !important;
     text-align: center;
 }
 
@@ -50,8 +50,8 @@
     transform: scale(1.2);
 }
 .column-decorator {
-    margin-top:10px;
-    padding-top:10px;
+    margin-top: 10px;
+    padding-top: 10px;
 }
 
 .div-decorator {
@@ -91,8 +91,8 @@ input[type="password"]:focus {
     outline: none;
 }
 .btn {
-   // display: block;
-   padding: 1px;
+    // display: block;
+    padding: 1px;
     margin: 0 auto;
     margin-top: 0;
     border: 1px solid white;
@@ -195,37 +195,44 @@ input[type="password"]:focus {
 .header-text {
     margin: 0 !important;
     padding-top: 0;
-    padding-left:5vw;
+    padding-left: 5vw;
 }
 
-.row-margin-fixer{
-    margin-top:20px;
+.row-margin-fixer {
+    margin-top: 20px;
 }
 
-.div-padding-fixer{
-    padding-top:5vh;
+.div-padding-fixer {
+    padding-top: 5vh;
 }
 
 .whitefy {
     color: white;
 }
 
-.ion-row-margin-bottom-1{
-    margin-bottom:10px;
+.ion-row-margin-bottom-1 {
+    margin-bottom: 10px;
 }
 
-.ion-input-margin-bottom{
-    margin-bottom:5px;
+.ion-input-margin-bottom {
+    margin-bottom: 5px;
 }
 
-.ion-col-max-width-1{
-    max-width:40%;
+.ion-col-max-width-1 {
+    max-width: 40%;
 }
 
-.ion-col-max-width-2{
-   max-width:20vw !important;;
+.ion-col-max-width-2 {
+    max-width: 20vw !important;
 }
 
-.ion-col-max-width-3{
-    max-width:60%;
+.ion-col-max-width-3 {
+    max-width: 60%;
+}
+.selector-background {
+    max-width: 50vw !important;
+    min-width: 180px;
+}
+input{
+    width: 180px;
 }

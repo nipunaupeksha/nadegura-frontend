@@ -37,7 +37,7 @@
                       </div>
                     </ion-col>
                     <ion-col class="max-width-fixer-2">
-                      <input type="text" placeholder="Hotel Name" name="name" required id="name" class="recommend-input"
+                      <input type="text" placeholder="Hotel Name" name="name" required id="name" class="ion-input-margin-bottom recommend-input"
                         ngModel>
                     </ion-col>
                   </ion-row>
@@ -47,16 +47,16 @@
                   <ion-row class="margin-bottom-fixer-1">
                     <ion-col class="max-width-fixer-1">
                       <div>
-                        <p class="recommend-details">Contact</p>
+                        <p class="recommend-details">Address</p>
                       </div>
                     </ion-col>
                     <ion-col class="max-width-fixer-2">
-                      <input type="text" placeholder="Address Line 1" name="l1" required id="l1" class="recommend-input"
+                      <input type="text" placeholder="Line 1" name="line1" required id="line1" class="ion-input-margin-bottom recommend-input"
                         ngModel>
-                      <input type="text" placeholder="Address Line 2" name="l1" id="l2"
-                        class="recommend-input margin-top-fixer-2" ngModel>
-                      <input type="text" placeholder="Address Line 3" name="l3" id="l3"
-                        class="recommend-input margin-top-fixer-2" ngModel>
+                      <input type="text" placeholder="Line 2" name="line2" id="line2"
+                        class="ion-input-margin-bottom recommend-input margin-top-fixer-1" ngModel>
+                      <input type="text" placeholder="Line 3" name="line3" id="line3"
+                        class="ion-input-margin-bottom recommend-input margin-top-fixer-1" ngModel>
                     </ion-col>
                   </ion-row>
 
@@ -67,8 +67,8 @@
                       </div>
                     </ion-col>
                     <ion-col class="max-width-fixer-2">
-                      <input type="text" placeholder="telephone" name="phone" required id="phone"
-                        class="recommend-input margin-top-fixer-1" ngModel>
+                      <input type="text" placeholder="Telephone" name="phone" required id="phone"
+                        class="ion-input-margin-bottom recommend-input" ngModel>
                     </ion-col>
                   </ion-row>
 
@@ -80,7 +80,7 @@
                     </ion-col>
                     <ion-col class="max-width-fixer-2">
                       <input type="text" placeholder="E-mail" name="email" required id="email"
-                        class="recommend-input margin-top-fixer-1" ngModel>
+                        class="ion-input-margin-bottom recommend-input" ngModel>
                     </ion-col>
                   </ion-row>
                   <!--End of Contact-->
@@ -113,7 +113,7 @@
                     <ion-col class="max-width-fixer-3">
                       <ng-container *ngFor="let t of travelList; let i=index;">
                         <span class="material-icons icon-click" [ngStyle]="{'color': iconColor[i]===0 ? 'red' :'white'}" 
-                         (click)="clickTravelIcon(i)">
+                         (click)="clickTravelIcon(i)" >
                          <!-- [ngStyle]="{'color': iconColor[i]===0 ? 'red' :'white'}" -->
                         {{t["travelValue"]}}
                       </span>
@@ -132,7 +132,7 @@
                     </ion-col>
                     <ion-col class="max-width-fixer-2">
                       <input type="text" placeholder="Transport Name" name="name" required id="name"
-                        class="recommend-input" ngModel>
+                        class="ion-input-margin-bottom recommend-input" ngModel>
                     </ion-col>
                   </ion-row>
                   <!--End of Transport-->
@@ -145,12 +145,12 @@
                       </div>
                     </ion-col>
                     <ion-col class="max-width-fixer-2">
-                      <input type="text" placeholder="Address Line 1" name="l1" required id="l1" class="recommend-input"
+                      <input type="text" placeholder="Line 1" name="line1" required id="line1" class="ion-input-margin-bottom recommend-input"
                         ngModel>
-                      <input type="text" placeholder="Address Line 2" name="l1" id="l2"
-                        class="recommend-input margin-top-fixer-2" ngModel>
-                      <input type="text" placeholder="Address Line 3" name="l3" id="l3"
-                        class="recommend-input margin-top-fixer-2" ngModel>
+                      <input type="text" placeholder="Line 2" name="line2" id="line2"
+                        class="ion-input-margin-bottom recommend-input margin-top-fixer-1" ngModel>
+                      <input type="text" placeholder="Line 3" name="line3" id="line3"
+                        class="ion-input-margin-bottom recommend-input margin-top-fixer-1" ngModel>
                     </ion-col>
                   </ion-row>
 
@@ -161,7 +161,7 @@
                       </div>
                     </ion-col>
                     <ion-col class="max-width-fixer-2">
-                      <input type="text" placeholder="telephone" name="phone" required id="phone"
+                      <input type="text" placeholder="Telephone" name="phone" required id="phone"
                         class="recommend-input margin-top-fixer-1" ngModel>
                     </ion-col>
                   </ion-row>
@@ -174,7 +174,7 @@
                     </ion-col>
                     <ion-col class="max-width-fixer-2">
                       <input type="text" placeholder="E-mail" name="email" required id="email"
-                        class="recommend-input margin-top-fixer-1" ngModel>
+                        class="ion-input-margin-bottom recommend-input" ngModel>
                     </ion-col>
                   </ion-row>
                   <!--End of Contact-->

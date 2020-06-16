@@ -6,8 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-//import { JwtModule } from '@auth0/angular-jwt';
+import { CommonModule } from '@angular/common';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -22,12 +21,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   declarations: [AppComponent,],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule,
-    FormsModule, ReactiveFormsModule, BrowserAnimationsModule],
+    FormsModule, ReactiveFormsModule, BrowserAnimationsModule, CommonModule],
   providers: [
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-     UserService, HotelService, TransportService
+    UserService, HotelService, TransportService
   ],
   bootstrap: [AppComponent]
 })
