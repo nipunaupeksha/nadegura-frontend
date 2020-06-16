@@ -1,86 +1,229 @@
-<ion-header style="background: white;">
-  <ion-toolbar>
+
+  <ion-header style="background: white;">
+    <ion-toolbar>
+      <div class="ion-padding">
+        <ion-row>
+          <ion-col style="text-align: end; max-height:20px;">
+            <span class="material-icons" (click)="closeMedia()" style="font-size: 20px; max-height: 20px; ">
+              close
+            </span>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col style="text-align:center; text-transform: uppercase;">
+            <h4 style="letter-spacing: 3px;">{{destination_name}}</h4>
+          </ion-col>
+        </ion-row>
+      </div>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content force-overscroll="false" class="content fullscreen-bg"
+    [ngStyle]="{'background-image': 'url('+'../../../assets/img/locations/'+imageId+'/1.jpg)'}">
+    <div class="layer"></div>
     <div class="ion-padding">
-      <ion-row>
-        <ion-col style="text-align: end; max-height:20px;">
-          <span class="material-icons" (click)="closeMedia()" style="font-size: 20px; max-height: 20px; ">
-            close
-          </span>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col style="text-align:center; text-transform: uppercase;">
-          <h4 style="letter-spacing: 3px;">{{imageId}}{{trip_id}}</h4>
-        </ion-col>
-      </ion-row>
-    </div>
-  </ion-toolbar>
-</ion-header>
 
-  <ion-content force-overscroll="false" class="content fullscreen-bg" [ngStyle]="{'background-image': 'url('+'../../../assets/img/locations/'+imageId+'/1.jpg)'}">
-
-  <div class="ion-padding">
-    <!--Room Types-->
-    <ion-row class="ion-row-margin-bottom-1">
-      <ion-col>
-        <h4 class="recommend-details">Rooms</h4>
-      </ion-col>
-    </ion-row>
-<!--
-    <ng-container *ngFor="let room of roomList">
-      <ion-row class="ion-row-margin-bottom-1">
-        <ion-col class="ion-col-max-width-1">
-          <div>
-            <p class="recommend-details">{{room['roomType']}}</p>
-          </div>
+      <!--Trip Destination-->
+      <!-- <ion-row class="ion-row-margin-bottom-1" style="margin-top:10px;">
+        <ion-col>
+          <h4 class="recommend-details">Visiting Count</h4>
         </ion-col>
-        <ion-col class="ion-col-max-width-2">
-          <input type="text" placeholder="No. of rooms" name="{{room['roomType']}}" required class="ion-input-margin-bottom recommend-input"
-            ngModel>
+      </ion-row> -->
+      <ng-container *ngFor="let trip of selectedTrip">
+        <ion-row class="ion-row-margin-bottom-1" style="margin-top:10px;">
+          <ion-col>
+            <h4 class="recommend-details">Trip Details</h4>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-row-margin-bottom-1">
+          <ion-col size=5>
+            <div>
+              <p class="recommend-details">Destination</p>
+            </div>
+          </ion-col>
+          <ion-col size=7>
+            <p class="recommend-details">{{trip['destination']}}</p>
+          </ion-col>
+        </ion-row>
+      <!--End of Trip Destination-->
+
+      <!--Start Date-->
+        <ion-row class="ion-row-margin-bottom-1">
+          <ion-col size=5>
+            <div>
+              <p class="recommend-details">Start Date</p>
+            </div>
+          </ion-col>
+          <ion-col size=7>
+            <p class="recommend-details">{{trip['startDate']}}</p>
+          </ion-col>
+        </ion-row>
+      <!--End of Start Date-->
+
+      <!--Start Time-->
+        <ion-row class="ion-row-margin-bottom-1">
+          <ion-col size=5>
+            <div>
+              <p class="recommend-details">Start Time</p>
+            </div>
+          </ion-col>
+          <ion-col size=7>
+            <p class="recommend-details">{{trip['startTime']}}</p>
+          </ion-col>
+        </ion-row>
+      <!--End of Start Time-->
+
+      <!--Start Venue-->
+        <ion-row class="ion-row-margin-bottom-1">
+          <ion-col size=5>
+            <div>
+              <p class="recommend-details">Start Venue</p>
+            </div>
+          </ion-col>
+          <ion-col size=7>
+            <p class="recommend-details">{{trip['startVenue']}}</p>
+          </ion-col>
+        </ion-row>
+      <!--End of Start Venue-->
+
+      <!--People Count-->
+      <ion-row class="ion-row-margin-bottom-1" style="margin-top:10px;">
+        <ion-col>
+          <h4 class="recommend-details">Participation Details</h4>
         </ion-col>
       </ion-row>
-      <ion-row>
-        <ion-col class="ion-col-max-width-1"></ion-col>
-        <ion-col class="ion-col-max-width-2">
-          <select name="" id="" class="selector-background"
-           style="padding-left:42px; padding-right:50px;">
-            <option value="1">Non-AC</option>
-            <option value="2">AC</option>
-            <option value="3">Both</option>
-          </select>
+        <ion-row class="ion-row-margin-bottom-1">
+          <ion-col size=8>
+            <div>
+              <p class="recommend-details">Number of Expected Participants</p>
+            </div>
+          </ion-col>
+          <ion-col size=4>
+            <p class="recommend-details">{{trip['peopleCount']}}</p>
+          </ion-col>
+        </ion-row>
+      <!--End of People Count-->
+
+      <!--Participant Count-->
+        <ion-row class="ion-row-margin-bottom-1">
+          <ion-col size=8>
+            <div>
+              <p class="recommend-details">Number of Confirmed Participants</p>
+            </div>
+          </ion-col>
+          <ion-col size=4>
+            <p class="recommend-details">{{trip['participants']}}</p>
+          </ion-col>
+        </ion-row>
+      <!--End of People Count-->
+
+      <!--Budget Per Person-->
+        <ion-row class="ion-row-margin-bottom-1">
+          <ion-col size=8>
+            <div>
+              <p class="recommend-details">Budget Per Person</p>
+            </div>
+          </ion-col>
+          <ion-col size=4>
+            <p class="recommend-details">{{trip['budgetPerPerson']}}</p>
+          </ion-col>
+        </ion-row>
+      </ng-container>
+      <!--Budget Per Person-->
+
+      <!--Hotel Details-->
+      <ion-row class="ion-row-margin-bottom-1" style="margin-top:10px;">
+        <ion-col>
+          <h4 class="recommend-details">Hotel Details</h4>
         </ion-col>
+      </ion-row>
+
+      <ng-container *ngFor="let hotel of hotelDetails; let i = index;">
+        <ion-row class="ion-row-margin-bottom-1">
+          <ion-col size=8>
+            <div>
+              <p class="recommend-details">Hotel Name</p>
+            </div>
+          </ion-col>
+          <ion-col size=4>
+            <p class="recommend-details">{{hotel['hotelName']}}</p>
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="ion-row-margin-bottom-1">
+          <ion-col size=8>
+            <div>
+              <p class="recommend-details">Hotel Telephone</p>
+            </div>
+          </ion-col>
+          <ion-col size=4>
+            <p class="recommend-details">{{hotel['phone']}}</p>
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="ion-row-margin-bottom-1">
+          <ion-col size=8>
+            <div>
+              <p class="recommend-details">Hotel E-Mail</p>
+            </div>
+          </ion-col>
+          <ion-col size=4>
+            <p class="recommend-details">{{hotel['email']}}</p>
+          </ion-col>
+        </ion-row>
+
+      </ng-container>
+
+
+      <!--End of Hotel Details-->
+
+      <!--Transport Details-->
+      <ion-row class="ion-row-margin-bottom-1" style="margin-top:10px;">
+        <ion-col>
+          <h4 class="recommend-details">Transport Details</h4>
+        </ion-col>
+      </ion-row>
+
+      <ng-container *ngFor="let t of transportDetails; let i = index;">
+        <ion-row class="ion-row-margin-bottom-1">
+          <ion-col size=8>
+            <div>
+              <p class="recommend-details">Transport Name</p>
+            </div>
+          </ion-col>
+          <ion-col size=4>
+            <p class="recommend-details">{{t['transportName']}}</p>
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="ion-row-margin-bottom-1">
+          <ion-col size=8>
+            <div>
+              <p class="recommend-details">Transport Telephone</p>
+            </div>
+          </ion-col>
+          <ion-col size=4>
+            <p class="recommend-details">{{t['phone']}}</p>
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="ion-row-margin-bottom-1">
+          <ion-col size=8>
+            <div>
+              <p class="recommend-details">Transport E-Mail</p>
+            </div>
+          </ion-col>
+          <ion-col size=4>
+            <p class="recommend-details">{{t['email']}}</p>
+          </ion-col>
+        </ion-row>
         
-      </ion-row>
-    </ng-container> -->
-    <!--End of Room Types-->
+      </ng-container>
 
-    <!--Adults-->
-    <!-- <ion-row class="ion-row-margin-bottom-1" style="margin-top:10px;">
-      <ion-col>
-        <h4 class="recommend-details">Visiting Count</h4>
-      </ion-col>
-    </ion-row>
-    <ng-container>
-      <ion-row class="ion-row-margin-bottom-1">
-        <ion-col class="ion-col-max-width-1">
-          <div>
-            <p class="recommend-details">Number of Adults</p>
-          </div>
-        </ion-col>
-        <ion-col class="ion-col-max-width-2">
-          <input type="text" placeholder="No. of adults" name="adults" required class="ion-input-margin-bottom recommend-input"
-            ngModel>
-        </ion-col>
-      </ion-row>
-    </ng-container> -->
-    <!--End of Adults-->
 
-    
-    <ion-row>
-      <button  ion-button full type="submit" class="btn btn-primary">
-        Update
-      </button>
-    </ion-row>
-  </div>
+      <!--End of Transport Details-->
 
-</ion-content>
+
+    </div>
+
+  </ion-content>

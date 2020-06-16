@@ -4,7 +4,6 @@
     background-size: cover;
     background-position: center center;
     font-family: "kiona";
-    filter: grayscale(60%);
 }
 
 /*added content*/
@@ -104,7 +103,7 @@ input[type="password"]:focus {
 }
 .btn-primary {
     margin-top: 10%;
-    color: #ffffff;
+    color: #fff;
     background-color: rgba(0, 0, 0, 0.034) !important;
     border-color: rgba(255, 255, 255, 0.884);
 }
@@ -249,4 +248,12 @@ input[type="password"]:focus {
     margin-left: 5px;
     text-align: center;
     align-items: center;
+}
+.layer{
+    background-color: rgba(0, 0, 0, 0.62);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 150%;
 }

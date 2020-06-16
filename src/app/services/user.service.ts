@@ -64,6 +64,9 @@ export class UserService {
   public getTrips(userId) {
     return this.http.post(this.BACKEND_URL + 'trips/getTrips', { 'userId': userId }, { headers: this.headers }).pipe(map(res => res));
   }
+  public getTripsById(tripId){
+    return this.http.post(this.BACKEND_URL + 'trips/getTripsById', { 'tripId': tripId }, { headers: this.headers }).pipe(map(res => res));
+  }
   public getDestinations() {
     return this.http.get(this.BACKEND_URL + 'trips/getDestinationList', { headers: this.headers }).pipe(map(res => res));
   }

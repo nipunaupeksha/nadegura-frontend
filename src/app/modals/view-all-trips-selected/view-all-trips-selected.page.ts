@@ -1,3 +1,5 @@
+import { TransportService } from './../../services/transport.service';
+import { HotelService } from './../../services/hotel.service';
 import { UserService } from './../../services/user.service';
 import { Router } from '@angular/router';
 import { ModalController, NavParams, ToastController, LoadingController } from '@ionic/angular';
@@ -12,10 +14,16 @@ import * as jwt_decode from 'jwt-decode';
 export class ViewAllTripsSelectedPage implements OnInit {
   userId = '';
   imageId = '';
+  destination_name='';
   // tslint:disable-next-line: variable-name
   trip_id = '';
-  selectedTrip: any;
-  tripList = [];
+  hotel_id = '';
+  transport_id = '';
+
+  selectedTrip = [];
+  hotelDetails = [];
+  transportDetails = [];
+
   constructor(
     private modalController: ModalController,
     private router: Router,
@@ -23,7 +31,9 @@ export class ViewAllTripsSelectedPage implements OnInit {
     public toastController: ToastController,
     public loadingController: LoadingController,
     private elementRef: ElementRef,
-    private userService: UserService
+    private userService: UserService,
+    private hotelService: HotelService,
+    private transportService: TransportService
   ) {
     this.userId = this.getDecodedAccessToken(localStorage.getItem("token"))['user_id'];
    }
@@ -31,8 +41,12 @@ export class ViewAllTripsSelectedPage implements OnInit {
   ngOnInit() {
     this.imageId = this.navParams.get('image_id');
     this.trip_id =  this.navParams.get('trip_id');
-    this.getTrips();
-    this.selectedTrip = this.tripList[];
+    this.destination_name = this.navParams.get('destination_name');
+    this.hotel_id = this.navParams.get('hotel_id');
+    this.transport_id = this.navParams.get('transport_id');
+    this.getTripById();
+    this.getHotelById();
+    this.getTransportById();
   }
 
   getDecodedAccessToken(token: string): any {
@@ -43,15 +57,43 @@ export class ViewAllTripsSelectedPage implements OnInit {
     }
   }
 
-  getTrips() {
-    this.tripList = [];
-    this.userService.getTrips(this.userId).subscribe(data => {
+  getTripById() {
+    this.selectedTrip = [];
+    this.userService.getTripsById(this.trip_id).subscribe(data => {
       // tslint:disable-next-line: no-string-literal
       if (data['data'].length > 0) {
         // tslint:disable
         for (let i in data['data']) {
           // tslint:disable-next-line: no-string-literal
-          this.tripList.push(data['data'][i]);
+          this.selectedTrip.push(data['data'][i]);
+        }
+      }
+    });
+  }
+
+  getHotelById(){
+    this.hotelDetails = [];
+    this.hotelService.getHotelById(this.hotel_id).subscribe(data => {
+      // tslint:disable-next-line: no-string-literal
+      if (data['data'].length > 0) {
+        // tslint:disable
+        for (let i in data['data']) {
+          // tslint:disable-next-line: no-string-literal
+          this.hotelDetails.push(data['data'][i]);
+        }
+      }
+    });
+  }
+
+  getTransportById(){
+    this.transportDetails = [];
+    this.transportService.getTransportById(this.transport_id).subscribe(data => {
+      // tslint:disable-next-line: no-string-literal
+      if (data['data'].length > 0) {
+        // tslint:disable
+        for (let i in data['data']) {
+          // tslint:disable-next-line: no-string-literal
+          this.transportDetails.push(data['data'][i]);
         }
       }
     });

@@ -30,12 +30,15 @@ export class ViewAllTripsPage implements OnInit {
       this.getTrips();
   }
 
-  async viewTripDetails(param1,param2){
+  async viewTripDetails(param1,param2,param3,param4,param5){
     const modal = await this.modalController.create({
       component: ViewAllTripsSelectedPage ,
       componentProps: {
         trip_id: param1,
-        image_id: param2
+        image_id: param2,
+        hotel_id: param3,
+        transport_id: param4,
+        destination_name: param5
       }
     });
     return await modal.present();

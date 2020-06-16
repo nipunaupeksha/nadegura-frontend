@@ -36,4 +36,8 @@ export class HotelService {
   public getRoomList(){
     return this.http.get(this.BACKEND_URL + 'hotels/getRoomList', { headers: this.headers }).pipe(map(res => res));
   }
+
+  public getHotelById(hotelId){
+    return this.http.post(this.BACKEND_URL + 'hotels/getHotelById',{'hotelId': hotelId}, { headers: this.headers }).pipe(map(res => res));
+  }
 }
