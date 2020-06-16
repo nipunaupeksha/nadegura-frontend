@@ -16,6 +16,11 @@ export class ViewTransportModalPage implements OnInit {
   transportName = ' ';
   transportType = ' ';
   imageId = '';
+
+  usbValue: number;
+  acValue: number;
+  cdValue: number;
+  available: number;
   constructor(
     private modalController: ModalController,
     private router: Router,
@@ -27,13 +32,17 @@ export class ViewTransportModalPage implements OnInit {
     private elementRef: ElementRef
   ) {
     this.userId = this.getDecodedAccessToken(localStorage.getItem("token"))['user_id'];
-   }
+  }
 
   ngOnInit() {
     this.transportId = this.navParams.get('transport_id');
     this.transportType = this.navParams.get('transport_type');
     this.transportName = this.navParams.get('transport_name');
     this.imageId = this.navParams.get('image_id');
+    this.usbValue = -1;
+    this.acValue = -1;
+    this.cdValue = -1;
+    this.available = -1;
   }
 
   async presentToast(msg, dur) {
