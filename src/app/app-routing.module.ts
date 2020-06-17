@@ -66,7 +66,7 @@ const routes: Routes = [
   },
   {
     path: 'recommendedServices',
-    loadChildren: () => import('./recommended-services/recommended-services.module').then( m => m.RecommendedServicesPageModule)
+    loadChildren: () => import('./modals/recommended-services/recommended-services.module').then( m => m.RecommendedServicesPageModule)
   },
   {
     path: 'hotel-modal',
@@ -107,6 +107,10 @@ const routes: Routes = [
   {
     path: 'view-transport-vehicles',
     loadChildren: () => import('./modals/view-transport-vehicles/view-transport-vehicles.module').then( m => m.ViewTransportVehiclesPageModule)
+  },
+  {
+    path: 'add-vehicle',
+    loadChildren: () => import('./modals/add-vehicle/add-vehicle.module').then( m => m.AddVehiclePageModule)
   }
 ];
 

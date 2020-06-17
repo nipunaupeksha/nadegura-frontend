@@ -38,7 +38,6 @@ export class TripDetailsPage implements OnInit {
     this.selectedTrip = this.navParams.get('custom_value');
     this.getTravelValues();
     this.getHotelById();
-    console.log(this.selectedTrip);
   }
 
   async closeMedia() {
@@ -78,8 +77,12 @@ export class TripDetailsPage implements OnInit {
     this.modalController.create({
       component: ImageModalPage,
       componentProps: {
-        img:this.selectedTrip['destination']+'/'+img
+        img:this.selectedTrip['tripDestinationId']+'/'+img
       }
     }).then(modal => modal.present());
+  }
+
+  joinTrip(){
+    
   }
 }

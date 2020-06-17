@@ -1,5 +1,6 @@
+import { RecommendedServicesPage } from './../modals/recommended-services/recommended-services.page';
 import { UserService } from './../services/user.service';
-import { ToastController, LoadingController } from '@ionic/angular';
+import { ToastController, LoadingController, AlertController, ModalController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit, Input } from '@angular/core';
 import * as jwt_decode from 'jwt-decode';
@@ -22,7 +23,7 @@ export class CreateTripPage implements OnInit {
   iconColor: any = [1, 1, 1, 1, 1, 1];
 
   ageGroup = [];
-  travelList =[];
+  travelList = [];
   ageGroupSelected: number;
 
   tripType: object[];
@@ -35,7 +36,9 @@ export class CreateTripPage implements OnInit {
     private router: Router,
     public toastController: ToastController,
     public loadingController: LoadingController,
-    private userService: UserService) {
+    private userService: UserService,
+    private alertCtrl: AlertController,
+    private modalController: ModalController) {
     this.userId = this.getDecodedAccessToken(localStorage.getItem("token"))['user_id'];
   }
 
@@ -66,7 +69,7 @@ export class CreateTripPage implements OnInit {
   clickTravelIcon(id) {
     //tslint:disable-next-line: triple-equals
     if (this.iconColor[id] === 1) {
-      for(let i=0;i<this.iconColor.length;i++){
+      for (let i = 0; i < this.iconColor.length; i++) {
         this.iconColor[i] = 1;
       }
       this.iconColor[id] = 0;
@@ -79,6 +82,40 @@ export class CreateTripPage implements OnInit {
 
   goBack() {
     this.router.navigate(['./joinTrip']);
+  }
+
+  async alert() {
+    const alert = await this.alertCtrl.create({
+      header: 'Select Services',
+      message: 'Select Recommended Services from Nade Gura',
+      buttons: [{
+        cssClass: 'alertCustomCss',
+        text: 'Yes',
+        role: 'Yes',
+        handler: () => {
+          this.recommendedServices();
+        }
+      },
+      {
+        cssClass: 'alertCustomCss',
+        text: 'No',
+        role: 'no',
+        handler: () => {
+        }
+      }
+      ]
+    }
+    );
+    await alert.present();
+  }
+
+  async recommendedServices() {
+    const modal = await this.modalController.create({
+      component: RecommendedServicesPage,
+      componentProps: {
+      }
+    });
+    return await modal.present();
   }
 
   createTrip(form: any) {
@@ -156,7 +193,7 @@ export class CreateTripPage implements OnInit {
     });
   }
 
-  getTravelValues(){
+  getTravelValues() {
     this.userService.getTravelList().subscribe(data => {
       // tslint:disable-next-line: no-string-literal
       if (data['data'].length > 0) {

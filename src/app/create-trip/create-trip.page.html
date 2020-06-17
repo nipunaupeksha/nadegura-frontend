@@ -173,8 +173,8 @@
           </ion-row>
           <!--Travel-->
           <ion-row>
-            <button [disabled]="!tripForm.form.valid" ion-button full type="submit" class="btn btn-primary"
-              (click)="createTrip(tripForm)" (keyup.enter)="createTrip(tripForm)">
+            <button [disabled]="!tripForm.form.valid" ion-button full type="submit" class="btn btn-primary" (click)="alert()">
+              <!-- (click)="createTrip(tripForm)" (keyup.enter)="createTrip(tripForm)" -->
               Create A Trip
             </button>
           </ion-row>

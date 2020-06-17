@@ -1,6 +1,6 @@
 .content {
     height: 100%;
-    background-image: url("../../assets/img/19.jpg");
+    background-image: url("../../../assets/img/19.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -8,6 +8,23 @@
 }
 
 /*added content*/
+ion-card-title {
+    font-family: "kiona";
+    color: #fff;
+}
+ion-card{
+    margin:0 !important;
+}
+.card-properties{
+    background-repeat: no-repeat;
+    background-size: cover;
+    border:1px solid rgba(0,0,0,0);
+    transition:transform 0.5s;
+}
+.card-properties:hover{
+    border:1px solid rgba(255,255,255,0.61);
+    transform:translateY(2px);
+}
 ion-slides{
     //margin-top:30%;
     height:90px;

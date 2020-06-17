@@ -1,8 +1,9 @@
+import { AddVehiclePage } from './../add-vehicle/add-vehicle.page';
 import { ViewTransportModalPage } from './../view-transport-modal/view-transport-modal.page';
 import { TransportService } from './../../services/transport.service';
 import { UserService } from './../../services/user.service';
 import { Router } from '@angular/router';
-import { ModalController, NavParams, ToastController, LoadingController } from '@ionic/angular';
+import { ModalController, NavParams, ToastController, LoadingController, AlertController } from '@ionic/angular';
 import { Component, OnInit, ElementRef } from '@angular/core';
 import * as jwt_decode from 'jwt-decode';
 
@@ -14,9 +15,9 @@ import * as jwt_decode from 'jwt-decode';
 })
 export class ViewTransportVehiclesPage implements OnInit {
   transportId = '';
-  transportName='';
+  transportName = '';
   userId = '';
-  transportList=[];
+  transportList = [];
   transportImgList = [];
   constructor(
     private modalController: ModalController,
@@ -26,7 +27,8 @@ export class ViewTransportVehiclesPage implements OnInit {
     public toastController: ToastController,
     public loadingController: LoadingController,
     private userService: UserService,
-    private elementRef: ElementRef
+    private elementRef: ElementRef,
+    private alertCtrl: AlertController
   ) { this.userId = this.getDecodedAccessToken(localStorage.getItem("token"))['user_id']; }
 
   ngOnInit() {
@@ -75,9 +77,41 @@ export class ViewTransportVehiclesPage implements OnInit {
       }
     });
   }
+  async alert() {
+    const alert = await this.alertCtrl.create({
+      header: 'Add New Vehicle',
+      message: 'Do you want to add new vehicle?',
+      buttons: [{
+        cssClass: 'alertCustomCss',
+        text: 'Yes',
+        role: 'Yes',
+        handler: () => {
+          this.addVehicle();
+        }
+      },
+      {
+        cssClass: 'alertCustomCss',
+        text: 'No',
+        role: 'no',
+        handler: () => {
+        }
+      }
+      ]
+    }
+    );
+    await alert.present();
+  }
 
-  async viewTransportService(param1, param2, param3, param4,param5) {
-
+  async addVehicle() {
+    const modal = await this.modalController.create({
+      component: AddVehiclePage,
+      componentProps: {
+        transport_id: this.transportId
+      }
+    });
+    return await modal.present();
+  }
+  async viewTransportService(param1, param2, param3, param4, param5) {
     const modal = await this.modalController.create({
       component: ViewTransportModalPage,
       componentProps: {
@@ -85,7 +119,7 @@ export class ViewTransportVehiclesPage implements OnInit {
         transport_type: param2,
         transport_name: param3,
         image_id: param4,
-        vehicle_id:param5,
+        vehicle_id: param5,
       }
     });
     return await modal.present();

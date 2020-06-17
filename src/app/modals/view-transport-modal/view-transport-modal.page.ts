@@ -146,10 +146,10 @@ export class ViewTransportModalPage implements OnInit {
   }
 
   updateDetails(form: any) {
-    let usbVal = 0;
-    let acval = 0;
-    let cdVal = 0;
-    let avail = 0;
+    // let usbVal = 0;
+    // let acval = 0;
+    // let cdVal = 0;
+    // let avail = 0;
 
     const v = form.value;
 

@@ -1,0 +1,74 @@
+<ion-header style="background: white;">
+  <ion-toolbar>
+    <div class="ion-padding">
+      <ion-row>
+        <ion-col style="text-align: end; max-height:20px;">
+          <span class="material-icons" (click)="closeMedia()" style="font-size: 20px; max-height: 20px; ">
+            close
+          </span>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col style="text-transform: uppercase;">
+          <h6 style="letter-spacing: 3px; width:90% !important; float:right; padding-top:1px; ">Recommended Services</h6>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="content fullscreen-bg" force-overscroll="false">
+  <div class="ion-padding">
+    <ion-row style="margin-top:10px; margin-bottom:0.5rem;">
+      <ion-col>
+        <p class="whitefy" style="margin-bottom:0;">Transport Services</p>
+      </ion-col>
+    </ion-row>
+    <!-- Ionic Card -->
+    <ion-row>
+      <ng-container >
+        <ion-col size=12>
+          <ion-card class="card-properties"
+            [ngStyle]="{'background-image': 'url('+'../../../assets/img/transport/photos/1.jpg)'}">
+            <ion-card-header>
+              <ion-card-title>xxx
+              </ion-card-title>
+              <span class="contactDetails">x@x.com <br>
+                xx-xxx-xxxx</span>
+              <ion-card-subtitle>
+              </ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ng-container>
+    </ion-row>
+    <!-- End of Ionic Card -->
+    <ion-row style="margin-top:10px; margin-bottom:0.5rem;">
+      <ion-col>
+        <p class="whitefy" style="margin-bottom:0;">Hotel Services</p>
+      </ion-col>
+    </ion-row>
+    <!-- Ionic Card -->
+    <ion-row>
+      <ng-container >
+        <ion-col size=12>
+          <ion-card class="card-properties"
+            [ngStyle]="{'background-image': 'url('+'../../../assets/img/hotels/photos/1.jpg)'}">
+            <ion-card-header>
+              <ion-card-title>xxx
+              </ion-card-title>
+              <span class="contactDetails">x@x.com <br>
+                xx-xxx-xxxx</span>
+              <ion-card-subtitle>
+              </ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ng-container>
+    </ion-row>
+    <!-- End of Ionic Card -->
+  </div>
+</ion-content>

@@ -61,7 +61,7 @@ export class HomePage implements OnInit {
 
   async signout() {
     const alert = await this.alertCtrl.create({
-      header: 'Alert!',
+      header: 'Sign Out?',
       message: 'Are you sure you want to Sign Out from "Nade Gura"?',
       buttons: [{
         cssClass: 'alertCustomCss',
