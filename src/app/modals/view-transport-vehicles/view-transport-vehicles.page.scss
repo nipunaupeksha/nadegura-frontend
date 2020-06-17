@@ -1,0 +1,74 @@
+.content {
+    height: 100%;
+    background-image: url("../../../assets/img/11.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    font-family: "kiona";
+}
+
+/*added content*/
+ion-card{
+    margin:0 !important;
+}
+.card-properties{
+    background-repeat: no-repeat;
+    background-size: cover;
+    border:1px solid rgba(0,0,0,0);
+    transition:transform 0.5s;
+}
+.card-properties:hover{
+    border:1px solid rgba(0,0,0,0.01);
+    transform:translateY(2px);
+}
+.icon-click {
+    color: white;
+    margin-right: 5px;
+}
+
+.recommend-details {
+    color: white;
+    margin-bottom: 0px;
+    text-align: left;
+}
+
+.recommend-input {
+    border: none;
+    border-radius: 5px;
+    margin-left: 10px;
+    text-align: center;
+}
+
+.signs {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    max-width: 25px;
+    height: auto;
+    filter: brightness(0) invert(1);
+}
+
+.signs:hover {
+    transform: scale(1.2);
+}
+.column-decorator {
+    min-height: 70vh;
+    
+}
+
+.div-decorator {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+/*finish added content*/
+ion-card-title {
+    font-family: "kiona";
+    color: #fff;
+}
+.contactDetails{
+    color:#FFF
+}
+

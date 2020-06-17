@@ -18,6 +18,12 @@ export class ViewHotelModalPage implements OnInit {
   hotelDetailsList = [];
   roomList = [];
   hotelValidity = 0;
+  //ac
+  lac = '';
+  slac = '';
+  dac = '';
+  sac = '';
+
   constructor(
     private modalController: ModalController,
     private router: Router,
@@ -52,7 +58,7 @@ export class ViewHotelModalPage implements OnInit {
     await this.modalController.dismiss();
   }
 
-  getHotelDetails(){
+  getHotelDetails() {
     this.hotelDetailsList = [];
     this.hotelService.getHotelDetails(this.hotelId).subscribe(data => {
       // tslint:disable-next-line: no-string-literal
@@ -62,15 +68,19 @@ export class ViewHotelModalPage implements OnInit {
         for (let i in data['data']) {
           // tslint:disable-next-line: no-string-literal
           this.hotelDetailsList.push(data['data'][i]);
+          this.lac = data['data'][i]['luxuryac'];
+          this.slac = data['data'][i]['semiluxuryac'];
+          this.dac = data['data'][i]['deluxeac'];
+          this.sac = data['data'][i]['suiteac'];
         }
-      }else{
+      } else {
         this.hotelValidity = 0;
       }
     });
   }
 
-  getRoomTypes(){
-    this.roomList=[];
+  getRoomTypes() {
+    this.roomList = [];
     this.hotelService.getRoomList().subscribe(data => {
       // tslint:disable-next-line: no-string-literal
       if (data['data'].length > 0) {
@@ -83,7 +93,50 @@ export class ViewHotelModalPage implements OnInit {
     });
   }
 
-  submitValues(){
+  submitValues(form: any) {
+    const v = form.value;
 
+    if (this.hotelValidity == 1) {
+      this.hotelService.updateHotel(v.luxuryV, v.semiluxuryV, v.deluxeV, v.suiteV, this.lac, this.slac, this.dac, this.sac, v.adultsV, v.kidsV, v.priceV, this.hotelId).subscribe(data => {
+        this.presentToast('Successfully updated', 4000).then(() => {
+        });
+      }, error => {
+        // tslint:disable-next-line:no-string-literal
+        if (error['status'] === 401) {
+          this.presentToast('Error', 2000);
+        } else {
+          console.log(error);
+          this.presentToast('Error Connecting to the Server', 2000);
+        }
+      });
+    } else if (this.hotelValidity == 0) {
+      this.hotelService.addHotelDetails(v.luxuryU, v.semiluxuryU, v.deluxeU, v.suiteU, this.lac, this.slac, this.dac, this.sac, v.adultsU, v.kidsU, v.priceU, this.hotelId).subscribe(data => {
+        this.presentToast('Successfully updated', 4000).then(() => {
+        });
+      }, error => {
+        // tslint:disable-next-line:no-string-literal
+        if (error['status'] === 401) {
+          this.presentToast('Error', 2000);
+        } else {
+          console.log(error);
+          this.presentToast('Error Connecting to the Server', 2000);
+        }
+      });
+    }
+  }
+
+  async presentToast(msg, dur) {
+    const toast = await this.toastController.create({
+      message: msg,
+      duration: dur,
+      buttons: [
+        {
+          text: 'Close',
+          role: 'cancel'
+        }
+      ]
+    });
+    toast.present();
+    return toast.onDidDismiss();
   }
 }

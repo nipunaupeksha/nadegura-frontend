@@ -103,6 +103,10 @@ const routes: Routes = [
   {
     path: 'view-all-trips-selected',
     loadChildren: () => import('./modals/view-all-trips-selected/view-all-trips-selected.module').then( m => m.ViewAllTripsSelectedPageModule)
+  },
+  {
+    path: 'view-transport-vehicles',
+    loadChildren: () => import('./modals/view-transport-vehicles/view-transport-vehicles.module').then( m => m.ViewTransportVehiclesPageModule)
   }
 ];
 

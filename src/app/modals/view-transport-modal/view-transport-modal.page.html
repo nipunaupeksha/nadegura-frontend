@@ -88,13 +88,9 @@
                 </div>
               </ion-col>
               <ion-col size=5>
-                <select name="usb" class="selector-background" *ngIf="vehicle['usb']==1" [(ngModel)]="usbValue1">
-                  <option value="1" >YES</option>
-                  <option value="2">NO</option>
-                </select>
-                <select name="usb" class="selector-background" *ngIf="vehicle['usb']==2" [(ngModel)]="usbValue2">
-                  <option value="1">YES</option>
-                  <option value="2" >NO</option>
+                <select name="usb" class="selector-background"[(ngModel)]="usbValue">
+                  <option value="YES">YES</option>
+                  <option value="NO">NO</option>
                 </select>
               </ion-col>
             </ion-row>
@@ -106,20 +102,10 @@
                 </div>
               </ion-col>
               <ion-col size=5>
-                <select name="ac" *ngIf="vehicle['ac']==1" class="selector-background" [(ngModel)]="acValue1" >
-                  <option value="1" >AC</option>
-                  <option value="2">Dual-AC</option>
-                  <option value="3">Non-AC</option>
-                </select>
-                <select name="ac" *ngIf="vehicle['ac']==2" [(ngModel)]="acValue2" class="selector-background">
-                  <option value="1">AC</option>
-                  <option value="2" >Dual-AC</option>
-                  <option value="3">Non-AC</option>
-                </select>
-                <select name="ac" *ngIf="vehicle['ac']==3" [(ngModel)]="acValue3" class="selector-background">
-                  <option value="1">AC</option>
-                  <option value="2">Dual-AC</option>
-                  <option value="3" >Non-AC</option>
+                <select name="ac"  class="selector-background" [(ngModel)]="acValue" >
+                  <option value="AC" >AC</option>
+                  <option value="DUAL_AC">Dual-AC</option>
+                  <option value="NON_AC">Non-AC</option>
                 </select>
               </ion-col>
             </ion-row>
@@ -131,17 +117,12 @@
                 </div>
               </ion-col>
               <ion-col size=5>
-                <select name="cd" *ngIf="vehicle['cdplayer']==1" [(ngModel)]="cdValue1" class="selector-background">
-                  <option value="1" >Yes</option>
-                  <option value="2">No</option>
-                </select>
-                <select name="cd" *ngIf="vehicle['cdplayer']==2" [(ngModel)]="cdValue2" class="selector-background">
-                  <option value="1">Yes</option>
-                  <option value="2" >No</option>
+                <select name="cd" [(ngModel)]="cdValue" class="selector-background">
+                  <option value="YES" >Yes</option>
+                  <option value="NO">No</option>
                 </select>
               </ion-col>
             </ion-row>
-
             <ion-row class="ion-row-margin-bottom-1">
               <ion-col size=5>
                 <div>
@@ -149,14 +130,11 @@
                 </div>
               </ion-col>
               <ion-col size=5>
-                <select name="available" *ngIf="vehicle['availability']==1" class="selector-background" [(ngModel)]="available1">
-                  <option value="1" >Yes</option>
-                  <option value="2">No</option>
+                <select name="available" class="selector-background" [(ngModel)]="available">
+                  <option value="YES" >Yes</option>
+                  <option value="NO">No</option>
                 </select>
-                <select name="available" *ngIf="vehicle['availability']==2" class="selector-background" [(ngModel)]="available2">
-                  <option value="1">Yes</option>
-                  <option value="2">No</option>
-                </select>
+               
               </ion-col>
             </ion-row>
           </ng-container>

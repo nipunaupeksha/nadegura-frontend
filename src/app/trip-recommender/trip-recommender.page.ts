@@ -167,10 +167,14 @@ export class TripRecommenderPage implements OnInit {
   }
 
   clickTravelIcon(id) {
-    // tslint:disable-next-line: triple-equals
+    //tslint:disable-next-line: triple-equals
     if (this.iconColor[id] === 1) {
+      for(let i=0;i<this.iconColor.length;i++){
+        this.iconColor[i] = 1;
+      }
       this.iconColor[id] = 0;
-    } else {
+    }
+    else {
       this.iconColor[id] = 1;
     }
   }

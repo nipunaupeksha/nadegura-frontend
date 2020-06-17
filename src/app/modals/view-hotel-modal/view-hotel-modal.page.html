@@ -31,28 +31,100 @@
 
       <ng-container *ngIf="hotelValidity==1" >
       <ng-container *ngFor="let details of hotelDetailsList">
-        <ng-container *ngFor="let room of roomList">
+
+        <ng-container>
           <ion-row class="ion-row-margin-bottom-1">
             <ion-col class="ion-col-max-width-1">
               <div>
-                <p class="recommend-details">{{room['roomType']}}</p>
+                <p class="recommend-details">Luxury</p>
               </div>
             </ion-col>
             <ion-col class="ion-col-max-width-2">
-              <input type="text" placeholder="No. of rooms" name="{{room['roomType']}}V" id="{{room['roomType']}}V"
-                required class="ion-input-margin-bottom recommend-input" ngModel>
+              <input type="text" placeholder="No. of rooms" name="luxuryV" id="luxuryV"
+                required class="ion-input-margin-bottom recommend-input" [(ngModel)]="details['luxury']">
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col class="ion-col-max-width-1"></ion-col>
             <ion-col class="ion-col-max-width-2">
-              <select name="" id="" class="selector-background" style="padding-left:42px; padding-right:50px;">
-                <option value="1">Non-AC</option>
-                <option value="2">AC</option>
-                <option value="3">Both</option>
+              <select name="lac"  [(ngModel)]="lac" class="selector-background" style="padding-left:42px; padding-right:50px;">
+                <option value="NON_AC">Non-AC</option>
+                <option value="AC">AC</option>
+                <option value="BOTH">Both</option>
               </select>
             </ion-col>
+          </ion-row>
+        </ng-container>
 
+        <ng-container>
+          <ion-row class="ion-row-margin-bottom-1">
+            <ion-col class="ion-col-max-width-1">
+              <div>
+                <p class="recommend-details">Semi-Luxury</p>
+              </div>
+            </ion-col>
+            <ion-col class="ion-col-max-width-2">
+              <input type="text" placeholder="No. of rooms" name="semiluxuryV" id="semiluxuryV"
+                required class="ion-input-margin-bottom recommend-input" [(ngModel)]="details['semiluxury']">
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="ion-col-max-width-1"></ion-col>
+            <ion-col class="ion-col-max-width-2">
+              <select name="slac"  [(ngModel)]="slac" class="selector-background" style="padding-left:42px; padding-right:50px;">
+                <option value="NON_AC">Non-AC</option>
+                <option value="AC">AC</option>
+                <option value="BOTH">Both</option>
+              </select>
+            </ion-col>
+          </ion-row>
+        </ng-container>
+
+        <ng-container>
+          <ion-row class="ion-row-margin-bottom-1">
+            <ion-col class="ion-col-max-width-1">
+              <div>
+                <p class="recommend-details">Deluxe</p>
+              </div>
+            </ion-col>
+            <ion-col class="ion-col-max-width-2">
+              <input type="text" placeholder="No. of rooms" name="deluxeV" id="deluxeV"
+                required class="ion-input-margin-bottom recommend-input" [(ngModel)]="details['deluxe']">
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="ion-col-max-width-1"></ion-col>
+            <ion-col class="ion-col-max-width-2">
+              <select name="dac"  [(ngModel)]="dac" class="selector-background" style="padding-left:42px; padding-right:50px;">
+                <option value="NON_AC">Non-AC</option>
+                <option value="AC">AC</option>
+                <option value="BOTH">Both</option>
+              </select>
+            </ion-col>
+          </ion-row>
+        </ng-container>
+
+        <ng-container>
+          <ion-row class="ion-row-margin-bottom-1">
+            <ion-col class="ion-col-max-width-1">
+              <div>
+                <p class="recommend-details">Suite</p>
+              </div>
+            </ion-col>
+            <ion-col class="ion-col-max-width-2">
+              <input type="text" placeholder="No. of rooms" name="suiteV" id="suiteV"
+                required class="ion-input-margin-bottom recommend-input" [(ngModel)]="details['suite']">
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="ion-col-max-width-1"></ion-col>
+            <ion-col class="ion-col-max-width-2">
+              <select name="sac"  [(ngModel)]="sac" class="selector-background" style="padding-left:42px; padding-right:50px;">
+                <option value="NON_AC">Non-AC</option>
+                <option value="AC">AC</option>
+                <option value="BOTH">Both</option>
+              </select>
+            </ion-col>
           </ion-row>
         </ng-container>
         <!--End of Room Types-->
@@ -118,28 +190,101 @@
       </ng-container>
 
       <ng-container *ngIf="hotelValidity==0">
-        <ng-container *ngFor="let room of roomList">
+        <ng-container>
           <ion-row class="ion-row-margin-bottom-1">
             <ion-col class="ion-col-max-width-1">
               <div>
-                <p class="recommend-details">{{room['roomType']}}</p>
+                <p class="recommend-details">Luxury</p>
               </div>
             </ion-col>
             <ion-col class="ion-col-max-width-2">
-              <input type="text" placeholder="No. of rooms" name="{{room['roomType']}}U" id="{{room['roomType']}}U"
+              <input type="text" placeholder="No. of rooms" name="luxuryU" id="luxuryU"
                 required class="ion-input-margin-bottom recommend-input" ngModel>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col class="ion-col-max-width-1"></ion-col>
             <ion-col class="ion-col-max-width-2">
-              <select name="" id="" class="selector-background" style="padding-left:42px; padding-right:50px;">
+              <select   [(ngModel)]="lac" name="lac" class="selector-background" style="padding-left:42px; padding-right:50px;">
                 <option value="1">Non-AC</option>
                 <option value="2">AC</option>
                 <option value="3">Both</option>
               </select>
             </ion-col>
+          </ion-row>
+        </ng-container>
 
+        <ng-container>
+          <ion-row class="ion-row-margin-bottom-1">
+            <ion-col class="ion-col-max-width-1">
+              <div>
+                <p class="recommend-details">Semi-Luxury</p>
+              </div>
+            </ion-col>
+            <ion-col class="ion-col-max-width-2">
+              <input type="text" placeholder="No. of rooms" name="semiluxuryU" id="semiluxuryU"
+                required class="ion-input-margin-bottom recommend-input" ngModel>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="ion-col-max-width-1"></ion-col>
+            <ion-col class="ion-col-max-width-2">
+              <select   [(ngModel)]="slac" name="slac" class="selector-background" style="padding-left:42px; padding-right:50px;">
+                <option value="1">Non-AC</option>
+                <option value="2">AC</option>
+                <option value="3">Both</option>
+              </select>
+              
+            </ion-col>
+          </ion-row>
+        </ng-container>
+
+        <ng-container>
+          <ion-row class="ion-row-margin-bottom-1">
+            <ion-col class="ion-col-max-width-1">
+              <div>
+                <p class="recommend-details">Deluxe</p>
+              </div>
+            </ion-col>
+            <ion-col class="ion-col-max-width-2">
+              <input type="text" placeholder="No. of rooms" name="deluxeU" id="deluxeU"
+                required class="ion-input-margin-bottom recommend-input" ngModel>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="ion-col-max-width-1"></ion-col>
+            <ion-col class="ion-col-max-width-2">
+              <select [(ngModel)]="dac" name="dac" class="selector-background" style="padding-left:42px; padding-right:50px;">
+                <option value="1">Non-AC</option>
+                <option value="2">AC</option>
+                <option value="3">Both</option>
+              </select>
+              
+            </ion-col>
+          </ion-row>
+        </ng-container>
+
+        <ng-container>
+          <ion-row class="ion-row-margin-bottom-1">
+            <ion-col class="ion-col-max-width-1">
+              <div>
+                <p class="recommend-details">Suite</p>
+              </div>
+            </ion-col>
+            <ion-col class="ion-col-max-width-2">
+              <input type="text" placeholder="No. of rooms" name="suiteU" id="suiteU"
+                required class="ion-input-margin-bottom recommend-input" ngModel>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="ion-col-max-width-1"></ion-col>
+            <ion-col class="ion-col-max-width-2">
+              <select  [(ngModel)]="sac" name="sac" class="selector-background" style="padding-left:42px; padding-right:50px;">
+                <option value="1">Non-AC</option>
+                <option value="2">AC</option>
+                <option value="3">Both</option>
+              </select>
+            </ion-col>
           </ion-row>
         </ng-container>
         <!--End of Room Types-->

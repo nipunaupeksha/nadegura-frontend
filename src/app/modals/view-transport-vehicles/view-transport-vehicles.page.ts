@@ -1,4 +1,3 @@
-import { ViewTransportVehiclesPage } from './../view-transport-vehicles/view-transport-vehicles.page';
 import { ViewTransportModalPage } from './../view-transport-modal/view-transport-modal.page';
 import { TransportService } from './../../services/transport.service';
 import { UserService } from './../../services/user.service';
@@ -7,14 +6,17 @@ import { ModalController, NavParams, ToastController, LoadingController } from '
 import { Component, OnInit, ElementRef } from '@angular/core';
 import * as jwt_decode from 'jwt-decode';
 
+
 @Component({
-  selector: 'app-transport-modal',
-  templateUrl: './transport-modal.page.html',
-  styleUrls: ['./transport-modal.page.scss'],
+  selector: 'app-view-transport-vehicles',
+  templateUrl: './view-transport-vehicles.page.html',
+  styleUrls: ['./view-transport-vehicles.page.scss'],
 })
-export class TransportModalPage implements OnInit {
+export class ViewTransportVehiclesPage implements OnInit {
+  transportId = '';
+  transportName='';
   userId = '';
-  transportList = [];
+  transportList=[];
   transportImgList = [];
   constructor(
     private modalController: ModalController,
@@ -25,42 +27,14 @@ export class TransportModalPage implements OnInit {
     public loadingController: LoadingController,
     private userService: UserService,
     private elementRef: ElementRef
-  ) {
-    this.userId = this.getDecodedAccessToken(localStorage.getItem("token"))['user_id'];
-  }
+  ) { this.userId = this.getDecodedAccessToken(localStorage.getItem("token"))['user_id']; }
 
   ngOnInit() {
-    this.getTransportList();
-    this.presentToast('Transport Updated', 1000);
+    this.transportId = this.navParams.get('transport_id');
+    this.transportName = this.navParams.get('transport_name');
+    this.getVehicleDetails();
   }
 
-  getTransportList() {
-    this.transportList = [];
-    this.transportService.getTransportList(this.userId).subscribe(data => {
-      // tslint:disable-next-line: no-string-literal
-      if (data['data'].length > 0) {
-        // tslint:disable
-        for (let i in data['data']) {
-          // tslint:disable-next-line: no-string-literal
-          this.transportList.push(data['data'][i]);
-          this.transportImgList.push(Math.floor(Math.random() * 10) + 1);
-        }
-      }
-    });
-  }
-
-  async viewTransportService(param1, param2, param3, param4) {
-    const modal = await this.modalController.create({
-      component: ViewTransportVehiclesPage,
-      componentProps: {
-        transport_id: param1,
-        transport_type: param2,
-        transport_name: param3,
-        image_id: param4
-      }
-    });
-    return await modal.present();
-  }
   async closeMedia() {
     await this.modalController.dismiss();
   }
@@ -86,5 +60,34 @@ export class TransportModalPage implements OnInit {
     } catch (Error) {
       return null;
     }
+  }
+
+  getVehicleDetails() {
+    this.transportService.getVehicleDetails(this.transportId).subscribe(data => {
+      // tslint:disable-next-line: no-string-literal
+      if (data['data'].length > 0) {
+        // tslint:disable
+        for (let i in data['data']) {
+          // tslint:disable-next-line: no-string-literal
+          this.transportList.push(data['data'][i]);
+          this.transportImgList.push(Math.floor(Math.random() * 10) + 1);
+        }
+      }
+    });
+  }
+
+  async viewTransportService(param1, param2, param3, param4,param5) {
+
+    const modal = await this.modalController.create({
+      component: ViewTransportModalPage,
+      componentProps: {
+        transport_id: param1,
+        transport_type: param2,
+        transport_name: param3,
+        image_id: param4,
+        vehicle_id:param5,
+      }
+    });
+    return await modal.present();
   }
 }

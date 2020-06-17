@@ -39,34 +39,34 @@ export class TransportService {
       { 'licensePlate': licensePlate, 'model': model, 'brand': brand, 'noOfSeats': noOfSeats, 'ac': ac, 'cdplayer': cdplayer, 'usb': usb, 'availability': availability, 'transportId': transportId }).pipe(map(res => res));
 
   }
-  public updateVehicle(licensePlate, model, brand, noOfSeats, ac, cdplayer, usb, availability, transportId) {
+  public updateVehicle(licensePlate, model, brand, noOfSeats, ac, cdplayer, usb, availability, transportId, vehicleId) {
     return this.http.post(this.BACKEND_URL + 'transports/updateVehicle',
       // tslint:disable-next-line:object-literal-key-quotes
       // tslint:disable-next-line: max-line-length
-      { 'licensePlate': licensePlate, 'model': model, 'brand': brand, 'noOfSeats': noOfSeats, 'ac': ac, 'cdplayer': cdplayer, 'usb': usb, 'availability': availability, 'transportId': transportId }).pipe(map(res => res));
+      { 'licensePlate': licensePlate, 'model': model, 'brand': brand, 'noOfSeats': noOfSeats, 'ac': ac, 'cdplayer': cdplayer, 'usb': usb, 'availability': availability, 'transportId': transportId, 'vehicleId': vehicleId }).pipe(map(res => res));
 
   }
-  public addDriver(driverName, license, phone, email, transportId) {
+  public addDriver(driverName, license, phone, email, transportId, vehicleId) {
     return this.http.post(this.BACKEND_URL + 'transports/addDriver',
       // tslint:disable-next-line:object-literal-key-quotes
       // tslint:disable-next-line: max-line-length
-      { 'driverName': driverName, 'license': license, 'phone': phone, 'email': email, 'transportId': transportId }).pipe(map(res => res));
+      { 'driverName': driverName, 'license': license, 'phone': phone, 'email': email, 'transportId': transportId, 'vehicleId': vehicleId }).pipe(map(res => res));
 
   }
-  public updateDriver(driverName, license, phone, email, transportId) {
+  public updateDriver(driverName, license, phone, email, transportId, vehicleId) {
     return this.http.post(this.BACKEND_URL + 'transports/updateDriver',
       // tslint:disable-next-line:object-literal-key-quotes
       // tslint:disable-next-line: max-line-length
-      { 'driverName': driverName, 'license': license, 'phone': phone, 'email': email, 'transportId': transportId}).pipe(map(res => res));
+      { 'driverName': driverName, 'license': license, 'phone': phone, 'email': email, 'transportId': transportId, 'vehicleId': vehicleId }).pipe(map(res => res));
   }
-  public checkValidityOfVehicle(transportId) {
+  public checkValidityOfVehicle(vehicleId) {
     // tslint:disable-next-line: max-line-length
-    return this.http.post(this.BACKEND_URL + 'transports/checkValidityOfVehicle', { 'transportId': transportId }, { headers: this.headers }).pipe(map(res => res));
+    return this.http.post(this.BACKEND_URL + 'transports/checkValidityOfVehicle', { 'vehicleId': vehicleId }, { headers: this.headers }).pipe(map(res => res));
 
   }
-  public checkValidityOfDriver(transportId) {
+  public checkValidityOfDriver(vehicleId) {
     // tslint:disable-next-line: max-line-length
-    return this.http.post(this.BACKEND_URL + 'transports/checkValidityOfDriver', { 'transportId': transportId }, { headers: this.headers }).pipe(map(res => res));
+    return this.http.post(this.BACKEND_URL + 'transports/checkValidityOfDriver', { 'vehicleId': vehicleId }, { headers: this.headers }).pipe(map(res => res));
   }
   public getDriverDetails(transportId) {
     // tslint:disable-next-line: max-line-length
@@ -75,6 +75,12 @@ export class TransportService {
   public getVehicleDetails(transportId) {
     // tslint:disable-next-line: max-line-length
     return this.http.post(this.BACKEND_URL + 'transports/getVehicleDetails', { 'transportId': transportId }, { headers: this.headers }).pipe(map(res => res));
+
+  }
+
+  public getTransportDetails(transportId) {
+    // tslint:disable-next-line: max-line-length
+    return this.http.post(this.BACKEND_URL + 'transports/getTransportDetails', { 'transportId': transportId }, { headers: this.headers }).pipe(map(res => res));
 
   }
 }

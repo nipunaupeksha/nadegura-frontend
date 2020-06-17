@@ -13,6 +13,8 @@ import * as jwt_decode from 'jwt-decode';
 export class ViewTransportModalPage implements OnInit {
   userId = '';
   transportId = ' ';
+  vehicleId = '';
+  driverId = '';
   transportName = ' ';
   transportType = ' ';
   imageId = '';
@@ -23,22 +25,11 @@ export class ViewTransportModalPage implements OnInit {
   driverDetails = [];
   vehicleDetails = [];
 
-  usbValue = -1;
-  usbValue1 = 1;
-  usbValue2 = 2;
+  usbValue = '';
+  acValue = '';
+  cdValue = '';
+  available = '';
 
-  acValue = -1;
-  acValue1 = 1;
-  acValue2 = 2;
-  acValue3 = 3;
-
-  cdValue = -1;
-  cdValue1 = 1;
-  cdValue2 = 2;
-
-  available = -1;
-  available1 = 1;
-  available2 = 2;
   constructor(
     private modalController: ModalController,
     private router: Router,
@@ -57,6 +48,8 @@ export class ViewTransportModalPage implements OnInit {
     this.transportType = this.navParams.get('transport_type');
     this.transportName = this.navParams.get('transport_name');
     this.imageId = this.navParams.get('image_id');
+    this.vehicleId = this.navParams.get('vehicle_id');
+    //this.driverId = this.navParams.get('driver_Id');
 
     this.checkValidityOfDriver();
     this.checkValidityOfVehicle();
@@ -91,7 +84,7 @@ export class ViewTransportModalPage implements OnInit {
   }
 
   checkValidityOfDriver() {
-    this.transportService.checkValidityOfDriver(this.transportId).subscribe(data => {
+    this.transportService.checkValidityOfDriver(this.vehicleId).subscribe(data => {
       // tslint:disable-next-line: no-string-literal
       if (data['data'].length > 0) {
         this.driverValidity = 1;
@@ -107,7 +100,7 @@ export class ViewTransportModalPage implements OnInit {
   }
 
   checkValidityOfVehicle() {
-    this.transportService.checkValidityOfVehicle(this.transportId).subscribe(data => {
+    this.transportService.checkValidityOfVehicle(this.vehicleId).subscribe(data => {
       // tslint:disable-next-line: no-string-literal
       if (data['data'].length > 0) {
         this.vehicleValidity = 1;
@@ -115,6 +108,10 @@ export class ViewTransportModalPage implements OnInit {
         for (let i in data['data']) {
           // tslint:disable-next-line: no-string-literal
           this.vehicleDetails.push(data['data'][i]);
+          this.usbValue=data['data'][i]['usb'];
+          this.acValue = data['data'][i]['ac'];
+          this.cdValue=data['data'][i]['cdplayer'];
+          this.available = data['data'][i]['availability'];
         }
       } else {
         this.vehicleValidity = 0;
@@ -157,51 +154,8 @@ export class ViewTransportModalPage implements OnInit {
     const v = form.value;
 
     if (this.vehicleValidity == 1 && this.driverValidity == 1) {
-      if (this.usbValue1 != 1) {
-        usbVal = this.usbValue1;
-      } else if (this.usbValue2 != 2) {
-        usbVal = this.usbValue2;
-      } else if (this.usbValue1 == 1) {
-        usbVal = this.usbValue1;
-      } else if (this.usbValue2 == 2) {
-        usbVal = this.usbValue2;
-      }
 
-      if (this.acValue1 != 1) {
-        acval = this.acValue1;
-      } else if (this.acValue2 != 2) {
-        acval = this.acValue2;
-      } else if (this.acValue3 != 3) {
-        acval = this.acValue3;
-      } else if (this.acValue1 == 1) {
-        acval = this.acValue1;
-      } else if (this.acValue2 == 2) {
-        acval = this.acValue2;
-      } else if (this.acValue3 == 3) {
-        acval = this.acValue3;
-      }
-
-      if (this.cdValue1 != 1) {
-        cdVal = this.cdValue1;
-      } else if (this.cdValue2 != 2) {
-        cdVal = this.cdValue2;
-      } else if (this.cdValue1 == 1) {
-        cdVal = this.cdValue1;
-      } else if (this.cdValue2 == 2) {
-        cdVal = this.cdValue2;
-      }
-
-      if (this.available1 != 1) {
-        avail = this.available1;
-      } else if (this.available2 != 2) {
-        avail = this.available2;
-      } else if (this.available1 == 1) {
-        avail = this.available1;
-      } else if (this.available2 == 2) {
-        avail = this.available2;
-      }
-
-      this.transportService.updateVehicle(v.licensePlateV, v.modelV, v.brandV, v.seatsV, acval, cdVal, usbVal, avail, this.transportId).subscribe(data => {
+      this.transportService.updateVehicle(v.licensePlateV, v.modelV, v.brandV, v.seatsV, this.acValue, this.cdValue, this.usbValue, this.available, this.transportId,this.vehicleId).subscribe(data => {
         this.presentToast('Successfully updated', 4000).then(() => {
         });
       }, error => {
@@ -214,7 +168,7 @@ export class ViewTransportModalPage implements OnInit {
         }
       });
 
-      this.transportService.updateDriver(v.driverNameV, v.driverLicenseV, v.driverPhoneV, v.driverMailV, this.transportId).subscribe(data => {
+      this.transportService.updateDriver(v.driverNameV, v.driverLicenseV, v.driverPhoneV, v.driverMailV, this.transportId,this.vehicleId).subscribe(data => {
         this.presentToast('Successfully updated', 4000).then(() => {
         });
       }, error => {
@@ -241,7 +195,7 @@ export class ViewTransportModalPage implements OnInit {
         }
       });
 
-      this.transportService.updateDriver(v.driverNameV, v.driverLicenseV, v.driverPhoneV, v.driverMailV, this.transportId).subscribe(data => {
+      this.transportService.updateDriver(v.driverNameV, v.driverLicenseV, v.driverPhoneV, v.driverMailV, this.transportId,this.vehicleId).subscribe(data => {
         this.presentToast('Successfully updated', 4000).then(() => {
         });
       }, error => {
@@ -255,51 +209,7 @@ export class ViewTransportModalPage implements OnInit {
       });
     }
     else if (this.vehicleValidity == 1 && this.driverValidity == 0) {
-      if (this.usbValue1 != 1) {
-        usbVal = this.usbValue1;
-      } else if (this.usbValue2 != 2) {
-        usbVal = this.usbValue2;
-      } else if (this.usbValue1 == 1) {
-        usbVal = this.usbValue1;
-      } else if (this.usbValue2 == 2) {
-        usbVal = this.usbValue2;
-      }
-
-      if (this.acValue1 != 1) {
-        acval = this.acValue1;
-      } else if (this.acValue2 != 2) {
-        acval = this.acValue2;
-      } else if (this.acValue3 != 3) {
-        acval = this.acValue3;
-      } else if (this.acValue1 == 1) {
-        acval = this.acValue1;
-      } else if (this.acValue2 == 2) {
-        acval = this.acValue2;
-      } else if (this.acValue3 == 3) {
-        acval = this.acValue3;
-      }
-
-      if (this.cdValue1 != 1) {
-        cdVal = this.cdValue1;
-      } else if (this.cdValue2 != 2) {
-        cdVal = this.cdValue2;
-      } else if (this.cdValue1 == 1) {
-        cdVal = this.cdValue1;
-      } else if (this.cdValue2 == 2) {
-        cdVal = this.cdValue2;
-      }
-
-      if (this.available1 != 1) {
-        avail = this.available1;
-      } else if (this.available2 != 2) {
-        avail = this.available2;
-      } else if (this.available1 == 1) {
-        avail = this.available1;
-      } else if (this.available2 == 2) {
-        avail = this.available2;
-      }
-
-      this.transportService.updateVehicle(v.licensePlateV, v.modelV, v.brandV, v.seatsV, acval, cdVal, usbVal, avail, this.transportId).subscribe(data => {
+      this.transportService.updateVehicle(v.licensePlateV, v.modelV, v.brandV, v.seatsV, this.acValue, this.cdValue, this.usbValue, this.available, this.transportId,this.vehicleId).subscribe(data => {
         this.presentToast('Successfully updated', 4000).then(() => {
         });
       }, error => {
@@ -312,7 +222,7 @@ export class ViewTransportModalPage implements OnInit {
         }
       });
 
-      this.transportService.addDriver(v.driverNameU, v.driverLicenseU, v.driverPhoneU, v.driverMailU, this.transportId).subscribe(data => {
+      this.transportService.addDriver(v.driverNameU, v.driverLicenseU, v.driverPhoneU, v.driverMailU, this.transportId,this.vehicleId).subscribe(data => {
         this.presentToast('Successfully updated', 4000).then(() => {
         });
       }, error => {
@@ -339,7 +249,7 @@ export class ViewTransportModalPage implements OnInit {
           this.presentToast('Error Connecting to the Server', 2000);
         }
       });
-      this.transportService.addDriver(v.driverNameU, v.driverLicenseU, v.driverPhoneU, v.driverMailU, this.transportId).subscribe(data => {
+      this.transportService.addDriver(v.driverNameU, v.driverLicenseU, v.driverPhoneU, v.driverMailU, this.transportId,this.vehicleId).subscribe(data => {
         this.presentToast('Successfully updated', 4000).then(() => {
         });
       }, error => {
