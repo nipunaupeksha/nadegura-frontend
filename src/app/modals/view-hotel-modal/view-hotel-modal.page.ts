@@ -17,6 +17,7 @@ export class ViewHotelModalPage implements OnInit {
   imageId = '';
   hotelDetailsList = [];
   roomList = [];
+  hotelValidity = 0;
   constructor(
     private modalController: ModalController,
     private router: Router,
@@ -56,11 +57,14 @@ export class ViewHotelModalPage implements OnInit {
     this.hotelService.getHotelDetails(this.hotelId).subscribe(data => {
       // tslint:disable-next-line: no-string-literal
       if (data['data'].length > 0) {
+        this.hotelValidity = 1;
         // tslint:disable
         for (let i in data['data']) {
           // tslint:disable-next-line: no-string-literal
           this.hotelDetailsList.push(data['data'][i]);
         }
+      }else{
+        this.hotelValidity = 0;
       }
     });
   }
@@ -79,4 +83,7 @@ export class ViewHotelModalPage implements OnInit {
     });
   }
 
+  submitValues(){
+
+  }
 }

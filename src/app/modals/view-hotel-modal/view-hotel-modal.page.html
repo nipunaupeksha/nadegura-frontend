@@ -17,103 +17,198 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content force-overscroll="false" class="content fullscreen-bg" [ngStyle]="{'background-image': 'url('+'../../../assets/img/hotels/photos/'+imageId+'.jpg)'}">
+<ion-content force-overscroll="false" class="content fullscreen-bg"
+  [ngStyle]="{'background-image': 'url('+'../../../assets/img/hotels/photos/'+imageId+'.jpg)'}">
 
   <div class="ion-padding">
-    <!--Room Types-->
-    <ion-row class="ion-row-margin-bottom-1">
-      <ion-col>
-        <h4 class="recommend-details">Rooms</h4>
-      </ion-col>
-    </ion-row>
-
-    <ng-container *ngFor="let room of roomList">
+    <form #valueForm="ngForm">
+      <!--Room Types-->
       <ion-row class="ion-row-margin-bottom-1">
-        <ion-col class="ion-col-max-width-1">
-          <div>
-            <p class="recommend-details">{{room['roomType']}}</p>
-          </div>
-        </ion-col>
-        <ion-col class="ion-col-max-width-2">
-          <input type="text" placeholder="No. of rooms" name="{{room['roomType']}}" required class="ion-input-margin-bottom recommend-input"
-            ngModel>
+        <ion-col>
+          <h4 class="recommend-details">Rooms</h4>
         </ion-col>
       </ion-row>
-      <ion-row>
-        <ion-col class="ion-col-max-width-1"></ion-col>
-        <ion-col class="ion-col-max-width-2">
-          <select name="" id="" class="selector-background"
-           style="padding-left:42px; padding-right:50px;">
-            <option value="1">Non-AC</option>
-            <option value="2">AC</option>
-            <option value="3">Both</option>
-          </select>
-        </ion-col>
-        
-      </ion-row>
-    </ng-container>
-    <!--End of Room Types-->
 
-    <!--Adults-->
-    <ion-row class="ion-row-margin-bottom-1" style="margin-top:10px;">
-      <ion-col>
-        <h4 class="recommend-details">Visiting Count</h4>
-      </ion-col>
-    </ion-row>
-    <ng-container>
-      <ion-row class="ion-row-margin-bottom-1">
-        <ion-col class="ion-col-max-width-1">
-          <div>
-            <p class="recommend-details">Number of Adults</p>
-          </div>
-        </ion-col>
-        <ion-col class="ion-col-max-width-2">
-          <input type="text" placeholder="No. of adults" name="adults" required class="ion-input-margin-bottom recommend-input"
-            ngModel>
-        </ion-col>
-      </ion-row>
-    </ng-container>
-    <!--End of Adults-->
+      <ng-container *ngIf="hotelValidity==1" >
+      <ng-container *ngFor="let details of hotelDetailsList">
+        <ng-container *ngFor="let room of roomList">
+          <ion-row class="ion-row-margin-bottom-1">
+            <ion-col class="ion-col-max-width-1">
+              <div>
+                <p class="recommend-details">{{room['roomType']}}</p>
+              </div>
+            </ion-col>
+            <ion-col class="ion-col-max-width-2">
+              <input type="text" placeholder="No. of rooms" name="{{room['roomType']}}V" id="{{room['roomType']}}V"
+                required class="ion-input-margin-bottom recommend-input" ngModel>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="ion-col-max-width-1"></ion-col>
+            <ion-col class="ion-col-max-width-2">
+              <select name="" id="" class="selector-background" style="padding-left:42px; padding-right:50px;">
+                <option value="1">Non-AC</option>
+                <option value="2">AC</option>
+                <option value="3">Both</option>
+              </select>
+            </ion-col>
 
-    <!--Kids-->
-    <ng-container>
-      <ion-row class="ion-row-margin-bottom-1">
-        <ion-col class="ion-col-max-width-1">
-          <div>
-            <p class="recommend-details">Number of Kids</p>
-          </div>
-        </ion-col>
-        <ion-col class="ion-col-max-width-2">
-          <input type="text" placeholder="No. of kids" name="kids" required class="ion-input-margin-bottom recommend-input"
-            ngModel>
-        </ion-col>
-      </ion-row>
-    </ng-container>
-    <!--End of Kids-->
+          </ion-row>
+        </ng-container>
+        <!--End of Room Types-->
 
-    <!--Prices-->
-    <ion-row class="ion-row-margin-bottom-1" style="margin-top:10px;">
-      <ion-col>
-        <h4 class="recommend-details">Prices</h4>
-      </ion-col>
-    </ion-row>
-    <ng-container>
-      <ion-row class="ion-row-margin-bottom-1">
-        <ion-col class="ion-col-max-width-1">
-          <div>
-            <p class="recommend-details">Per Night Price</p>
-          </div>
-        </ion-col>
-        <ion-col class="ion-col-max-width-2">
-          <input type="text" placeholder="Per Night Price" name="price" required class="ion-input-margin-bottom recommend-input"
-            ngModel>
-        </ion-col>
-      </ion-row>
-    </ng-container>
-    <!--End of Prices-->
+        <!--Adults-->
+        <ion-row class="ion-row-margin-bottom-1" style="margin-top:10px;">
+          <ion-col>
+            <h4 class="recommend-details">Visiting Count</h4>
+          </ion-col>
+        </ion-row>
+        <ng-container>
+          <ion-row class="ion-row-margin-bottom-1">
+            <ion-col class="ion-col-max-width-1">
+              <div>
+                <p class="recommend-details">Number of Adults</p>
+              </div>
+            </ion-col>
+            <ion-col class="ion-col-max-width-2">
+              <input type="text" placeholder="No. of adults" name="adultsV" id="adultsV" required
+                class="ion-input-margin-bottom recommend-input" [(ngModel)] ="details['noOfAdults']">
+            </ion-col>
+          </ion-row>
+        </ng-container>
+        <!--End of Adults-->
+
+        <!--Kids-->
+        <ng-container>
+          <ion-row class="ion-row-margin-bottom-1">
+            <ion-col class="ion-col-max-width-1">
+              <div>
+                <p class="recommend-details">Number of Kids</p>
+              </div>
+            </ion-col>
+            <ion-col class="ion-col-max-width-2">
+              <input type="text" placeholder="No. of kids" name="kidsV" id="kidsV" required
+                class="ion-input-margin-bottom recommend-input" [(ngModel)] ="details['noOfKids']">
+            </ion-col>
+          </ion-row>
+        </ng-container>
+        <!--End of Kids-->
+
+        <!--Prices-->
+        <ion-row class="ion-row-margin-bottom-1" style="margin-top:10px;">
+          <ion-col>
+            <h4 class="recommend-details">Prices</h4>
+          </ion-col>
+        </ion-row>
+        <ng-container>
+          <ion-row class="ion-row-margin-bottom-1">
+            <ion-col class="ion-col-max-width-1">
+              <div>
+                <p class="recommend-details">Per Night Price</p>
+              </div>
+            </ion-col>
+            <ion-col class="ion-col-max-width-2">
+              <input type="text" placeholder="Per Night Price" name="priceV" id="priceV" [(ngModel)] ="details['price']" required
+                class="ion-input-margin-bottom recommend-input" ngModel>
+            </ion-col>
+          </ion-row>
+        </ng-container>
+        <!--End of Prices-->
+      </ng-container>
+      </ng-container>
+
+      <ng-container *ngIf="hotelValidity==0">
+        <ng-container *ngFor="let room of roomList">
+          <ion-row class="ion-row-margin-bottom-1">
+            <ion-col class="ion-col-max-width-1">
+              <div>
+                <p class="recommend-details">{{room['roomType']}}</p>
+              </div>
+            </ion-col>
+            <ion-col class="ion-col-max-width-2">
+              <input type="text" placeholder="No. of rooms" name="{{room['roomType']}}U" id="{{room['roomType']}}U"
+                required class="ion-input-margin-bottom recommend-input" ngModel>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="ion-col-max-width-1"></ion-col>
+            <ion-col class="ion-col-max-width-2">
+              <select name="" id="" class="selector-background" style="padding-left:42px; padding-right:50px;">
+                <option value="1">Non-AC</option>
+                <option value="2">AC</option>
+                <option value="3">Both</option>
+              </select>
+            </ion-col>
+
+          </ion-row>
+        </ng-container>
+        <!--End of Room Types-->
+
+        <!--Adults-->
+        <ion-row class="ion-row-margin-bottom-1" style="margin-top:10px;">
+          <ion-col>
+            <h4 class="recommend-details">Visiting Count</h4>
+          </ion-col>
+        </ion-row>
+        <ng-container>
+          <ion-row class="ion-row-margin-bottom-1">
+            <ion-col class="ion-col-max-width-1">
+              <div>
+                <p class="recommend-details">Number of Adults</p>
+              </div>
+            </ion-col>
+            <ion-col class="ion-col-max-width-2">
+              <input type="text" placeholder="No. of adults" name="adultsU" id="adultsU" required
+                class="ion-input-margin-bottom recommend-input" ngModel>
+            </ion-col>
+          </ion-row>
+        </ng-container>
+        <!--End of Adults-->
+
+        <!--Kids-->
+        <ng-container>
+          <ion-row class="ion-row-margin-bottom-1">
+            <ion-col class="ion-col-max-width-1">
+              <div>
+                <p class="recommend-details">Number of Kids</p>
+              </div>
+            </ion-col>
+            <ion-col class="ion-col-max-width-2">
+              <input type="text" placeholder="No. of kids" name="kidsU" id="kidsU" required
+                class="ion-input-margin-bottom recommend-input" ngModel>
+            </ion-col>
+          </ion-row>
+        </ng-container>
+        <!--End of Kids-->
+
+        <!--Prices-->
+        <ion-row class="ion-row-margin-bottom-1" style="margin-top:10px;">
+          <ion-col>
+            <h4 class="recommend-details">Prices</h4>
+          </ion-col>
+        </ion-row>
+        <ng-container>
+          <ion-row class="ion-row-margin-bottom-1">
+            <ion-col class="ion-col-max-width-1">
+              <div>
+                <p class="recommend-details">Per Night Price</p>
+              </div>
+            </ion-col>
+            <ion-col class="ion-col-max-width-2">
+              <input type="text" placeholder="Per Night Price" name="priceU" id="priceU" required
+                class="ion-input-margin-bottom recommend-input" ngModel>
+            </ion-col>
+          </ion-row>
+        </ng-container>
+        <!--End of Prices-->
+      </ng-container>
+
+
+
+    </form>
     <ion-row>
-      <button  ion-button full type="submit" class="btn btn-primary">
-        Update
+      <button ion-button full type="submit" class="btn btn-primary" (click)=submitValues(valueForm)>
+        Submit
       </button>
     </ion-row>
   </div>

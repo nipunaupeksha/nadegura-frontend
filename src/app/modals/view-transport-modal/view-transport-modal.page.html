@@ -17,129 +17,410 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content force-overscroll="false" class="content fullscreen-bg" [ngStyle]="{'background-image': 'url('+'../../../assets/img/hotels/photos/'+imageId+'.jpg)'}">
-  <div class="layer"></div>
+<ion-content force-overscroll="false" class="content fullscreen-bg"
+  [ngStyle]="{'background-image': 'url('+'../../../assets/img/hotels/photos/'+imageId+'.jpg)'}">
   <div class="ion-padding">
-    <!--Vehicle Details-->
-    <ion-row class="ion-row-margin-bottom-1">
-      <ion-col>
-        <h4 class="recommend-details">Vehicle</h4>
-      </ion-col>
-    </ion-row>
+    <form #valueForm="ngForm">
+    <!--/////-->
+    <ng-container *ngIf="vehicleValidity==1">
+      <ng-container *ngFor="let vehicle of vehicleDetails; let i=index;">
+        
+          <!--Vehicle Details-->
+          <ion-row class="ion-row-margin-bottom-1">
+            <ion-col>
+              <h4 class="recommend-details">Vehicle</h4>
+            </ion-col>
+          </ion-row>
 
-    <ng-container>
-      <ion-row class="ion-row-margin-bottom-1">
-        <ion-col size=5>
-          <div>
-            <p class="recommend-details">License Plate</p>
-          </div>
-        </ion-col>
-        <ion-col size=5>
-          <input type="text" placeholder="License" name="license" required class="recommend-input ion-input-margin-bottom"
-            ngModel>
-        </ion-col>
-      </ion-row>
+          <ng-container>
+            <ion-row class="ion-row-margin-bottom-1">
+              <ion-col size=5>
+                <div>
+                  <p class="recommend-details">License Plate</p>
+                </div>
+              </ion-col>
+              <ion-col size=5>
+                <input type="text" placeholder="" id="licensePlateV" name="licensePlateV" class="recommend-input ion-input-margin-bottom"
+                  [(ngModel)]="vehicle['licensePlate']">
+              </ion-col>
+            </ion-row>
 
-      <ion-row class="ion-row-margin-bottom-1">
-        <ion-col size=5>
-          <div>
-            <p class="recommend-details">Model</p>
-          </div>
-        </ion-col>
-        <ion-col size=5>
-          <input type="text" placeholder="Model" name="model"  class="recommend-input ion-input-margin-bottom "
-            ngModel>
-        </ion-col>
-      </ion-row>
+            <ion-row class="ion-row-margin-bottom-1">
+              <ion-col size=5>
+                <div>
+                  <p class="recommend-details">Model</p>
+                </div>
+              </ion-col>
+              <ion-col size=5>
+                <input type="text" placeholder="" name="modelV" id="modelV" class="recommend-input ion-input-margin-bottom "
+                  [(ngModel)]="vehicle['model']">
+              </ion-col>
+            </ion-row>
 
-      <ion-row class="ion-row-margin-bottom-1">
-        <ion-col size=5>
-          <div>
-            <p class="recommend-details">Brand</p>
-          </div>
-        </ion-col>
-        <ion-col size=5>
-          <input type="text" placeholder="Brand" name="brand"  class="recommend-input ion-input-margin-bottom"
-            ngModel>
-        </ion-col>
-      </ion-row>
+            <ion-row class="ion-row-margin-bottom-1">
+              <ion-col size=5>
+                <div>
+                  <p class="recommend-details">Brand</p>
+                </div>
+              </ion-col>
+              <ion-col size=5>
+                <input type="text" placeholder="" name="brandV" id="brandV" class="recommend-input ion-input-margin-bottom"
+                  [(ngModel)]="vehicle['brand']">
+              </ion-col>
+            </ion-row>
 
-    <ion-row class="ion-row-margin-bottom-1">
-      <ion-col size=5>
-        <div>
-          <p class="recommend-details">No. of Seats</p>
-        </div>
-      </ion-col>
-      <ion-col size=5>
-        <input type="text" placeholder="No. of Seats" name="seats"  class="recommend-input ion-input-margin-bottom"
-          ngModel>
-      </ion-col>
-    </ion-row>
+            <ion-row class="ion-row-margin-bottom-1">
+              <ion-col size=5>
+                <div>
+                  <p class="recommend-details">No. of Seats</p>
+                </div>
+              </ion-col>
+              <ion-col size=5>
+                <input type="text" placeholder="" name="seatsV" id="seatsV" class="recommend-input ion-input-margin-bottom"
+                  [(ngModel)]="vehicle['noOfSeats']">
+              </ion-col>
+            </ion-row>
 
-    <ion-row class="ion-row-margin-bottom-1">
-      <ion-col size=5>
-        <div>
-          <p class="recommend-details">USB Facility</p>
-        </div>
-      </ion-col>
-      <ion-col size=5>
-        <select name="usb" id="" [(ngModel)]="usbValue" class="selector-background">
-          <option value="1" >Yes</option>
-          <option value="2" >No</option>
-        </select>
-      </ion-col>
-    </ion-row>
+            <ion-row class="ion-row-margin-bottom-1">
+              <ion-col size=5>
+                <div>
+                  <p class="recommend-details">USB Facility</p>
+                </div>
+              </ion-col>
+              <ion-col size=5>
+                <select name="usb" class="selector-background" *ngIf="vehicle['usb']==1" [(ngModel)]="usbValue1">
+                  <option value="1" >YES</option>
+                  <option value="2">NO</option>
+                </select>
+                <select name="usb" class="selector-background" *ngIf="vehicle['usb']==2" [(ngModel)]="usbValue2">
+                  <option value="1">YES</option>
+                  <option value="2" >NO</option>
+                </select>
+              </ion-col>
+            </ion-row>
 
-    <ion-row class="ion-row-margin-bottom-1">
-      <ion-col size=5>
-        <div>
-          <p class="recommend-details">AC </p>
-        </div>
-      </ion-col>
-      <ion-col size=5>
-        <select name="ac" id="" [(ngModel)]="acValue" class="selector-background">
-          <option value="1" >AC</option>
-          <option value="2" >Dual-AC</option>
-          <option value="2" >Non-AC</option>
-        </select>
-      </ion-col>
-    </ion-row>
+            <ion-row class="ion-row-margin-bottom-1">
+              <ion-col size=5>
+                <div>
+                  <p class="recommend-details">AC </p>
+                </div>
+              </ion-col>
+              <ion-col size=5>
+                <select name="ac" *ngIf="vehicle['ac']==1" class="selector-background" [(ngModel)]="acValue1" >
+                  <option value="1" >AC</option>
+                  <option value="2">Dual-AC</option>
+                  <option value="3">Non-AC</option>
+                </select>
+                <select name="ac" *ngIf="vehicle['ac']==2" [(ngModel)]="acValue2" class="selector-background">
+                  <option value="1">AC</option>
+                  <option value="2" >Dual-AC</option>
+                  <option value="3">Non-AC</option>
+                </select>
+                <select name="ac" *ngIf="vehicle['ac']==3" [(ngModel)]="acValue3" class="selector-background">
+                  <option value="1">AC</option>
+                  <option value="2">Dual-AC</option>
+                  <option value="3" >Non-AC</option>
+                </select>
+              </ion-col>
+            </ion-row>
 
-    <ion-row class="ion-row-margin-bottom-1">
-      <ion-col size=5>
-        <div>
-          <p class="recommend-details">CD Player</p>
-        </div>
-      </ion-col>
-      <ion-col size=5>
-        <select name="cd" id="" [(ngModel)]="cdValue" class="selector-background">
-          <option value="1" >Yes</option>
-          <option value="2" >No</option>
-        </select>
-      </ion-col>
-    </ion-row>
+            <ion-row class="ion-row-margin-bottom-1">
+              <ion-col size=5>
+                <div>
+                  <p class="recommend-details">CD Player</p>
+                </div>
+              </ion-col>
+              <ion-col size=5>
+                <select name="cd" *ngIf="vehicle['cdplayer']==1" [(ngModel)]="cdValue1" class="selector-background">
+                  <option value="1" >Yes</option>
+                  <option value="2">No</option>
+                </select>
+                <select name="cd" *ngIf="vehicle['cdplayer']==2" [(ngModel)]="cdValue2" class="selector-background">
+                  <option value="1">Yes</option>
+                  <option value="2" >No</option>
+                </select>
+              </ion-col>
+            </ion-row>
 
-    <ion-row class="ion-row-margin-bottom-1">
-      <ion-col size=5>
-        <div>
-          <p class="recommend-details">Availability</p>
-        </div>
-      </ion-col>
-      <ion-col size=5>
-        <select name="available" id="" [(ngModel)]="available" class="selector-background">
-          <option value="1" >Yes</option>
-          <option value="2" >No</option>
-        </select>
-      </ion-col>
-    </ion-row>
-  </ng-container>
-    <!--End of Vehicle Details-->
+            <ion-row class="ion-row-margin-bottom-1">
+              <ion-col size=5>
+                <div>
+                  <p class="recommend-details">Availability</p>
+                </div>
+              </ion-col>
+              <ion-col size=5>
+                <select name="available" *ngIf="vehicle['availability']==1" class="selector-background" [(ngModel)]="available1">
+                  <option value="1" >Yes</option>
+                  <option value="2">No</option>
+                </select>
+                <select name="available" *ngIf="vehicle['availability']==2" class="selector-background" [(ngModel)]="available2">
+                  <option value="1">Yes</option>
+                  <option value="2">No</option>
+                </select>
+              </ion-col>
+            </ion-row>
+          </ng-container>
+          <!--End of Vehicle Details-->
+        
+      </ng-container>
+    </ng-container>
+    <!--/////-->
 
+    <!--/////-->
+    <ng-container *ngIf="vehicleValidity==0">
+      
+        <!--Vehicle Details-->
+        <ion-row class="ion-row-margin-bottom-1">
+          <ion-col>
+            <h4 class="recommend-details">Vehicle</h4>
+          </ion-col>
+        </ion-row>
+
+        <ng-container>
+          <ion-row class="ion-row-margin-bottom-1">
+            <ion-col size=5>
+              <div>
+                <p class="recommend-details">License Plate</p>
+              </div>
+            </ion-col>
+            <ion-col size=5>
+              <input type="text" placeholder="License" name="licensePlateU" id="licensePlateU" class="recommend-input ion-input-margin-bottom"
+                ngModel>
+            </ion-col>
+          </ion-row>
+
+          <ion-row class="ion-row-margin-bottom-1">
+            <ion-col size=5>
+              <div>
+                <p class="recommend-details">Model</p>
+              </div>
+            </ion-col>
+            <ion-col size=5>
+              <input type="text" placeholder="Model" name="modelU" id="modelU" class="recommend-input ion-input-margin-bottom "
+                ngModel>
+            </ion-col>
+          </ion-row>
+
+          <ion-row class="ion-row-margin-bottom-1">
+            <ion-col size=5>
+              <div>
+                <p class="recommend-details">Brand</p>
+              </div>
+            </ion-col>
+            <ion-col size=5>
+              <input type="text" placeholder="Brand" name="brandU" id="brandU"class="recommend-input ion-input-margin-bottom"
+                ngModel>
+            </ion-col>
+          </ion-row>
+
+          <ion-row class="ion-row-margin-bottom-1">
+            <ion-col size=5>
+              <div>
+                <p class="recommend-details">No. of Seats</p>
+              </div>
+            </ion-col>
+            <ion-col size=5>
+              <input type="text" placeholder="No. of Seats" name="seatsU" id="seatsU" class="recommend-input ion-input-margin-bottom"
+                ngModel>
+            </ion-col>
+          </ion-row>
+
+          <ion-row class="ion-row-margin-bottom-1">
+            <ion-col size=5>
+              <div>
+                <p class="recommend-details">USB Facility</p>
+              </div>
+            </ion-col>
+            <ion-col size=5>
+              <select name="usb" id="" [(ngModel)]="usbValue" class="selector-background">
+                <option value="1">Yes</option>
+                <option value="2">No</option>
+              </select>
+            </ion-col>
+          </ion-row>
+
+          <ion-row class="ion-row-margin-bottom-1">
+            <ion-col size=5>
+              <div>
+                <p class="recommend-details">AC </p>
+              </div>
+            </ion-col>
+            <ion-col size=5>
+              <select name="ac" id="" [(ngModel)]="acValue" class="selector-background">
+                <option value="1">AC</option>
+                <option value="2">Dual-AC</option>
+                <option value="2">Non-AC</option>
+              </select>
+            </ion-col>
+          </ion-row>
+
+          <ion-row class="ion-row-margin-bottom-1">
+            <ion-col size=5>
+              <div>
+                <p class="recommend-details">CD Player</p>
+              </div>
+            </ion-col>
+            <ion-col size=5>
+              <select name="cd" id="" [(ngModel)]="cdValue" class="selector-background">
+                <option value="1">Yes</option>
+                <option value="2">No</option>
+              </select>
+            </ion-col>
+          </ion-row>
+
+          <ion-row class="ion-row-margin-bottom-1">
+            <ion-col size=5>
+              <div>
+                <p class="recommend-details">Availability</p>
+              </div>
+            </ion-col>
+            <ion-col size=5>
+              <select name="available" id="" [(ngModel)]="available" class="selector-background">
+                <option value="1">Yes</option>
+                <option value="2">No</option>
+              </select>
+            </ion-col>
+          </ion-row>
+        </ng-container>
+        <!--End of Vehicle Details-->
+    </ng-container>
+    <!--/////-->
+
+    <!--/////-->
+    <ng-container *ngIf="driverValidity==1">
+        <ng-container *ngFor="let driver of driverDetails; let i=index;">
+          <!--Driver Details-->
+          <ion-row class="ion-row-margin-bottom-1">
+            <ion-col>
+              <h4 class="recommend-details">Driver</h4>
+            </ion-col>
+          </ion-row>
+          <ng-container>
+            <ion-row class="ion-row-margin-bottom-1">
+              <ion-col size=5>
+                <div>
+                  <p class="recommend-details">Driver Name</p>
+                </div>
+              </ion-col>
+              <ion-col size=5>
+                <input type="text" placeholder="" name="driverNameV" id ="driverNameV" class="recommend-input ion-input-margin-bottom"
+                  [(ngModel)]="driver['driverName']">
+              </ion-col>
+            </ion-row>
+
+            <ion-row class="ion-row-margin-bottom-1">
+              <ion-col size=5>
+                <div>
+                  <p class="recommend-details">Driver Phone</p>
+                </div>
+              </ion-col>
+              <ion-col size=5>
+                <input type="text" placeholder="" name="driverPhoneV" id="driverPhoneV" class="recommend-input ion-input-margin-bottom"
+                  [(ngModel)]="driver['driverPhone']">
+              </ion-col>
+            </ion-row>
+
+            <ion-row class="ion-row-margin-bottom-1">
+              <ion-col size=5>
+                <div>
+                  <p class="recommend-details">Driver E-Mail</p>
+                </div>
+              </ion-col>
+              <ion-col size=5>
+                <input type="text" placeholder="" name="driverMailV" id="driverMailV" class="recommend-input ion-input-margin-bottom"
+                  [(ngModel)]="driver['driverMail']">
+              </ion-col>
+            </ion-row>
+
+            <ion-row class="ion-row-margin-bottom-1">
+              <ion-col size=5>
+                <div>
+                  <p class="recommend-details">Driver License</p>
+                </div>
+              </ion-col>
+              <ion-col size=5>
+                <input type="text" placeholder="" id="driverLicenseV" name="driverLicenseV" class="recommend-input ion-input-margin-bottom"
+                  [(ngModel)]="driver['license']">
+              </ion-col>
+            </ion-row>
+
+          </ng-container>
+          <!--End of driver details-->
+       
+        </ng-container>
+    </ng-container>
+    <!-- ////// -->
+
+    <!--/////-->
+    <ng-container *ngIf="driverValidity==0">
+      
+        <!--Driver Details-->
+        <ion-row class="ion-row-margin-bottom-1">
+          <ion-col>
+            <h4 class="recommend-details">Driver</h4>
+          </ion-col>
+        </ion-row>
+        <ng-container>
+          <ion-row class="ion-row-margin-bottom-1">
+            <ion-col size=5>
+              <div>
+                <p class="recommend-details">Driver Name</p>
+              </div>
+            </ion-col>
+            <ion-col size=5>
+              <input type="text" placeholder="name" name="driverNameU" id="driverNameU" class="recommend-input ion-input-margin-bottom"
+                ngModel>
+            </ion-col>
+          </ion-row>
+
+          <ion-row class="ion-row-margin-bottom-1">
+            <ion-col size=5>
+              <div>
+                <p class="recommend-details">Driver Phone</p>
+              </div>
+            </ion-col>
+            <ion-col size=5>
+              <input type="text" placeholder="Telephone" name="driverPhoneU" id="driverPhoneU"
+                class="recommend-input ion-input-margin-bottom" ngModel>
+            </ion-col>
+          </ion-row>
+
+          <ion-row class="ion-row-margin-bottom-1">
+            <ion-col size=5>
+              <div>
+                <p class="recommend-details">Driver E-Mail</p>
+              </div>
+            </ion-col>
+            <ion-col size=5>
+              <input type="text" placeholder="E-mail" name="driverMailU" id="driverMailU" class="recommend-input ion-input-margin-bottom"
+              ngModel>
+            </ion-col>
+          </ion-row>
+
+          <ion-row class="ion-row-margin-bottom-1">
+            <ion-col size=5>
+              <div>
+                <p class="recommend-details">Driver License</p>
+              </div>
+            </ion-col>
+            <ion-col size=5>
+              <input type="text" placeholder="License" name="driverLicenseU" id="driverLicenseU"
+                class="recommend-input ion-input-margin-bottom" ngModel>
+            </ion-col>
+          </ion-row>
+
+        </ng-container>
+    
+      <!--End of driver details-->
+    </ng-container>
+    <!-- ////// -->
+    </form>
     <ion-row>
-      <button  ion-button full type="submit" class="btn btn-primary">
-        Update
+      <button full type="submit" class="btn btn-primary"
+        (click)="updateDetails(valueForm)">
+        Submit
       </button>
     </ion-row>
   </div>
-
+  <!-- <div class="layer"></div> -->
 </ion-content>
