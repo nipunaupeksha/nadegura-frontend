@@ -13,8 +13,11 @@ export class RegistrationPage implements OnInit {
   isErrorInEmail = false;
   isLoading = 0;
   gender: object[];
+  role: object[];
   genderSelected: number;
-  constructor(private router: Router,
+  roleTicked = 'select';
+  constructor(
+    private router: Router,
     private route: ActivatedRoute,
     public toastController: ToastController,
     public loadingController: LoadingController,
@@ -26,6 +29,12 @@ export class RegistrationPage implements OnInit {
       { id: 2, name: 'Male' },
       { id: 3, name: 'Female' }
     ];
+
+    this.role = [
+      { id: 'select', name: 'Sign Up As' },
+      { id: 'customer', name: 'Traveller' },
+      { id: 'serviceT', name: 'Transport Provider' },
+      { id: 'servieH', name: 'Hotel Provider' },];
     this.genderSelected = 1;
   }
 
@@ -44,6 +53,8 @@ export class RegistrationPage implements OnInit {
     const address = user.l1 + ',' + user.l2 + ',' + user.l3;
 
     // tslint:disable-next-line: max-line-length
+    const roleSelected = this.roleTicked == 'select' ? 'customer' : this.roleTicked;
+    // tslint:disable-next-line: max-line-length
     const genderTicked = this.genderSelected === 1 ? this.gender[this.genderSelected]['name'] : this.gender[this.genderSelected - 1]['name'];
     if (user.password !== user.repassword) {
       this.isErrorInPassword = true;
@@ -51,7 +62,7 @@ export class RegistrationPage implements OnInit {
       this.isLoading = 0;
     } else {
       // tslint:disable-next-line: max-line-length
-      this.userService.register(user.firstname, user.lastname, user.email, user.mobile, address, user.nic, user.dob, genderTicked, user.license, user.occupation, user.password,"customer").subscribe(data => {
+      this.userService.register(user.firstname, user.lastname, user.email, user.mobile, address, user.nic, user.dob, genderTicked, user.license, user.occupation, user.password, roleSelected).subscribe(data => {
         this.isLoading = 0;
         this.presentToast('Successfully created an Account', 4000).then(() => {
           this.presentToast('Please sign in to the system with your credentials!', 1000).then(() => {

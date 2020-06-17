@@ -47,9 +47,9 @@ export class TripRecommenderPage implements OnInit {
     this.createdTrip = 'J';
     this.destinationSelect = 0;
     this.destinationDestination = 'Select destination';
-    this.destinationArea = 'area';
-    this.destinationDistrict = 'district';
-    this.destinationProvince = 'province';
+    this.destinationArea = '';
+    this.destinationDistrict = '';
+    this.destinationProvince = '';
     if (this.valuesAdded === 0) {
       this.getDestinations();
       this.presentToast('Destinations Updated', 1000);

@@ -68,6 +68,11 @@
           <input type="password" placeholder="Re-Type Password" name="repassword" required id="repassword"
             class="form-control credentials" ngModel [ngClass]="{ 'error' : isErrorInPassword }" />
 
+          <select name="role" id="role" [(ngModel)]="roleTicked" class="form-control credentials selector-background">
+            <option *ngFor="let r of role" [value]="r.id">{{r.name}}</option>
+            
+          </select>
+
         </ion-col>
       </ion-row>
 

@@ -1,5 +1,17 @@
+<ion-header style="background: white;">
+  <ion-toolbar>
+    <div class="ion-padding">
+      <ion-row>
+        <ion-col style="text-transform: uppercase;">
+          <img src="assets/icon/arrow-left.svg" alt="" (click)="goBack()" style="float:left; padding-top:1px;">
+          <h4 style="letter-spacing: 3px; width:90% !important; float:right; text-align:center;">Trip Recommender</h4>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-toolbar>
+</ion-header>
 <ion-content class="content fullscreen-bg" force-overscroll="false">
-  <div>
+  <!-- <div>
     <ion-row class="header-row">
       <ion-col class="header-style-arrow">
         <img src="assets/icon/arrow-left.svg" class="arrow" alt="" (click)="goBack()">
@@ -8,7 +20,7 @@
         <h5 class="whitefy header-text">Trip Recommender</h5>
       </ion-col>
     </ion-row>
-  </div>
+  </div> -->
   <div>
 
     <ion-row>
@@ -28,16 +40,16 @@
 
                 <select name="destination" id="destination" class="ion-input-margin-bottom selector-background" required
                   (click)="setValues()" [(ngModel)]="destinationSelect">
-                  <option *ngFor="let destination of destinationList; let i = index;" [value]="i">
+                  <option style="font-size:12px;" *ngFor="let destination of destinationList; let i = index;" [value]="i">
                     {{destination["destination"]}}</option>
                 </select>
 
                 <input type="text" placeholder="{{destinationArea}}" name="area" required id="area"
-                  class="ion-input-margin-bottom recommend-input" disabled ngModel>
+                  class="ion-input-margin-bottom recommend-input" disabled [(ngModel)]="destinationArea">
                 <input type="text" placeholder="{{destinationDistrict}}" name="district" required id="district"
-                  class="ion-input-margin-bottom recommend-input" disabled ngModel>
+                  class="ion-input-margin-bottom recommend-input" disabled [(ngModel)]="destinationDistrict">
                 <input type="text" placeholder="{{destinationProvince}}" name="province" required id="province"
-                class="ion-input-margin-bottom recommend-input" disabled ngModel>
+                class="ion-input-margin-bottom recommend-input" disabled [(ngModel)]="destinationProvince">
               </ion-col>
             </ion-row>
             <!--End of Destination-->
@@ -66,7 +78,7 @@
                 </div>
               </ion-col>
               <ion-col class="ion-col-max-width-2">
-                <input type="text" placeholder="Type no. of participants" name="participants" required id="participants"
+                <input type="text" placeholder="No. of participants" name="participants" required id="participants"
                 class="ion-input-margin-bottom recommend-input" ngModel>
               </ion-col>
             </ion-row>
