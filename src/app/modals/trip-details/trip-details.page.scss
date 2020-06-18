@@ -24,7 +24,9 @@ ion-slides {
 }
 
 .whitefy {
-    color: white;
+    color:rgba($color: #FFF, $alpha: 0.8); 
+    font-family: 'Poppins-regular'; 
+    font-size: 15px;
 }
 .beautify {
     margin-left: 5px;
@@ -262,10 +264,6 @@ input[type="password"]:focus {
     padding-top: 5vh;
 }
 
-.whitefy {
-    color: white;
-}
-
 .margin-top-fixer-1 {
     margin-top: 10px;
 }
@@ -301,4 +299,16 @@ input[type="password"]:focus {
 .col-fixer {
     min-height: 100px;
     max-width: 100px;
+}
+h4{
+    font-family: 'Poppins-regular';
+    font-size: 12px;
+    color: #FFF;
+    text-align: center;
+}
+.recommend-input-modified{
+    font-family: 'Poppins-regular'; 
+}
+p{
+    margin-bottom: 3%;
 }

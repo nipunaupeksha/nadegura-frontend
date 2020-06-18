@@ -10,7 +10,7 @@ import * as jwt_decode from 'jwt-decode';
   styleUrls: ['./trip-recommender.page.scss'],
 })
 export class TripRecommenderPage implements OnInit {
-  destinationList = [{ 'destination': 'Select destination', 'area': 'area', 'district': 'district', 'province': 'province' }];
+  destinationList = [{ 'destination': 'Select Destination', 'area': 'area', 'district': 'district', 'province': 'province' }];
   destinationSelect: number;
   tripList = [];
   ageGroup = [];
@@ -29,6 +29,8 @@ export class TripRecommenderPage implements OnInit {
   destinationDistrict: string;
   destinationProvince: string;
 
+  buddies='';
+
   constructor(
     private router: Router,
     public toastController: ToastController,
@@ -46,7 +48,7 @@ export class TripRecommenderPage implements OnInit {
 
     this.createdTrip = 'J';
     this.destinationSelect = 0;
-    this.destinationDestination = 'Select destination';
+    this.destinationDestination = 'Select Destination';
     this.destinationArea = '';
     this.destinationDistrict = '';
     this.destinationProvince = '';
@@ -64,14 +66,15 @@ export class TripRecommenderPage implements OnInit {
     const modal = await this.modalController.create({
       component: RecommendationsPage,
       componentProps: {
-        custom_value: this.recommendedTrips
+        custom_value: this.recommendedTrips,
+        buddies:this.buddies
       }
     });
     return await modal.present();
   }
 
   getDestinations() {
-    this.destinationList = [{ 'destination': 'Select destination', 'area': 'area', 'district': 'district', 'province': 'province' }];
+    this.destinationList = [{ 'destination': 'Select Destination', 'area': 'area', 'district': 'district', 'province': 'province' }];
     this.userService.getDestinations().subscribe(data => {
       // tslint:disable-next-line: no-string-literal
       if (data['data'].length > 0) {
@@ -99,6 +102,7 @@ export class TripRecommenderPage implements OnInit {
         travelMode = travelMode + 'w';
       }
     });
+    this.buddies=trip.participants;
     this.recommendedTrips = [];
     this.userService.getRecommendedTrips(this.destinationList[this.destinationSelect]['tripDestinationId'], trip.days, trip.participants, trip.budget_per_person, this.ageGroup[this.ageGroupSelected - 1]['ageId'], travelMode, this.triptype).subscribe(data => {
       // tslint:disable-next-line: no-string-literal

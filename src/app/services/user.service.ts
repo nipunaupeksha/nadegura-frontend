@@ -58,13 +58,20 @@ export class UserService {
 
   //Trips
   // tslint:disable-next-line: max-line-length
-  public createTrip(tripDestinationId, start_date, start_time, start_venue, days, people_count, participants, budget_per_person, ageId, triptype, travel, userId, created) {
-    return this.http.post(this.BACKEND_URL + 'trips/createTrip', { 'tripDestinationId': tripDestinationId, 'start_date': start_date, 'start_time': start_time, 'start_venue': start_venue, 'days': days, 'people_count': people_count, 'participants': participants, 'budget_per_person': budget_per_person, 'ageId': ageId, 'triptype': triptype, 'travel': travel, 'userId': userId, 'created': created }).pipe(map(res => res));
+  public createTrip(tripDestinationId, start_date, start_time, start_venue, days, people_count, participants, budget_per_person, ageId, triptype, travel, userId) {
+    return this.http.post(this.BACKEND_URL + 'trips/createTrip', { 'tripDestinationId': tripDestinationId, 'start_date': start_date, 'start_time': start_time, 'start_venue': start_venue, 'days': days, 'people_count': people_count, 'participants': participants, 'budget_per_person': budget_per_person, 'ageId': ageId, 'triptype': triptype, 'travel': travel, 'userId': userId }).pipe(map(res => res));
   }
   public getTrips(userId) {
     return this.http.post(this.BACKEND_URL + 'trips/getTrips', { 'userId': userId }, { headers: this.headers }).pipe(map(res => res));
   }
-  public getTripsById(tripId){
+  public joinTrip(participants, buddies, userID, tripId) {
+    // tslint:disable-next-line: max-line-length
+    return this.http.post(this.BACKEND_URL + 'trips/joinTrip', { 'participants': participants, 'userID': userID, 'tripId': tripId, 'buddies': buddies }, { headers: this.headers }).pipe(map(res => res));
+  }
+  public getJoinedTrips(userId) {
+    return this.http.post(this.BACKEND_URL + 'trips/getJoinedTrips', { 'userId': userId }, { headers: this.headers }).pipe(map(res => res));
+  }
+  public getTripsById(tripId) {
     return this.http.post(this.BACKEND_URL + 'trips/getTripsById', { 'tripId': tripId }, { headers: this.headers }).pipe(map(res => res));
   }
   public getDestinations() {
@@ -79,5 +86,10 @@ export class UserService {
   }
   public getTravelList() {
     return this.http.get(this.BACKEND_URL + 'trips/getTravelList', { headers: this.headers }).pipe(map(res => res));
+  }
+
+  public deleteCreatedTrip(tripId) {
+    // tslint:disable-next-line: max-line-length
+    return this.http.post(this.BACKEND_URL + 'trips/deleteCreatedTrip', { 'tripId': tripId }, { headers: this.headers }).pipe(map(res => res));
   }
 }

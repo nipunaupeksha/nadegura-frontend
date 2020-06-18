@@ -15,6 +15,7 @@ export class RecommendationsPage implements OnInit {
   travelList = [];
   selectedTrip = [];
   selecedValue: number;
+  buddies='';
   constructor(
     private modalController: ModalController,
     private router: Router,
@@ -27,7 +28,8 @@ export class RecommendationsPage implements OnInit {
     const modal = await this.modalController.create({
       component: TripDetailsPage,
       componentProps: {
-        custom_value: this.selectedTrip
+        custom_value: this.selectedTrip,
+        buddies: this.buddies
       }
     });
     return await modal.present();
@@ -41,6 +43,7 @@ export class RecommendationsPage implements OnInit {
   ngOnInit() {
     this.selecedValue = -1;
     this.passedArray = this.navParams.get('custom_value');
+    this.buddies = this.navParams.get('buddies');
     this.getTravelValues();
   }
 

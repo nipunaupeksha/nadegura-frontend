@@ -18,17 +18,19 @@
 </ion-header>
 
 <ion-content class="content fullscreen-bg" force-overscroll="false">
-  
+
   <div class="ion-padding" style="padding-top:0 !important; margin-top:0 !important;">
     <ion-row>
       <h4 class="title">Created Trips</h4>
     </ion-row>
     <ion-row>
       <ng-container *ngFor="let trip of tripList;let i=index;">
-        <ion-col size=12 *ngIf="trip['created']=='C'">
+        <ion-col size=12>
           <!-- Ionic Card -->
-          <ion-card class="card-properties" [ngStyle]="{'background-image': 'url('+'../../../assets/img/locations/'+trip['tripDestinationId']+'/1.jpg)'}" (click)="viewTripDetails(trip['tripId'],trip['tripDestinationId'],trip['hotelId'],trip['transportId'],trip['destination'])">
-            <ion-card-header>
+          <ion-card class="card-properties"
+            [ngStyle]="{'background-image': 'url('+'../../../assets/img/locations/'+trip['tripDestinationId']+'/1.jpg)'}"
+            >
+            <ion-card-header (click)="viewTripDetails(trip['tripId'],trip['tripDestinationId'],trip['hotelId'],trip['transportId'],trip['destination'])">
               <div class="tripPhoto"></div>
               <ion-card-subtitle [ngStyle]="{color: getColor(getDateDifference(trip['startDate']))}">{{dateDifference}}
               </ion-card-subtitle>
@@ -36,7 +38,14 @@
             </ion-card-header>
 
             <ion-card-content>
-              {{trip['startDate']}}
+                  {{trip['startDate']}}
+              <ion-row >
+                <ion-col style="text-align:end;width:100%!important;">
+                  <span  class="material-icons del" (click)="alertCreated(trip['tripId'])">
+                    delete
+                  </span>
+                </ion-col>
+              </ion-row>
             </ion-card-content>
           </ion-card>
           <!-- End of Ionic Card -->
@@ -50,11 +59,13 @@
       <h4 class="title">Joined Trips</h4>
     </ion-row>
     <ion-row>
-      <ng-container *ngFor="let trip of tripList; let i=index;">
-        <ion-col size=12 *ngIf="trip['created']=='J'">
+      <ng-container *ngFor="let trip of joinedTripList; let i=index;">
+        <ion-col size=12>
           <!-- Ionic Card -->
-          <ion-card class="card-properties" [ngStyle]="{'background-image': 'url('+'../../../assets/img/locations/'+trip['tripDestinationId']+'/1.jpg)'}" (click)="viewTripDetails(trip['tripId'],trip['tripDestinationId'],trip['hotelId'],trip['transportId'], trip['destination'])">
-            <ion-card-header>
+          <ion-card class="card-properties"
+            [ngStyle]="{'background-image': 'url('+'../../../assets/img/locations/'+trip['tripDestinationId']+'/1.jpg)'}"
+            >
+            <ion-card-header (click)="viewTripDetails(trip['tripId'],trip['tripDestinationId'],trip['hotelId'],trip['transportId'], trip['destination'])">
               <div class="tripPhoto"></div>
               <ion-card-subtitle [ngStyle]="{color: getColor(getDateDifference(trip['startDate']))}">{{dateDifference}}
               </ion-card-subtitle>
@@ -63,6 +74,13 @@
 
             <ion-card-content>
               {{trip['startDate']}}
+              <ion-row >
+                <ion-col style="text-align:end;width:100%!important;">
+                  <span  class="material-icons del" (click)="alertJoined(trip['tripId'])">
+                    delete
+                  </span>
+                </ion-col>
+              </ion-row>
             </ion-card-content>
           </ion-card>
           <!-- End of Ionic Card -->

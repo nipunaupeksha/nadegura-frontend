@@ -40,7 +40,6 @@
 }
 .column-decorator {
     min-height: 70vh;
-    
 }
 
 .div-decorator {
@@ -147,7 +146,6 @@ input[type="password"]:focus {
     --background: transparent;
 }
 
-
 .fullscreen-bg::before {
     position: absolute;
     top: 0;
@@ -187,43 +185,48 @@ input[type="password"]:focus {
     padding-top: 3px;
 }
 
-.row-margin-fixer{
-    margin-top:20px;
+.row-margin-fixer {
+    margin-top: 20px;
 }
 
-.div-padding-fixer{
-    padding-top:5vh;
+.div-padding-fixer {
+    padding-top: 5vh;
 }
 
 .whitefy {
     color: white;
 }
 
-.margin-top-fixer-1{
-    margin-top:10px;
+.margin-top-fixer-1 {
+    margin-top: 10px;
 }
 
-.margin-top-fixer-2{
-    margin-top:5px;
+.margin-top-fixer-2 {
+    margin-top: 5px;
 }
 
-.margin-bottom-fixer-1{
-    margin-bottom:10px;
+.margin-bottom-fixer-1 {
+    margin-bottom: 10px;
 }
 
-.max-width-fixer-1{
-    max-width:35%;
+.max-width-fixer-1 {
+    max-width: 35%;
 }
 
-.max-width-fixer-2{
-    max-width:50%;
+.max-width-fixer-2 {
+    max-width: 50%;
 }
 
-.max-width-fixer-3{
-    max-width:60%;
+.max-width-fixer-3 {
+    max-width: 60%;
 }
 
-.red-color{
-    color:red;
+.red-color {
+    color: red;
 }
 
+p,
+input {
+    font-family: "Poppins-regular";
+    //font-size: 12px;
+}

@@ -12,7 +12,7 @@ import * as jwt_decode from 'jwt-decode';
 })
 export class CreateTripPage implements OnInit {
   // tslint:disable-next-line: object-literal-key-quotes
-  destinationList = [{ 'destination': 'Select destination', 'area': 'area', 'district': 'district', 'province': 'province' }];
+  destinationList = [{ 'destination': 'Select Destination', 'area': 'area', 'district': 'district', 'province': 'province' }];
   valuesAdded = 0;
   destinationSelect: number;
   destinationDestination: string;
@@ -30,7 +30,6 @@ export class CreateTripPage implements OnInit {
   tripTypeSelected: number;
 
   userId: string;
-  createdTrip: string; //createdTrip=C JoinedTrip=J
 
   constructor(
     private router: Router,
@@ -47,11 +46,10 @@ export class CreateTripPage implements OnInit {
 
     this.ageGroupSelected = 1;
     this.tripTypeSelected = 2;
-    this.createdTrip = 'C';
     this.destinationSelect = 0;
 
 
-    this.destinationDestination = 'Select destination';
+    this.destinationDestination = 'Select Destination';
     this.destinationArea = 'area';
     this.destinationDistrict = 'district';
     this.destinationProvince = 'province';
@@ -129,7 +127,7 @@ export class CreateTripPage implements OnInit {
       }
     });
     // tslint:disable-next-line: max-line-length
-    this.userService.createTrip(this.destinationList[this.destinationSelect]['tripDestinationId'], trip.start_date, trip.start_time, trip.start_venue, trip.days, trip.people_count, trip.participants, trip.budget_per_person, this.ageGroup[this.ageGroupSelected - 1]['ageId'], this.tripTypeSelected, travelMode, this.userId, this.createdTrip).subscribe(data => {
+    this.userService.createTrip(this.destinationList[this.destinationSelect]['tripDestinationId'], trip.start_date, trip.start_time, trip.start_venue, trip.days, trip.people_count, trip.participants, trip.budget_per_person, this.ageGroup[this.ageGroupSelected - 1]['ageId'], this.tripTypeSelected, travelMode, this.userId).subscribe(data => {
       this.presentToast('Successfully created a trip', 4000).then(() => {
         console.log('Created trip successfully');
       });

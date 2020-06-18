@@ -258,3 +258,8 @@ input[type="password"]:focus {
     height: 150%;
     z-index: -1;
 }
+p,
+input,select {
+    font-family: "Poppins-regular";
+    //font-size: 12px;
+}

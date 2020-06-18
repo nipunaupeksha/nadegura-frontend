@@ -1,6 +1,6 @@
 import { ViewAllTripsSelectedPage } from './../view-all-trips-selected/view-all-trips-selected.page';
 import { UserService } from './../../services/user.service';
-import { ToastController, LoadingController, ModalController } from '@ionic/angular';
+import { ToastController, LoadingController, ModalController, AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { Component, OnInit, Input } from '@angular/core';
 import * as jwt_decode from 'jwt-decode';
@@ -15,21 +15,86 @@ import * as jwt_decode from 'jwt-decode';
 export class ViewAllTripsPage implements OnInit {
   userId: string;
   tripList = [];
+  joinedTripList =[];
   dateDifference = ' ';
   constructor(
     private modalController: ModalController,
     private router: Router,
     public toastController: ToastController,
     public loadingController: LoadingController,
-    private userService: UserService
+    private userService: UserService,
+    private alertCtrl:AlertController
   ) {
     this.userId = this.getDecodedAccessToken(localStorage.getItem("token"))['user_id'];
   }
 
   ngOnInit() {
       this.getTrips();
+      this.getJoinedTrips();
   }
 
+  async presentToast(msg, dur) {
+    const toast = await this.toastController.create({
+      message: msg,
+      duration: dur,
+      buttons: [
+        {
+          text: 'Close',
+          role: 'cancel'
+        }
+      ]
+    });
+    toast.present();
+    return toast.onDidDismiss();
+  }
+  async alertCreated(value) {
+    const alert = await this.alertCtrl.create({
+      header: 'Delete Trip',
+      message: 'Are you sure want to delete this trip?',
+      buttons: [{
+        cssClass: 'alertCustomCss',
+        text: 'Yes',
+        role: 'Yes',
+        handler: () => {
+          this.deleteCreatedTrip(value);
+        }
+      },
+      {
+        cssClass: 'alertCustomCss',
+        text: 'No',
+        role: 'no',
+        handler: () => {
+        }
+      }
+      ]
+    }
+    );
+    await alert.present();
+  }
+  async alertJoined(value) {
+    const alert = await this.alertCtrl.create({
+      header: 'Unjoin Trip',
+      message: 'Are you sure want to unjoin from this trip?',
+      buttons: [{
+        cssClass: 'alertCustomCss',
+        text: 'Yes',
+        role: 'Yes',
+        handler: () => {
+          this.deleteJoinedTrip(value);
+        }
+      },
+      {
+        cssClass: 'alertCustomCss',
+        text: 'No',
+        role: 'no',
+        handler: () => {
+        }
+      }
+      ]
+    }
+    );
+    await alert.present();
+  }
   async viewTripDetails(param1,param2,param3,param4,param5){
     const modal = await this.modalController.create({
       component: ViewAllTripsSelectedPage ,
@@ -64,6 +129,19 @@ export class ViewAllTripsPage implements OnInit {
     });
   }
 
+  getJoinedTrips(){
+    this.userService.getJoinedTrips(this.userId).subscribe(data => {
+      // tslint:disable-next-line: no-string-literal
+      if (data['data'].length > 0) {
+        // tslint:disable
+        for (let i in data['data']) {
+          // tslint:disable-next-line: no-string-literal
+          this.joinedTripList.push(data['data'][i]);
+        }
+      }
+    });
+  }
+
   getDateDifference(dateSent) {
     let currentDate = new Date();
     dateSent = new Date(dateSent);
@@ -90,6 +168,22 @@ export class ViewAllTripsPage implements OnInit {
   }
   async closeMedia() {
     await this.modalController.dismiss();
+  }
+
+  deleteCreatedTrip(value){
+    this.userService.deleteCreatedTrip(value).subscribe(data => {
+      // tslint:disable-next-line: no-string-literal
+      if (data['data'].length > 0) {
+        // tslint:disable
+        for (let i in data['data']) {
+          // tslint:disable-next-line: no-string-literal
+          this.joinedTripList.push(data['data'][i]);
+        }
+      }
+    });
+  }
+  deleteJoinedTrip(value){
+
   }
 }
 

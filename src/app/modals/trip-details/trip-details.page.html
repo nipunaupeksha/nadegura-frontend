@@ -10,7 +10,7 @@
       </ion-row>
       <ion-row>
         <ion-col style="text-transform: uppercase;">
-          <h4 style="letter-spacing: 3px; width:75% !important; float:right; ">Trip Details</h4>
+          <h4 style="letter-spacing: 3px;font-size: 1.4rem!important; color:black">Trip Details</h4>
         </ion-col>
       </ion-row>
     </div>
@@ -110,6 +110,16 @@
       </ion-row>
       <ion-row style="margin-top:5px;">
         <ion-col size=8>
+          <p class="whitefy font-wrapper">Number of Travel Buddies</p>
+        </ion-col>
+        <ion-col size=4>
+          <input type="text" placeholder="{{buddies}}" name="participants" required
+             class="recommend-input-modified">
+        </ion-col>
+      </ion-row>
+
+      <ion-row style="margin-top:5px;">
+        <ion-col size=8>
           <p class="whitefy font-wrapper">Number of Confirmed Participants</p>
         </ion-col>
         <ion-col size=4>
@@ -126,8 +136,9 @@
              class="recommend-input-modified">
         </ion-col>
       </ion-row>
+      <h4 *ngIf="userId==selectedTrip['userId']">This Trip was created by You</h4>
       <ion-row style="margin-top:10px;">
-        <button class="btn btn-primary" (click)="joinTrip()">Confirm</button>
+        <button class="btn btn-primary" (click)="joinTrip(selectedTrip['participants'])" *ngIf="userId!=selectedTrip['userId']" stlye="padding-left:15px; padding-right:15px;">Join</button>
         <button class="btn btn-primary" (click)="closeMedia()">Cancel</button>
       </ion-row>
     </div>

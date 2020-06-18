@@ -98,3 +98,9 @@ ion-card-title{
     left: -150px;
     transform: rotate(45deg);
 }
+.del{
+    padding:2px;font-size: 18px; border-radius:50%; color:red; background-color: white; text-align: center; border: 1px solid red;
+}
+.del:hover{
+    padding:2px;font-size: 18px; border-radius:50%; color:white; background-color: red; text-align: center; border: 1px solid white;
+}

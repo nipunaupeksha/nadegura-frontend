@@ -4,6 +4,7 @@ import { UserService } from './../../services/user.service';
 import { ImageModalPage } from './../image-modal/image-modal.page';
 import { ModalController, NavParams } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
+import * as jwt_decode from 'jwt-decode';
 
 @Component({
   selector: 'app-trip-details',
@@ -11,10 +12,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./trip-details.page.scss'],
 })
 export class TripDetailsPage implements OnInit {
-
+  userId: string;
   selectedTrip = null;
   travelList = [];
   hotelList = [];
+  buddies= '';
   sliderOpts = {
     zoom: false,
     slidesPerView: 3,
@@ -31,11 +33,12 @@ export class TripDetailsPage implements OnInit {
     private navParams: NavParams,
     private hotelService: HotelService,
   ) {
-
+    this.userId = this.getDecodedAccessToken(localStorage.getItem("token"))['user_id'];
   }
 
   ngOnInit() {
     this.selectedTrip = this.navParams.get('custom_value');
+    this.buddies  = this.navParams.get('buddies');
     this.getTravelValues();
     this.getHotelById();
   }
@@ -82,7 +85,27 @@ export class TripDetailsPage implements OnInit {
     }).then(modal => modal.present());
   }
 
-  joinTrip(){
+  joinTrip(b){
+    let x = Number.parseInt(b)+Number.parseInt(this.buddies);
+    console.log(x);
     
+    this.userService.joinTrip(x,this.buddies,this.userId,this.selectedTrip['tripId']).subscribe(data => {
+      // tslint:disable-next-line: no-string-literal
+      if (data['data'].length > 0) {
+        // tslint:disable
+        for (let i in data['data']) {
+          // tslint:disable-next-line: no-string-literal
+          this.travelList.push(data['data'][i]);
+        }
+      }
+    });
+  }
+
+  getDecodedAccessToken(token: string): any {
+    try {
+      return jwt_decode(token);
+    } catch (Error) {
+      return null;
+    }
   }
 }
