@@ -66,7 +66,7 @@ export class UserService {
   }
   public joinTrip(participants, buddies, userID, tripId) {
     // tslint:disable-next-line: max-line-length
-    return this.http.post(this.BACKEND_URL + 'trips/joinTrip', { 'participants': participants, 'userID': userID, 'tripId': tripId, 'buddies': buddies }, { headers: this.headers }).pipe(map(res => res));
+    return this.http.post(this.BACKEND_URL + 'trips/joinTrip', { 'participants': participants, 'userID': userID, 'tripId': tripId, 'buddies': buddies },{ headers: this.headers }).pipe(map(res => res));
   }
   public getJoinedTrips(userId) {
     return this.http.post(this.BACKEND_URL + 'trips/getJoinedTrips', { 'userId': userId }, { headers: this.headers }).pipe(map(res => res));
@@ -90,6 +90,11 @@ export class UserService {
 
   public deleteCreatedTrip(tripId) {
     // tslint:disable-next-line: max-line-length
-    return this.http.post(this.BACKEND_URL + 'trips/deleteCreatedTrip', { 'tripId': tripId }, { headers: this.headers }).pipe(map(res => res));
+    return this.http.post(this.BACKEND_URL + 'trips/deleteCreatedTrip', { 'tripId': tripId },{ headers: this.headers }).pipe(map(res => res));
+  }
+
+  public deleteJoinedTrip(tripId,participants){
+    // tslint:disable-next-line: max-line-length
+    return this.http.post(this.BACKEND_URL + 'trips/deleteJoinedTrip', { 'tripId': tripId,'participants': participants},{ headers: this.headers }).pipe(map(res => res));
   }
 }

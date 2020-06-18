@@ -76,7 +76,7 @@
               {{trip['startDate']}}
               <ion-row >
                 <ion-col style="text-align:end;width:100%!important;">
-                  <span  class="material-icons del" (click)="alertJoined(trip['tripId'])">
+                  <span  class="material-icons del" (click)="alertJoined(trip['tripId'], trip['participants'],trip['buddies'])">
                     delete
                   </span>
                 </ion-col>

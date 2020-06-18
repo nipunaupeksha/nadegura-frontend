@@ -71,7 +71,7 @@ export class ViewAllTripsPage implements OnInit {
     );
     await alert.present();
   }
-  async alertJoined(value) {
+  async alertJoined(value1,value2,value3) {
     const alert = await this.alertCtrl.create({
       header: 'Unjoin Trip',
       message: 'Are you sure want to unjoin from this trip?',
@@ -80,7 +80,7 @@ export class ViewAllTripsPage implements OnInit {
         text: 'Yes',
         role: 'Yes',
         handler: () => {
-          this.deleteJoinedTrip(value);
+          this.deleteJoinedTrip(value1,value2,value3);
         }
       },
       {
@@ -177,13 +177,23 @@ export class ViewAllTripsPage implements OnInit {
         // tslint:disable
         for (let i in data['data']) {
           // tslint:disable-next-line: no-string-literal
-          this.joinedTripList.push(data['data'][i]);
+          //this.joinedTripList.push(data['data'][i]);
         }
       }
     });
   }
-  deleteJoinedTrip(value){
-
+  deleteJoinedTrip(value1,value2,value3){
+    let x = Number.parseInt(value2)-Number.parseInt(value3);
+    this.userService.deleteJoinedTrip(value1,x).subscribe(data => {
+      // tslint:disable-next-line: no-string-literal
+      if (data['data'].length > 0) {
+        // tslint:disable
+        for (let i in data['data']) {
+          // tslint:disable-next-line: no-string-literal
+          //this.joinedTripList.push(data['data'][i]);
+        }
+      }
+    });
   }
 }
 

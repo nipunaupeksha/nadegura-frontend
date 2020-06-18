@@ -83,4 +83,10 @@ export class TransportService {
     return this.http.post(this.BACKEND_URL + 'transports/getTransportDetails', { 'transportId': transportId }, { headers: this.headers }).pipe(map(res => res));
 
   }
+
+  public deleteVehicle(vehicleId){
+    // tslint:disable-next-line: max-line-length
+    return this.http.post(this.BACKEND_URL + 'transports/deleteVehicle', { 'vehicleId': vehicleId }, { headers: this.headers }).pipe(map(res => res));
+
+  }
 }

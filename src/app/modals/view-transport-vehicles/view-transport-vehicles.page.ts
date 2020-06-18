@@ -102,6 +102,45 @@ export class ViewTransportVehiclesPage implements OnInit {
     await alert.present();
   }
 
+  async alertDelete(val) {
+    const alert = await this.alertCtrl.create({
+      header: 'Delete Vehicle',
+      message: 'Do you want to delete this vehicle?',
+      buttons: [{
+        cssClass: 'alertCustomCss',
+        text: 'Yes',
+        role: 'Yes',
+        handler: () => {
+          this.deleteVehicle(val);
+        }
+      },
+      {
+        cssClass: 'alertCustomCss',
+        text: 'No',
+        role: 'no',
+        handler: () => {
+        }
+      }
+      ]
+    }
+    );
+    await alert.present();
+  }
+
+  deleteVehicle(val){
+    this.transportService.deleteVehicle(val).subscribe(data => {
+      // tslint:disable-next-line: no-string-literal
+      if (data['data'].length > 0) {
+        // tslint:disable
+        for (let i in data['data']) {
+          // tslint:disable-next-line: no-string-literal
+          //this.recommendedTrips.push(data['data'][i]);
+        }
+      }
+      
+    });
+  }
+
   async addVehicle() {
     const modal = await this.modalController.create({
       component: AddVehiclePage,

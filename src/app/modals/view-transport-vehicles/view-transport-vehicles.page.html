@@ -18,6 +18,7 @@
           <span class="material-icons" (click)="alert()" style="font-size: 20px; max-height: 20px; color:rgb(16, 105, 53); ">
             add
           </span>
+          
         </ion-col>
       </ion-row>
     </div>
@@ -31,9 +32,9 @@
         <ion-col size=12>
           <!-- Ionic Card -->
           <ion-card class="card-properties"
-          (click)="viewTransportService(transport['transportId'], transport['transportType'],transport['transportName'],transportImgList[i], transport['vehicleId'])"
+          
             [ngStyle]="{'background-image': 'url('+'../../../assets/img/transport/photos/'+transportImgList[i]+'.jpg)'}">
-            <ion-card-header>
+            <ion-card-header (click)="viewTransportService(transport['transportId'], transport['transportType'],transport['transportName'],transportImgList[i], transport['vehicleId'])">
               
               <!-- (click)="viewTransportService(transport['transportId'], transport['transportType'],transport['transportName'],transportImgList[i])" -->
               <ion-card-title>{{transport['model']}} - {{transport['brand']}}
@@ -45,7 +46,11 @@
             </ion-card-header>
 
             <ion-card-content>
-
+              <ion-row>
+                <ion-col style="text-align:end;width:100%!important;">
+                  <span class="material-icons del" (click)="alertDelete(transport['vehicleId'])">delete</span>
+                </ion-col>
+              </ion-row>
             </ion-card-content>
           </ion-card>
 
